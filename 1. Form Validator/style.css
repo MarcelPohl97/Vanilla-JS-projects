@@ -1,0 +1,38 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+
+body{
+    height: 100vh;
+    /*background-image: url("bg.jpg");*/
+    background: linear-gradient(to bottom, #52c234, #061700);
+    background-size:cover;
+    background-position: top;
+}
+
+.form-container {
+    position:fixed;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 600px;
+    display: flex;
+}
+
+.left-content {
+    width: 50%;
+    background-image: url("tiger.svg");
+    background-size:cover;
+    background-position: top;
+    opacity: 0.5;
+    
+}
+
+.right-content {
+    width: 50%;
+}
