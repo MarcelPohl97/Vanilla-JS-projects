@@ -7,32 +7,121 @@
 
 body{
     height: 100vh;
-    /*background-image: url("bg.jpg");*/
-    background: linear-gradient(to bottom, #52c234, #061700);
+    background-image: url("2756421.jpg");
     background-size:cover;
     background-position: top;
+    
 }
 
 .form-container {
     position:fixed;
-    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 800px;
+    width: 900px;
     height: 600px;
     display: flex;
-}
-
-.left-content {
-    width: 50%;
-    background-image: url("tiger.svg");
-    background-size:cover;
-    background-position: top;
-    opacity: 0.5;
+    background: #FFFFFF;
+    border-radius: 2%;
     
 }
 
+.left-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background: #3AB397;
+    border-top-left-radius: 2%;
+    border-bottom-left-radius: 2%;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    transition: 1s all;
+}
+
+.left-content img {
+    width: 200px; 
+    height: 200px;
+    
+    margin: 1rem 0;
+}
+
+.left-content p {
+    margin: 2rem 0;
+    line-height: 1.5rem;
+    font-weight: 100;
+}
+
+.btn {
+    padding: 1.2rem 2rem;
+    background:transparent;
+	color: #fff;
+	border: 3px solid #fff;
+    border-radius: 50px;
+    width: 250px;
+}
+
+.uncolored:hover {
+    background: #FFFFFF;
+    color:#3AB397;
+    border: 3px solid #3AB397;
+}
+
+.colored {
+    background:#3AB397;
+}
+
+.colored:hover {
+    background: transparent;
+    color:#3AB397;
+    border: 3px solid #3AB397;
+
+}
+
+
 .right-content {
-    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top-left-radius: 2%;
+    border-bottom-left-radius: 2%;
+    width: 0;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    transition: 0.8s all;
+    opacity: 0;
+}
+
+
+.right-content img {
+    width: 200px; 
+    height: 200px;
+    
+    margin: 1rem 0;
+}
+
+.right-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-content form input{
+    margin: 0.5rem 0;
+    padding: 1rem;
+    width:300px;
+    border-radius: 4px;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.right-content form input:hover {
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+}
+
+.right-content h1 {
+    color:#3AB397;
 }
