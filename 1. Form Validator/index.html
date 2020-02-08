@@ -10,8 +10,8 @@
 <body>
     <div class="form-container">
         <div class="left-content" id="left-animation">
-            <h1>Save the Rainforest!</h1>
-            <img src="rainforest.svg"/>
+            <h1 id="left-title">Save the Rainforest!</h1>
+            <img id="left-image" src="rainforest.svg"/>
             <h2>Welcome</h2>
             <p>To keep connected with us please <br> make sure you register!</p>
             <a class="btn uncolored" id="register-animation">Register</a>
@@ -20,11 +20,14 @@
             <h1>Create Account</h1>
             <img src="tiger.svg"/>
             <form>
-                <input type="text" value="Name">
-                <input type="text" value="Email">
-                <input type="text" value="Password">
+                <input id="username" type="text" placeholder="Username" name="username">
+                <small id="username-error">Error Message</small>
+                <input id="email" type="text" placeholder="Email" name="email">
+                <small id="email-error">Error Message</small>
+                <input id="password" type="text" placeholder="Password" name="password">
+                <small id="password-error">Error Message</small>
             </form>
-            <a class ="btn colored">SIGN UP</a>
+            <a id="submit-form" class ="btn colored">SIGN UP</a>
         </div>
     </div>
     <script src="script.js"></script>

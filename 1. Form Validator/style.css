@@ -26,6 +26,13 @@ body{
     
 }
 
+small {
+    font-size: 0.8rem;
+    text-align: left;
+    color: red;
+    opacity: 0;
+}
+
 .left-content {
     display: flex;
     flex-direction: column;
@@ -42,10 +49,10 @@ body{
 }
 
 .left-content img {
-    width: 200px; 
-    height: 200px;
-    
+    width: 250px;
+    height: 250px;
     margin: 1rem 0;
+    transition: 1s all;
 }
 
 .left-content p {
@@ -96,11 +103,9 @@ body{
     opacity: 0;
 }
 
-
 .right-content img {
     width: 200px; 
     height: 200px;
-    
     margin: 1rem 0;
 }
 
