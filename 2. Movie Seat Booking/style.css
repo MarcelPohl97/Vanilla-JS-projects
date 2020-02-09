@@ -1,0 +1,141 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #2B2B2B;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.movie-container {
+    display: flex;
+    align-items: center;
+}
+
+.movie-description{
+    display: flex;
+    flex-direction: column;
+    max-width: 35ch;
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.movie-container h1 {
+    color: #F0C90C;
+    margin-bottom: 1rem;
+}
+
+
+.movie-container img {
+    width: 135px;
+    height: 200px;
+}
+
+.movie-screen {
+  background-color: #FFFFFF;
+  height: 100px;
+  width: 250px;
+  margin: 15px 0;
+  transform: rotateX(-45deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+.seat-container {
+    display: flex;
+    margin-right:3px;
+}
+
+.row{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+
+.row:nth-child(5) {
+    margin-left: 2rem;
+}
+
+.row:nth-child(8) {
+    margin-right: 2rem;
+}
+
+.seat {
+    width: 20px;
+    height: 15px;
+    background: #FFFFFF;
+    margin: 5px 5px;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+}
+
+.seat-conditions{
+    display: flex;
+    margin: 1.5rem 0;
+}
+
+.condition-container{
+    display: flex;
+    margin:0 1rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color:#9A9A9A;
+}
+
+.condition {
+    width: 15px;
+    height: 15px;
+    margin-right: 0.6rem;
+}
+
+.selection {
+    background:#F1B700;
+}
+
+.taken {
+    background: #656565;
+}
+
+.available {
+    background:#FEFEFE;
+}
+
+.available:hover {
+    transform: scale(1.1);
+}
+
+.book-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-container p {
+    margin: 2rem 0;
+    color: #FFFFFF;
+}
+
+.seat-counter {
+    color: #F1B700;
+}
+
+.btn {
+    padding: 0.5rem 2rem;
+    background: #3498DB;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    color: #FFFFFF;
+}
+
+.btn:hover {
+    background:#2E5B82;
+    color: #858585;
+}
