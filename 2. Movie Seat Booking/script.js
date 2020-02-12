@@ -17,18 +17,20 @@ container.addEventListener('click', e => {
   }
 
 const movie_searcher_form = document.getElementById("movie-searcher-form")
+const movie_searcher_form_animator = document.getElementById("movie-search-animate")
 
-movie_searcher_form.addEventListener('click', e => {
-  movie_searcher_form.classList.toggle("movie-animate-form")
+movie_searcher_form_animator.addEventListener('click', () => {
+  movie_searcher_form.classList.toggle("movie-animate-form");
+
 })
 
 //Animate function
   const animate_form = () => {
     const movie_form = document.getElementById("movie-searcher");
-    movie_form.style.width = "30vw";
+    movie_form.style.width = "100vw";
     movie_form.style.height = "100vh";
-    movie_form.style.borderTopRightRadius = "25%";
-    movie_form.style.borderBottomRightRadius = "25%";
+    movie_form.style.borderTopRightRadius = "0%";
+    movie_form.style.borderBottomRightRadius = "0%";
     movie_form.h1.style.opacity = "0";
   }
 

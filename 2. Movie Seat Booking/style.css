@@ -17,22 +17,59 @@ body {
 
 .movie-searcher-form {
     position: relative;
-    left:0;
+    left: 0;
     top:0;
     position: fixed;
-    width: 25px;
-    height: 50px;
-    background:#3498DB;
-    border-top-right-radius: 25%;
-    border-bottom-right-radius: 25%;
+    width: 5vw;
+    height: 100vh;
+    background:#A63B5B;
     transition: 1s all;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-searcher-form img {
+    width: 70px;
+    height: 70px;
+    margin-top: 1rem;
+}
+
+.movie-searcher-form img:hover {
+    transform: scale(1.1);
+}
+
+.movie-searcher-form h2 {
+    margin-top: 6rem;
+    text-align: left;
+}
+
+.movie-searcher-form input {
+    margin-top: 1rem;
+    padding: 1rem;
+    width:300px;
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+}
+
+.movie-searcher-form input:hover {
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+}
+
+.movie-searcher-form a {
+    margin-top: 1rem;
+    background:#2B2B2B;
+    width: 300px;
+    padding: 1rem 0;
+}
+
+.movie-searcher-form a:hover {
+    background:rgba(43, 43, 43, 0.658);
 }
 
 .movie-animate-form {
-    width: 30vw;
-    border-top-right-radius: 100%;
-    border-bottom-right-radius: 100%;
-    height: 100vh;
+    width: 20vw;
 }
 
 .movie-container {
@@ -48,9 +85,13 @@ body {
     margin-left: 2rem;
 }
 
-.movie-container h1 {
-    color: #F0C90C;
+.movie-description h1 {
+    color: #A63B5B;
     margin-bottom: 1rem;
+}
+
+.movie-container p {
+    color: #FFFFFF;
 }
 
 
@@ -145,13 +186,13 @@ body {
     color: #FFFFFF;
 }
 
-.seat-counter {
+#seat-counter {
     color: #F1B700;
 }
 
 .btn {
     padding: 0.5rem 2rem;
-    background: #3498DB;
+    background: #A63B5B;
     border-top-left-radius: 5%;
     border-top-right-radius: 5%;
     border-bottom-left-radius: 5%;
@@ -160,6 +201,6 @@ body {
 }
 
 .btn:hover {
-    background:#2E5B82;
+    background:rgba(166, 59, 91, 0.507);
     color: #858585;
 }
