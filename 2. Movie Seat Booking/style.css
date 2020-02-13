@@ -39,12 +39,23 @@ body {
     transform: scale(1.1);
 }
 
-.movie-searcher-form h2 {
+#movie-search-input-show-hide{
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#movie-search-input-show-hide.fade{
+    opacity: 1;
+}
+
+#movie-search-input-show-hide h2 {
     margin-top: 6rem;
     text-align: left;
 }
 
-.movie-searcher-form input {
+#movie-search-input-show-hide input {
     margin-top: 1rem;
     padding: 1rem;
     width:300px;
@@ -52,19 +63,19 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
-.movie-searcher-form input:hover {
+#movie-search-input-show-hide input:hover {
     background-color: rgba(255, 255, 255, 0.45);
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
 }
 
-.movie-searcher-form a {
+#movie-search-input-show-hide a {
     margin-top: 1rem;
     background:#2B2B2B;
     width: 300px;
     padding: 1rem 0;
 }
 
-.movie-searcher-form a:hover {
+#movie-search-input-show-hide a:hover {
     background:rgba(43, 43, 43, 0.658);
 }
 

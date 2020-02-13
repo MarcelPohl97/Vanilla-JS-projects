@@ -9,15 +9,17 @@
 <body>
     <div id="movie-searcher-form" class="movie-searcher-form">
         <img id="movie-search-animate" src="clapperboard.svg"/>
-        <h2>MOVIE SEARCH BOX</h2>
-        <input type="text" id="movie-input" placeholder="Movie"/>
-        <a class="btn">GET MOVIE</a>
+        <div id="movie-search-input-show-hide">
+            <h2>MOVIE SEARCH BOX</h2>
+            <input type="text" id="movie-input" placeholder="Movie"/>
+            <a id="fetch-movie" class="btn">GET MOVIE</a>
+        </div>
     </div>
     <div class="movie-container">
-        <img src="blackpanther.jpg"/>
+        <img id="poster" src="blackpanther.jpg"/>
         <div class="movie-description">
-            <h1>Black Panther</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, inventore assumenda. Unde optio inventore eligendi doloremque nam, dicta veritatis. Nihil, dolorem beatae. Deleniti voluptas itaque doloribus possimus nostrum veritatis labore eum, deserunt ad, dolorem consectetur? Libero sed rem deleniti, repellendus sint a id atque aut quis, rerum saepe, vero aliquam?</p>
+            <h1 id="title">Black Panther</h1>
+            <p id="plot">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, inventore assumenda. Unde optio inventore eligendi doloremque nam, dicta veritatis. Nihil, dolorem beatae. Deleniti voluptas itaque doloribus possimus nostrum veritatis labore eum, deserunt ad, dolorem consectetur? Libero sed rem deleniti, repellendus sint a id atque aut quis, rerum saepe, vero aliquam?</p>
         </div>
     </div>
     <div class="movie-screen"></div>
