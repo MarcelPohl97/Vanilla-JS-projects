@@ -1,0 +1,4 @@
+1. build complete frontend including api fetched information reference: https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/c5fb2583395319.5d3ac6e2f30bd.jpg
+
+GRID for Meals: https://www.youtube.com/watch?v=705XCEruZFs
+API: https://www.themealdb.com/api.php
