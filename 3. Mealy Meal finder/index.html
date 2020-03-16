@@ -4,53 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/720dd1dc59.js" crossorigin="anonymous"></script>
     <title>Mealy</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <h3 class="nav-brand">Mealy</h3>
+    <header class="header">
+        <nav class="nav">
+            <h3 class="nav-brand">
+                <img src="/img/header-icon.svg" alt="Meat">
+                <span class="nav-header-title">Mealy</span>
+            </h3>
             <div class="nav-options">
-                <ul>
+                <ul class="nav-items">
                     <li>Home</li>
-                    <li>About</li>
-                    <li>Menu</li>
+                    <li>About<i class="fas fa-chevron-down"></i></li>
+                    <li>Menu <i class="fas fa-chevron-down"></i></li>
                     <li>Reservation</li>
-                    <li>Gallery</li>
+                    <li>Gallery <i class="fas fa-chevron-down"></i></li>
                     <li>FAQs</li>
                     <li>Account</li>
-                    <a href="#" class="btn">CONTACT NOW</a>
+                    <li><a href="#" class="btn">CONTACT NOW</a></li>
                 </ul>
             </div>
         </nav>
-        <div class="header-title">
-            <h1 class="header-main-title">ORGANIC FOODS MADE</h1>
-            <h1 class="header-sub-title"></h1>
-        </div>
-        <div class="header-title-info">
-            <p class="header-main-title-info">Fresh, organic ingredients. Carefully prepared.</p>
-            <p class="header-sub-title-info">Eat green for a reason</p>
-        </div>
-        <form action="#">
-            <input type="text" placeholder="Search your food here">
-            <a href="#" class="btn">SEARCH</a>
-        </form>
-        <div class="header-information">
-            <div class="information">
-                <h3>IMG</h3>
-                <p>24/7 Fresh Foods</p>
+        <div class="header-content">
+            <div class="header-title">
+                <h1 class="header-main-title">ORGANIC FOODS MADE</h1>
+                <h1 class="header-sub-title">EASY & HEALTHY</h1>
             </div>
-            <div class="information">
-                <h3>IMG</h3>
-                <p>Nature First</p>
+            <div class="header-title-info">
+                <p class="header-main-title-info">Fresh, organic ingredients. Carefully prepared.</p>
+                <p class="header-sub-title-info">Eat green for a reason</p>
             </div>
-            <div class="information">
-                <h3>IMG</h3>
-                <p>Home Services</p>
-            </div>
-            <div class="information">
-                <h3>IMG</h3>
-                <p>2Free Delivery</p>
+            <form action="#">
+                <input type="text" placeholder="Search your food here">
+                <a href="#" class="btn"><i class="fas fa-search"></i> SEARCH</a>
+            </form>
+            <div class="header-information">
+                <div class="information">
+                    <i class="fas fa-history"></i>
+                    <p>24/7 Fresh Foods</p>
+                </div>
+                <div class="information">
+                    <i class="fab fa-pagelines"></i>
+                    <p>Nature First</p>
+                </div>
+                <div class="information">
+                    <i class="fas fa-home"></i>
+                    <p>Home Services</p>
+                </div>
+                <div class="information">
+                    <i class="fas fa-truck"></i>
+                    <p>2Free Delivery</p>
+                </div>
             </div>
         </div>
     </header>
