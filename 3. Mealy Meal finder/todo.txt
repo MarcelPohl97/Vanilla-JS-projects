@@ -2,3 +2,5 @@
 
 GRID for Meals: https://www.youtube.com/watch?v=705XCEruZFs
 API: https://www.themealdb.com/api.php
+
+Integrate : BEM and css variables https://css-tricks.com/bem-101/
