@@ -10,13 +10,13 @@
 </head>
 <body>
     <header class="header">
-        <nav class="nav">
-            <h3 class="nav-brand">
+        <nav class="header__nav">
+            <h3 class="header__brand">
                 <img src="/img/header-icon.svg" alt="Meat">
-                <span class="nav-header-title">Mealy</span>
+                <span class="header__title">Mealy</span>
             </h3>
-            <div class="nav-options">
-                <ul class="nav-items">
+            <div class="header__options">
+                <ul class="header__items">
                     <li>Home</li>
                     <li>About <i class="fas fa-chevron-down"></i></li>
                     <li>Menu <i class="fas fa-chevron-down"></i></li>
@@ -24,42 +24,63 @@
                     <li>Gallery <i class="fas fa-chevron-down"></i></li>
                     <li>FAQs</li>
                     <li>Account</li>
-                    <li><a href="#" class="btn btn-green">CONTACT NOW</a></li>
+                    <li><a href="#" class="btn btn--green btn--animated">CONTACT NOW</a></li>
                 </ul>
             </div>
         </nav>
-        <div class="header-content">
-            <div class="header-title">
-                <h1 class="header-main-title">ORGANIC FOODS MADE</h1>
-                <h1 class="header-sub-title">EASY & HEALTHY</h1>
+        <div class="header__content">
+            <div class="header__title">
+                <h1 class="header__titlemain">ORGANIC FOODS MADE</h1>
+                <h1 class="header__titlesub">EASY & HEALTHY</h1>
             </div>
-            <div class="header-title-info">
-                <p class="header-main-title-info">Fresh, organic ingredients. Carefully prepared.</p>
-                <p class="header-sub-title-info">Eat green for a reason.</p>
+            <div class="header__titleinfo">
+                <p class="header__titlemaininfo">Fresh, organic ingredients. Carefully prepared.</p>
+                <p class="header__titlesubinfo">Eat green for a reason.</p>
             </div>
             <form action="#">
                 <input type="text" placeholder="Search your food here">
-                <a href="#" class="btn btn-green">SEARCH</a>
+                <a href="#" class="btn btn--green btn--animated">SEARCH</a>
             </form>
-            <div class="header-information">
-                <div class="information">
+            <div class="header__information">
+                <div class="header__informationbox">
                     <i class="fas fa-history"></i>
                     <p>24/7 Fresh Foods</p>
                 </div>
-                <div class="information">
+                <div class="header__informationbox">
                     <i class="fab fa-pagelines"></i>
                     <p>Nature First</p>
                 </div>
-                <div class="information">
+                <div class="header__informationbox">
                     <i class="fas fa-home"></i>
                     <p>Home Services</p>
                 </div>
-                <div class="information">
+                <div class="header__informationbox">
                     <i class="fas fa-truck"></i>
                     <p>Free Delivery</p>
                 </div>
             </div>
         </div>
     </header>
+    <main>
+        <section class="booking">
+            <div class="booking__content">
+                <div class="booking__title">
+                    <h3 class="booking__titlemain">Book a Meal</h3>
+                </div>
+                <form action="#">
+                    <label for="date">Date</label>
+                    <input type="text" name="date" placeholder="Pick your date">
+                    <i class="far fa-calendar-alt"></i>
+                    <label for="time">Time</label>
+                    <input type="text" name="time" placeholder="Select time">
+                    <i class="far fa-clock"></i>
+                    <label for="people">People</label>
+                    <input type="text" name="people" placeholder="Select peoples">
+                    <i class="fas fa-chevron-down"></i>
+                </form>
+                <a href="#" class="btn btn--red btn--animated">Book Now</a> 
+            </div>
+        </section>
+    </main>
 </body>
 </html>

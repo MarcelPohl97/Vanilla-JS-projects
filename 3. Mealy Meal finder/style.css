@@ -1,3 +1,5 @@
+/* Initialize, Reset */
+
 *{
     padding: 0;
     margin:0;
@@ -28,24 +30,31 @@ ul {
     display: inline-block;
 }
 
-.btn-green {
+.btn--green {
     background:#71D10D;
     color: #fff;
     transition: all .2s;
-    width: 100%;
+    
 }
 
-.btn-green:hover {
+.btn--red {
+    background:#FE0000;
+    color: #fff;
+    transition: all .2s;
+    
+}
+
+.btn--animated:hover {
     transform:translateY(-3px);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
-.btn-green:active {
+.btn--animated:active {
     transform: translateY(0);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);;
 }
 
-.btn-green::after {
+.btn--green::after {
     content: "";
     width: 100%;
     height: 100%;
@@ -58,7 +67,26 @@ ul {
     transition: all .5s;
 }
 
-.btn-green:hover::after {
+.btn--green:hover::after {
+    transform: scale(1.5);
+    opacity:0;
+    z-index: 1;
+}
+
+.btn--red::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #FE0000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 100px;
+    z-index: -1;
+    transition: all .5s;
+}
+
+.btn--red:hover::after {
     transform: scale(1.5);
     opacity:0;
     z-index: 1;
@@ -77,38 +105,38 @@ ul {
     padding: 0 15rem;
 }
 
-.nav {
+.header__nav {
     display: flex;
     justify-content: space-around;
     padding: 1rem 0;
     align-items: center;
 }
 
-.nav-brand {
+.header__brand {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.nav-header-title {
+.header__title {
     font-size: 1.1rem;
 }
 
-.nav-brand img {
+.header__brand img {
     height: 40px;
 }
 
-.nav-items {
+.header__items {
     display: flex;
 }
 
-.nav-items > li {
+.header__items > li {
     margin: 0 0.6rem;
     font-size: 0.9rem;
     position: relative;
 }
 
-.nav-items > li:not(:last-child)::after {
+.header__items > li:not(:last-child)::after {
     content: "";
     position:absolute;
     top:23px;
@@ -120,7 +148,7 @@ ul {
     transition: all .5s;
 }
 
-.nav-items > li:hover::after {
+.header__items > li:hover::after {
     opacity: 1;
     width: 100%;
 
@@ -132,7 +160,7 @@ ul {
     font-size: 0.6rem;
 }
 
-.header-content {
+.header__content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -140,53 +168,53 @@ ul {
     text-align: center;
 }
 
-.header-title {
+.header__title {
     line-height: 1.3;
     margin-bottom: 1.2rem;
 }
 
-.header-main-title {
-    font-size: 4rem;
-}
-
-.header-sub-title {
+.header__titlemain {
     font-size: 3.5rem;
 }
 
-.header-main-title-info {
+.header__titlesub {
+    font-size: 3rem;
+}
+
+.header__titlemaininfo {
     font-size: 1.2rem;
 }
 
-.header-sub-title-info {
+.header__titlesubinfo {
     font-size: 1.2rem;
 }
 
-.header-content form {
+.header__content form {
     margin: 4rem 0;
     
 }
 
-.header-content form input {
+.header__content form input {
     width: 79%;
     border:none;
     background:#fff;
     padding: 0.7rem 0.5rem;
     border-radius: 100px;
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
-.header-content form a {
-    font-size: 0.9rem;
+.header__content form a {
+    font-size: 1rem;
     text-align: center;
     width: 20%;
 }
 
-.header-information {
+.header__information {
     display: flex;
     justify-content: center;
 }
 
-.information {
+.header__informationbox {
     margin: 0 0.5rem;
     background: rgba(255, 255, 255, 0.15);
     padding: 1rem 0;
@@ -197,18 +225,81 @@ ul {
     transition: all .2s;
 }
 
-.information:hover {
+.header__informationbox:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); 
 }
 
-.information i {
+.header__informationbox i {
     font-size: 2rem;
     margin-bottom: 0.2rem;
     color: #71D10D;
 }
 
-.information p {
+.header__informationbox p {
     font-size: 0.8rem;
 }
+
+/* Section Booking */
+
+.booking {
+    padding: 1.5rem 20rem;
+    background: #fff;
+    max-width:125rem;
+    position: relative;
+}
+
+.booking__content {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.booking__titlemain {
+    font-size: 1.2rem;
+    color: #545454;
+    text-transform: uppercase;
+}
+
+.booking form {
+    display: flex;
+    align-items: center;
+}
+
+.booking form label {
+    font-size: 0.8rem;
+    margin-right: 0.8rem;
+    color: #545454;
+}
+
+.booking form input {
+    border:none;
+    background:#fff;
+    padding: 0.7rem 0.5rem;
+    border-radius: 100px;
+    font-size: 1rem;
+    border: 2px solid #71D10D;
+}
+
+.booking form input:not(:last-child){
+    margin-right: 1.5rem;
+}
+
+.booking form i {
+    margin-right: 2.5rem;
+    margin-left: -3.5rem;
+    font-size: 1.2rem;
+    color:#71D10D;
+}
+
+.booking__content a {
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    flex-shrink:0;
+}
+
+
+
 
