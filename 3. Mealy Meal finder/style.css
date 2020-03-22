@@ -24,7 +24,7 @@ ul {
 /* Utility */
 
 .btn {
-    padding: 0.7rem 1.4rem;
+    padding: 0.5rem 1.4rem;
     border-radius: 100px;
     position: relative;
     display: inline-block;
@@ -90,6 +90,19 @@ ul {
     transform: scale(1.5);
     opacity:0;
     z-index: 1;
+}
+
+/* Animations */
+
+@keyframes mealCardEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* Header */
@@ -299,6 +312,136 @@ ul {
     text-transform: uppercase;
     flex-shrink:0;
 }
+
+/* Section meals */
+
+.meals {
+    padding: 3rem 20rem;
+    background: #F3F7FA;
+    max-width:125rem;
+}
+
+.meals__content{
+    text-align: center;
+}
+
+.meals__title {
+    text-align: center;
+}
+
+.meals__titlemain {
+    font-size: 2rem;
+    color: #434343;
+}
+
+.meals__titlesub {
+    font-size: 1rem;
+    color: #545454;
+}
+
+.meals__list {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin: 4rem 0;
+}
+
+.meals__listmeal {
+    background: #fff;
+    width: 100%;
+    height: 300px;
+    animation: mealCardEntrance .7s ease-out;
+    animation-fill-mode: backwards;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+    0 2px 4px rgba(0,0,0,0.07), 
+    0 4px 8px rgba(0,0,0,0.07), 
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07), 
+    0 32px 64px rgba(0,0,0,0.07);
+    transition: all .5s;
+}
+
+.meals__listmeal:hover {
+    transform: translateY(-3px) scale(1.1);
+}
+
+.meals__listmealheader{
+    height: 50%;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 2rem;
+    position: relative;
+    background:url("https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80") no-repeat center center/cover;
+}
+
+.meals__listmealheaderprice {
+    position: absolute;
+    top: 0;
+    left:0;
+    background: #71D10D;
+    clip-path: polygon(100% 0, 90% 50%, 100% 100%, 0 100%, 0 0);
+    margin-top: 1.5rem;
+}
+
+.meals__listmealheaderprice p {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 0.1rem 0.8rem;
+}
+
+.meals__listmealbody {
+    height: 50%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 1rem 1.2rem;
+}
+
+.meals__listmealbodytitle {
+    text-align: left;
+    font-size: 1rem;
+}
+
+.meals__listmealbodydescription{
+    display: flex;
+    text-align: left;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.meals__listmealbodydescription i {
+    color: #71D10D;
+    margin-right: 0.2rem;
+}
+
+.meals__listmealbodydescription p {
+    color: #545454;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.meals__listmealbody a {
+    display: inline-block;
+    font-size:1rem;
+    text-transform: uppercase;
+    background: transparent;
+    color:#434343;
+    border: 2px solid #FE0000;
+    font-weight: 600;
+
+}
+
+.meals__content a {
+    display: inline-block;
+    font-size:1rem;
+    text-transform: uppercase;
+
+}
+
 
 
 
