@@ -6,9 +6,3 @@ API: https://www.themealdb.com/api.php
 Integrate : BEM and css variables https://css-tricks.com/bem-101/
 
 todo:
-
-- add css variables
-- refactor code
-- maybe add fixed with for buttons
-- meal card section add flex column space between figure out how to make the button same width (fixed width could help there)
-- fix when hovering meal card button becomes untransparent and color changes
