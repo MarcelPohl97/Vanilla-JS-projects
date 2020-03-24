@@ -286,7 +286,6 @@ ul {
 }
 
 .booking__content {
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -460,8 +459,56 @@ ul {
 .meals__content a {
     font-size:1rem;
     text-transform: uppercase;
-
 }
+
+/* Special Section */
+
+.special {
+    padding: 3rem 20rem;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0, 0, 0, 0.6)), url("https://images.unsplash.com/photo-1565976469553-00d571cf97b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80");
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    max-width:125rem;
+}
+
+.special__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.special__title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-weight: 900;
+}
+
+.special__offer {
+    color: var(--white-color);
+    font-size: 4rem;
+    font-weight: 900;
+    display:inline;
+}
+
+.special__info {
+    font-size: 1rem;
+    color: var(--white-color);
+}
+
+.special__coupon {
+    font-size: 1.5rem;
+    color: var(--white-color);
+}
+
+.special__content a {
+    font-size:1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+
 
 
 

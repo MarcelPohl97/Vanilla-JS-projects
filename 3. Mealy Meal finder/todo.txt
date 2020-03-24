@@ -6,3 +6,7 @@ API: https://www.themealdb.com/api.php
 Integrate : BEM and css variables https://css-tricks.com/bem-101/
 
 todo:
+- change bem classes remove longassnames
+- think about smaller buttons for padding top bottom
+- maybe add discount cards in special section that are aligned in flex and overlap each other when you hover they get z inded or switch out to the left
+- button for random meal
