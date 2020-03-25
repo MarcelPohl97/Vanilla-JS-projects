@@ -35,11 +35,18 @@ ul {
 
 .btn {
     width: 150px;
-    padding: 0.5rem 0.5rem;
     border-radius: 100px;
     position: relative;
     display: inline-block;
     text-align: center;
+}
+
+.btn--normal {
+    padding: 0.5rem 0.5rem;
+}
+
+.btn--small {
+    padding: 0.3rem 0.5rem;
 }
 
 .btn--green {
@@ -198,7 +205,7 @@ ul {
 
 .header__content {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -209,48 +216,51 @@ ul {
     margin-bottom: 1.2rem;
 }
 
-.header__titlemain {
+.header__title-main {
     font-size: 3.5rem;
 }
 
-.header__titlesub {
+.header__title-esub {
     font-size: 3rem;
 }
 
-.header__titlemaininfo {
+.header__info-main {
     font-size: 1.2rem;
 }
 
-.header__titlesubinfo {
+.header__info-sub {
     font-size: 1.2rem;
 }
 
 .header__content form {
     margin: 4rem 0;
+    display: flex;
     
 }
 
 .header__content form input {
-    width: 79%;
     border:none;
     background: var(--white-color);
     padding: 0.7rem 0.5rem;
     border-radius: 100px;
     font-size: 1rem;
+    width: 100%;
 }
 
 .header__content form a {
     font-size: 1rem;
     text-align: center;
-    width: 20%;
+    width: 25%;
+    margin-left: -2.5rem;
 }
 
 .header__information {
     display: flex;
     justify-content: center;
+    margin-bottom: 6rem;
 }
 
-.header__informationbox {
+.header__information-box {
     margin: 0 0.5rem;
     background: rgba(255, 255, 255, 0.15);
     padding: 1rem 0;
@@ -261,19 +271,25 @@ ul {
     transition: all .2s;
 }
 
-.header__informationbox:hover {
+.header__information-box:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); 
 }
 
-.header__informationbox i {
+.header__information-box i {
     font-size: 2rem;
     margin-bottom: 0.2rem;
     color: var(--primary-color);
 }
 
-.header__informationbox p {
+.header__information-box p {
     font-size: 0.8rem;
+}
+
+.header__content-meal {
+    font-size: 1rem;
+    text-transform: uppercase;
+    
 }
 
 /* Section Booking */
@@ -291,7 +307,7 @@ ul {
     align-items: center;
 }
 
-.booking__titlemain {
+.booking__title-main {
     font-size: 1.2rem;
     color: var(--sub-header-color);
     text-transform: uppercase;
@@ -351,12 +367,12 @@ ul {
     text-align: center;
 }
 
-.meals__titlemain {
+.meals__title-main {
     font-size: 2rem;
     color: var(--header-color);
 }
 
-.meals__titlesub {
+.meals__title-sub {
     font-size: 1rem;
     color: var(--sub-header-color);
 }
@@ -368,11 +384,11 @@ ul {
     margin: 4rem 0;
 }
 
-.meals__list:hover .meals__listmeal{
+.meals__list:hover .meals__card{
     transform: scale(0.95);
 }
 
-.meals__listmeal {
+.meals__card {
     background: var(--white-color);
     width: 100%;
     height: 300px;
@@ -388,21 +404,21 @@ ul {
     transition: all .2s;
 }
 
-.meals__list .meals__listmeal:hover {
+.meals__list .meals__card:hover {
     transform: translateY(-3px) scale(1.1);
 }
 
-.meals__listmealheader{
+.meals__card-header{
     height: 50%;
     width: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 2rem;
     position: relative;
-    background:url("https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80") no-repeat center center/cover;
+    background:url("https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80") no-repeat center center/cover;
 }
 
-.meals__listmealheaderprice {
+.meals__price {
     position: absolute;
     top: 0;
     left:0;
@@ -411,7 +427,7 @@ ul {
     margin-top: 1.5rem;
 }
 
-.meals__listmealheaderprice p {
+.meals__price p {
     color: var(--white-color);
     display: flex;
     align-items: center;
@@ -420,37 +436,37 @@ ul {
     padding: 0.1rem 0.8rem;
 }
 
-.meals__listmealbody {
+.meals__card-body {
     height: 50%;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 1rem 1.2rem;
 }
 
-.meals__listmealbodytitle {
+.meals__name {
     text-align: left;
     font-size: 1rem;
 }
 
-.meals__listmealbodydescription{
+.meals__description{
     display: flex;
     text-align: left;
     margin-top: 0.3rem;
     margin-bottom: 1rem;
 }
 
-.meals__listmealbodydescription i {
+.meals__description i {
     color: var(--primary-color);
     margin-right: 0.2rem;
 }
 
-.meals__listmealbodydescription p {
+.meals__description p {
     color: var(--sub-header-color);
     margin-right: 0.5rem;
     font-size: 0.8rem;
 }
 
-.meals__listmealbody a {
+.meals__card-body a {
     font-size:1rem;
     text-transform: uppercase;
     font-weight: 600;
@@ -494,11 +510,13 @@ ul {
 .special__info {
     font-size: 1rem;
     color: var(--white-color);
+    margin-bottom: 1rem;
 }
 
 .special__coupon {
     font-size: 1.5rem;
     color: var(--white-color);
+    margin-bottom: 0.5rem;
 }
 
 .special__content a {
@@ -508,8 +526,140 @@ ul {
     margin-top: 1rem;
 }
 
+/* About Section */
 
+.about {
+    padding: 3rem 20rem;
+    max-width: 125rem;
+    background: var(--white-color);
+}
 
+.about__title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.about__title-main {
+    font-size: 2rem;
+    color: var(--header-color);
+}
+
+.about__cards {
+    display: flex;
+    justify-content: center;
+}
+
+.about__card {
+    padding: 2rem 0;
+    display: block;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+    0 2px 4px rgba(0,0,0,0.07), 
+    0 4px 8px rgba(0,0,0,0.07), 
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07), 
+    0 32px 64px rgba(0,0,0,0.07);
+    width: calc(100% / 4);
+    text-align: center;
+    transition: .2s;
+}
+
+.about__card:hover {
+    transform: scale(1.05) translateY(-5px);
+    background-color: var(--primary-color);
+}
+
+.about__card:hover i {
+    color: var(--white-color);
+}
+
+.about__card:hover p {
+    color: var(--white-color);
+}
+
+.about__card:not(:last-child){
+    margin-right: 1.5rem;
+}
+
+.about__card i {
+    margin-bottom: 0.5rem;
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+.about__card-info {
+    font-size: 1rem;
+    color: var(--sub-header-color);
+    font-weight: 600;
+}
+
+/* Section Reviews */
+
+.reviews {
+    padding: 3rem 20rem;
+    max-width: 125rem;
+    background: #F3F7FA
+}
+
+.reviews__title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.reviews__title-main {
+    font-size: 2rem;
+    color: var(--header-color);
+}
+
+.reviews__cards {
+    display: flex;
+    justify-content: center;
+}
+
+.review__card {
+    height: 300px;
+    width: 100%;
+}
+
+.review__card:not(:last-child){
+    margin-right: 3.5rem;
+}
+
+.review__layout {
+    height:70%;
+    background: #fff;
+    padding: 1rem;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 87%, 18% 87%, 13% 100%, 8% 87%, 0 87%);
+}
+
+.review__message {
+    color: var(--sub-header-color);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.review__testimonial{
+    height: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.review__testimonial img {
+    height:70px;
+    border-radius: 100%;
+    padding: 0 1rem;
+}
+
+.review__testimonial-name {
+    color: #3a6fa3;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.review__testimonial-company{
+    color: var(--sub-header-color);
+    font-size: 1rem;
+    font-weight: 500;
+}
 
 
 
