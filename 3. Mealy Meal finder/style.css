@@ -390,11 +390,10 @@ ul {
 
 .meals__card {
     background: var(--white-color);
-    width: 100%;
-    height: 300px;
+    height:300px;
     animation: mealCardEntrance .7s ease-out;
     animation-fill-mode: backwards;
-    border-radius: 5px;
+    border-radius: 3px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
     0 2px 4px rgba(0,0,0,0.07), 
     0 4px 8px rgba(0,0,0,0.07), 
@@ -415,7 +414,15 @@ ul {
     border-top-right-radius: 5px;
     padding: 2rem;
     position: relative;
-    background:url("https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80") no-repeat center center/cover;
+}
+
+.meals__image {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .meals__price {
@@ -446,12 +453,13 @@ ul {
 .meals__name {
     text-align: left;
     font-size: 1rem;
+    line-height: 1.2rem;
 }
 
 .meals__description{
     display: flex;
     text-align: left;
-    margin-top: 0.3rem;
+    margin-top: 0.4rem;
     margin-bottom: 1rem;
 }
 
@@ -561,6 +569,7 @@ ul {
     width: calc(100% / 4);
     text-align: center;
     transition: .2s;
+    border-radius: 3px;
 }
 
 .about__card:hover {
@@ -659,6 +668,95 @@ ul {
     color: var(--sub-header-color);
     font-size: 1rem;
     font-weight: 500;
+}
+
+/* Section Information */
+
+.information {
+    padding: 2.5rem 20rem;
+    background: #515151;
+    max-width:125rem;
+}
+
+.information__cards {
+    display: flex;
+    justify-content: center;
+}
+
+.information__card {
+    width: calc(100% / 4);
+}
+
+.information__card:not(:last-child){
+    margin-right: 1.5rem;
+}
+
+.information__title {
+    font-size: 1rem;
+    border-bottom: 2px solid grey;
+    color: var(--white-color);
+    margin-bottom:1.5rem;
+    padding-bottom: 0.1rem;
+}
+
+.information__links--last {
+    display: flex;
+}
+
+.information__links--last li {
+    margin-right: 0.5rem;
+}
+
+.information__links--last li i {
+    font-size: 2rem !important;
+    
+}
+
+.information__links li {
+    padding: 0.05rem 0;
+    color: var(--white-color);
+    font-size: 0.9rem;
+    transition: .2s all;
+}
+
+.information__links li:hover {
+    color: var(--primary-color);
+}
+
+.information__links > li i {
+    margin-right: 0.2rem;
+    font-size: 0.6rem;
+}
+
+/* Footer Section */
+
+.footer {
+    padding: 1.5rem 20rem;
+    background: var(--white-color);
+    max-width:125rem;
+}
+
+.footer__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__copyright {
+    font-size: 1rem;
+    color: var(--header-color);
+}
+
+.footer__payments {
+    display: flex;
+}
+
+.footer__payments > li:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.footer__payments > li img {
+    width: 40px;
 }
 
 

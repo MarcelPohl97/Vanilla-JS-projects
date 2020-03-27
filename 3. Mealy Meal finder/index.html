@@ -38,8 +38,8 @@
                 <p class="header__info-sub">Eat green for a reason.</p>
             </div>
             <form action="#">
-                <input type="text" placeholder="Search your food here">
-                <a href="#" class="btn btn--normal btn--green btn--animated"><i class="fas fa-search"></i> SEARCH</a>
+                <input type="text" id="meal_input" placeholder="Search your food here">
+                <a class="btn btn--normal btn--green btn--animated" id="add_meal"><i class="fas fa-search"></i> SEARCH</a>
             </form>
             <div class="header__information">
                 <div class="header__information-box">
@@ -88,9 +88,10 @@
                     <h3 class="meals__title-main">Choose & Enjoy</h3>
                     <p class="meals__title-sub">Inspire by recipe and creations of worlds best chefs</p>
                 </div>
-                <div class="meals__list">
+                <div class="meals__list" id="meals__list">
                     <div class="meals__card">
                         <div class="meals__card-header">
+                            <img class="meals__image" src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80" alt="meal">
                             <div class="meals__price">
                                 <p>15.00€</p>
                             </div>
@@ -108,6 +109,7 @@
                     </div>
                     <div class="meals__card">
                         <div class="meals__card-header">
+                            <img class="meals__image" src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80" alt="meal">
                             <div class="meals__price">
                                 <p>15.00€</p>
                         </div>
@@ -125,6 +127,7 @@
                     </div>
                     <div class="meals__card">
                         <div class="meals__card-header">
+                            <img class="meals__image" src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80" alt="meal">
                             <div class="meals__price">
                                 <p>15.00€</p>
                         </div>
@@ -142,6 +145,7 @@
                     </div>
                     <div class="meals__card">
                         <div class="meals__card-header">
+                            <img class="meals__image" src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80" alt="meal">
                             <div class="meals__price">
                                 <p>15.00€</p>
                             </div>
@@ -190,7 +194,7 @@
                     </div>
                     <div class="about__card">
                         <i class="fas fa-award"></i>
-                        <p class="about__card-info">29+ Awards Won</p>
+                        <p class="about__card-info">20+ Awards Won</p>
                     </div>
                 </div>
             </div>
@@ -204,7 +208,8 @@
                     <div class="review__card">
                         <div class="review__layout">
                             <p class="review__message">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse cum exercitationem deserunt corrupti laborum, a asperiores soluta labore fugit veniam earum illo et quam tempore distinctio, corporis pariatur, fugiat maxime.                            </p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse cum exercitationem deserunt corrupti laborum, a asperiores soluta labore fugit veniam earum illo et quam tempore distinctio, corporis pariatur, fugiat maxime.                            
+                            </p>
                         </div>
                         <div class="review__testimonial">
                             <img src="/img/testimonial-1.jpg" alt="testimonial">
@@ -245,6 +250,69 @@
                 </div>
             </div>
         </section>
+        <section class="information">
+            <div class="information__content">
+                <div class="information__cards">
+                    <div class="information__card">
+                        <h4 class="information__title">Popular Pages</h4>
+                        <ul class="information__links">
+                            <li><i class="fas fa-chevron-right"></i> Home</li>
+                            <li><i class="fas fa-chevron-right"></i> About Us</li>
+                            <li><i class="fas fa-chevron-right"></i> Our Chefs</li>
+                            <li><i class="fas fa-chevron-right"></i> Blog</li>
+                            <li><i class="fas fa-chevron-right"></i> FAQs</li>
+                            <li><i class="fas fa-chevron-right"></i> Contact Us</li>
+                        </ul>
+                    </div>
+                    <div class="information__card">
+                        <h4 class="information__title">Popular Categories</h4>
+                        <ul class="information__links">
+                            <li><i class="fas fa-chevron-right"></i> Chicken</li>
+                            <li><i class="fas fa-chevron-right"></i> Mutton</li>
+                            <li><i class="fas fa-chevron-right"></i> Rice</li>
+                            <li><i class="fas fa-chevron-right"></i> Vegetarian</li>
+                            <li><i class="fas fa-chevron-right"></i> Refreshments</li>
+                            <li><i class="fas fa-chevron-right"></i> Sweets</li>
+                        </ul>
+                    </div>
+                    <div class="information__card">
+                        <h4 class="information__title">Reach Us!</h4>
+                        <ul class="information__links">
+                            <li><i class="fas fa-mobile-alt"></i> +971 (0)55 1234567</li>
+                            <li><i class="fas fa-phone-alt"></i> +971 (0)4 1234567</li>
+                            <li><i class="fas fa-fax"></i> +971 (0)4 1234567</li>
+                            <li><i class="far fa-envelope"></i> info@mealy.de</li>
+                            <li><i class="fab fa-google"></i> www.mealy.de</li>
+                            <li><i class="fas fa-map-marker-alt"></i></i> Germany. DE.</li>
+                        </ul>
+                    </div>
+                    <div class="information__card">
+                        <h4 class="information__title">Connect with us!</h4>
+                        <ul class="information__links information__links--last">
+                            <li><i class="fab fa-facebook-square"></i></li>
+                            <li><i class="fab fa-twitter-square"></i></li>
+                            <li><i class="fab fa-instagram-square"></i></li>
+                            <li><i class="fab fa-google-plus-square"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <p class="footer__copyright">
+                © 2020 Mealy. All Rights Reserved.
+            </p>
+            <ul class="footer__payments">
+                <li><img src="/img/visa.svg" alt="Visa"></li>
+                <li><img src="/img/mastercard.svg" alt="Mastercard"></li>
+                <li><img src="/img/paypal.svg" alt="Paypal"></li>
+                <li><img src="/img/american-express.svg" alt="American-Express"></li>
+                <li<img src="/img/jcb.svg" alt="JCB"></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>

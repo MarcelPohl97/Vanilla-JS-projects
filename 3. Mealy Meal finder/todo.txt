@@ -1,10 +1,9 @@
 main: build complete frontend including api fetched information reference: https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/c5fb2583395319.5d3ac6e2f30bd.jpg
 
-GRID for Meals: https://www.youtube.com/watch?v=705XCEruZFs
 API: https://www.themealdb.com/api.php
 
-Integrate : BEM and css variables https://css-tricks.com/bem-101/
-
 todo:
-- maybe add discount cards in special section that are aligned in flex and overlap each other when you hover they get z inded or switch out to the left
-- add arrows for review section 
+- add random meal functionality just like add meal search functionality
+- when clicking on coupon order now coupon pops up like in natours
+- add a little question mark on the right down side of meals when u click on it it fills up the whole card and shows you the how to make it yourself
+- add responsive nav
