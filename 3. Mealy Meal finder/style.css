@@ -11,6 +11,7 @@ body {
     line-height: 1.7;
     font-family: "Lato", sans-serif;
     font-weight: 400;
+    position: relative;
 }
 
 a {
@@ -47,6 +48,11 @@ ul {
 
 .btn--small {
     padding: 0.3rem 0.5rem;
+}
+
+.btn--big {
+    padding: 0.7rem 0.7rem;
+    width: 200px;
 }
 
 .btn--green {
@@ -133,6 +139,75 @@ ul {
         opacity: 1;
         transform: scale(1);
     }
+}
+
+/* Popup */
+
+.popup {
+    position: absolute;
+    transform: scale(1);
+    padding: 10rem 15rem;
+    top:0;
+    left:0;
+    z-index:300;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    transition: all .3s;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0,0,0,0.2);
+}
+
+.popup__coupon {
+    width: 100%;
+    height: 100%;
+    background: var(--white-color);
+    display: flex;
+    border-radius: 3px;
+    box-shadow: 0 2rem 4rem rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.popup__img {
+    width: 35%;
+    height: 100%;
+}
+
+.popup__img img {
+    width: 100%;
+    height: 50%;
+    display: block;
+    object-fit: cover;
+}
+
+.popup__text {
+    padding: 2.5rem 4rem;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.popup__title {
+    color: var(--primary-color);
+    font-size: 2.7rem;
+}
+
+.popup__conditions {
+    font-size: 1.2rem;
+    color: var(--header-color);
+    margin: -1rem 0;
+}
+
+.popup__terms {
+    font-size: 1rem;
+    color: var(--sub-header-color);
+}
+
+.popup__text a {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    display: inline-block;
 }
 
 /* Header */
@@ -380,7 +455,7 @@ ul {
 .meals__list {
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     margin: 4rem 0;
 }
 
@@ -500,6 +575,7 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 
 .special__title {

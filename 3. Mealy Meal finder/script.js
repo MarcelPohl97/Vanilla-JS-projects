@@ -38,7 +38,43 @@ const create_Meal = (meal) => {
     });
 }
 
+const create_RandomMeal = () => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        for(i=0; i < data["meals"].length; i++){
+            meal_Cards.innerHTML += `
+            <div class="meals__card">
+                <div class="meals__card-header">
+                    <img class="meals__image" src="${data["meals"][i]["strMealThumb"]}" alt="meal">
+                    <div class="meals__price">
+                        <p>15.00€</p>
+                    </div>
+                </div>
+                <div class="meals__card-body">
+                    <h4 class="meals__name">
+                        ${data["meals"][i]["strMeal"]}
+                    </h4>
+                    <div class="meals__description">
+                        <p><i class="fas fa-utensils"></i> ${data["meals"][i]["strCategory"]}</p>
+                        <p><i class="far fa-clock"></i> 15 min</p>
+                    </div>
+                    <a href="#" class="btn btn--small btn--red__outline">Order Now</a>
+                </div>
+            </div>
+            `
+        };
+    });
+}
+
 add_meal.addEventListener("click", () => {
-    delete_Meal();
-    create_Meal(meal_Input.value);
+    if(meal_Input.value !== ""){
+        delete_Meal();
+        create_Meal(meal_Input.value);
+    }else {
+        delete_Meal();
+        create_RandomMeal();
+    }
 });

@@ -3,7 +3,8 @@ main: build complete frontend including api fetched information reference: https
 API: https://www.themealdb.com/api.php
 
 todo:
-- add random meal functionality just like add meal search functionality
-- when clicking on coupon order now coupon pops up like in natours
-- add a little question mark on the right down side of meals when u click on it it fills up the whole card and shows you the how to make it yourself
+- when clicking order now coupon pops up like in natours
+- add a little question mark on the right down side of meals when u click on it it creates a dynamic pop up which shows the instructions to make it
+yourself + pictures from ingedrients and a little embedded video player use api information for this
 - add responsive nav
+- add shopping card list and add functionality when you click order it adds to your shopping list the price + name of the meal
