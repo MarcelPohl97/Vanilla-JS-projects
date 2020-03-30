@@ -3,8 +3,11 @@ main: build complete frontend including api fetched information reference: https
 API: https://www.themealdb.com/api.php
 
 todo:
-- when clicking order now coupon pops up like in natours
 - add a little question mark on the right down side of meals when u click on it it creates a dynamic pop up which shows the instructions to make it
+-steps to integrate feature: every meal card has to have a not visibile id when we click on the question the api call is logging in the id and gets the same data but its overwrites
+the current instructions from the picked meal card and overwrites everything and then it shows up like the coupon
+-> when adding meals we need to add the id and somehow make it show up when we click on it little test try to alert every id and search in api call
+-> after that add coupon and make api fetch so it replaces every information about it now let it pop up
 yourself + pictures from ingedrients and a little embedded video player use api information for this
 - add responsive nav
 - add shopping card list and add functionality when you click order it adds to your shopping list the price + name of the meal

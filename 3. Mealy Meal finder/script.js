@@ -1,7 +1,12 @@
  
 const meal_Cards = document.getElementById("meals__list");
 const add_meal = document.getElementById("add_meal");
-const meal_Input = document.getElementById("meal_input")
+const meal_Input = document.getElementById("meal_input");
+const meals_instruction_open = document.querySelectorAll(".meals__list")
+const popup_open = document.getElementById("popup__open");
+const popup_close = document.getElementById("popup__close");
+const popup = document.getElementById("popup");
+const popup_coupon = document.getElementById("popup__coupon");
 
 const delete_Meal = () => { 
     meal_Cards.innerHTML = ""; 
@@ -31,6 +36,7 @@ const create_Meal = (meal) => {
                         <p><i class="far fa-clock"></i> 15 min</p>
                     </div>
                     <a href="#" class="btn btn--small btn--red__outline">Order Now</a>
+                    <i class="fas fa-question meals__instruction" id="meals__instruction"></i>
                 </div>
             </div>
             `
@@ -62,6 +68,7 @@ const create_RandomMeal = () => {
                         <p><i class="far fa-clock"></i> 15 min</p>
                     </div>
                     <a href="#" class="btn btn--small btn--red__outline">Order Now</a>
+                    <i class="fas fa-question meals__instruction" id="meals__instruction"></i>
                 </div>
             </div>
             `
@@ -78,3 +85,21 @@ add_meal.addEventListener("click", () => {
         create_RandomMeal();
     }
 });
+
+popup_open.addEventListener("click", () => {
+    popup.classList.toggle("popup__show")
+    popup_coupon.classList.toggle("popup__scale");
+});
+
+popup_close.addEventListener("click", () => {
+    popup.classList.toggle("popup__show")
+    popup_coupon.classList.toggle("popup__scale");
+});
+
+meals_instruction_open.forEach(item => {
+    item.addEventListener('click', event => {
+      if(event.target.classList.contains('meals__instruction')){
+          alert(event.target.innerHTML);
+      }
+    })
+  })

@@ -145,7 +145,8 @@ ul {
 
 .popup {
     position: absolute;
-    transform: scale(1);
+    opacity: 0;
+    visibility: hidden;
     padding: 10rem 15rem;
     top:0;
     left:0;
@@ -166,6 +167,9 @@ ul {
     border-radius: 3px;
     box-shadow: 0 2rem 4rem rgba(0,0,0,0.2);
     overflow: hidden;
+    position: relative;
+    transition: .7s all;
+    transform: scale(0.3);
 }
 
 .popup__img {
@@ -188,6 +192,22 @@ ul {
     justify-content: space-evenly;
 }
 
+.popup__close {
+    position: absolute;
+    top: 0;
+    right: 2.5rem;
+    color: var(--sub-header-color);
+    transition: all .3s;
+    display: inline-block;
+    font-size: 2.3rem !important;
+    line-height: 1;
+    cursor:pointer;
+}
+
+.popup__close:hover {
+    color: var(--primary-color);
+}
+
 .popup__title {
     color: var(--primary-color);
     font-size: 2.7rem;
@@ -208,6 +228,16 @@ ul {
     margin-top: 2rem;
     font-size: 1.2rem;
     display: inline-block;
+}
+
+.popup__show {
+    transition: all .3s;
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup__scale {
+    transform:scale(1);
 }
 
 /* Header */
@@ -523,6 +553,7 @@ ul {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 1rem 1.2rem;
+    position: relative;
 }
 
 .meals__name {
@@ -558,6 +589,21 @@ ul {
 .meals__content a {
     font-size:1rem;
     text-transform: uppercase;
+}
+
+.meals__instruction {
+    color: var(--primary-color);
+    font-size:0.8rem;
+    position: absolute;
+    bottom: 0;
+    right:0;
+    padding: 1rem;
+    transition: all .3s;
+    display:inline-block;
+}
+
+.meals__instruction:hover {
+    transform: scale(1.5);
 }
 
 /* Special Section */
