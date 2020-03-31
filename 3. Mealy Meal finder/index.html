@@ -9,6 +9,33 @@
     <title>Mealy</title>
 </head>
 <body>
+    <div class="shopping-cart">
+        <i class="fas fa-shopping-cart"></i>
+        <div class="shopping-cart__content">
+            <h6 class="shopping-cart__title">Your Shopping Bag</h6>
+            <div class="shopping-cart__list">
+                <div class="shopping-cart__item">
+                    <div class="shopping-cart__information">
+                        <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80" alt="Meal">
+                        <h4 class="shopping-cart__meal">Steak ala Plaza</h4>
+                        <p class="shopping-cart__price">15€</p>
+                    </div>
+                    <p class="shopping-cart__remove">Remove Article</p>
+                </div>
+            </div>
+            <div class="shopping-cart__order">
+                <div class="shopping-cart__delivery">
+                    <h6>Delivery</h6>
+                    <h6 class="shopping-cart__condition">free</h6>
+                </div>
+                <div class="shopping-cart__complete">
+                    <h6 class="shopping-cart__total">Total(vat included)</h6>
+                    <h6 class="shopping-cart__fullprice">15€</h6>
+                </div>
+                <a href="#" class="btn btn--green btn--animated">Order Now</a>
+            </div>
+        </div>
+    </div>
     <div class="popup" id="popup">
         <div class="popup__coupon" id="popup__coupon">
             <div class="popup__img">
@@ -27,6 +54,25 @@
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt esse natus asperiores cupiditate veritatis enim, consectetur odio quas totam blanditiis sapiente praesentium velit, vitae, ab nisi pariatur nobis ducimus. Ipsa incidunt modi recusandae consequatur dignissimos, voluptas eos! Officiis debitis, sapiente nihil accusantium cumque tempora molestiae, voluptatem veniam commodi ab quae iure illum. Adipisci ad omnis voluptatibus mollitia, nemo aliquam reiciendis hic, fugiat atque similique sit error aliquid consectetur. Aliquid, eius rem a veritatis dolorum repudiandae, at mollitia nam eum, totam ad esse deleniti. Reprehenderit officia magni voluptatum error delectus aspernatur nostrum mollitia illum quo? Tenetur omnis ex delectus nobis nisi?
                 </p>
                 <a class="btn btn--big btn--green btn--animated">ORDER NOW</a>
+            </div>
+        </div>
+    </div>
+    <div class="instruction" id="instruction">
+        <div class="instruction__meal" id="instruction__meal">
+            <div class="instruction__media">
+                <img src="https:\/\/www.themealdb.com\/images\/media\/meals\/wvpsxx1468256321.jpg" alt="Meal">
+                <iframe src="https://www.youtube.com/embed/4aZr5hZXP_s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="instruction__text">
+                <a class="instruction__close" id="instruction__close">×</a>
+                <h2 class="instruction__title">
+                    Teriyaki Chicken Casserole
+                </h2>
+                <h3 class="instruction__conditions">
+                    In order to have a safe and healthy meal follow the instruction cleary!
+                </h3>
+                <p class="instruction__details">
+                    "Preheat oven to 350\u00b0 F. Spray a 9x13-inch baking pan with non-stick spray.\r\nCombine soy sauce, \u00bd cup water, brown sugar, ginger and garlic in a small saucepan and cover. Bring to a boil over medium heat. Remove lid and cook for one minute once boiling.\r\nMeanwhile, stir together the corn starch and 2 tablespoons of water in a separate dish until smooth. Once sauce is boiling, add mixture to the saucepan and stir to combine. Cook until the sauce starts to thicken then remove from heat.\r\nPlace the chicken breasts in the prepared pan. Pour one cup of the sauce over top of chicken. Place chicken in oven and bake 35 minutes or until cooked through. Remove from oven and shred chicken in the dish using two forks.\r\n*Meanwhile, steam or cook the vegetables according to package directions.\r\nAdd the cooked vegetables and rice to the casserole dish with the chicken. Add most of the remaining sauce, reserving a bit to drizzle over the top when serving. Gently toss everything together in the casserole dish until combined. Return to oven and cook 15 minutes. Remove from oven and let stand 5 minutes before serving. Drizzle each serving with remaining sauce. Enjoy!"</p>
             </div>
         </div>
     </div>
@@ -125,7 +171,7 @@
                                 <p><i class="far fa-clock"></i> 15 min</p>
                             </div>
                             <a href="#" class="btn btn--small btn--red__outline">Order Now</a>
-                            <i class="fas fa-question meals__instruction" id="meals__instruction">24334</i>
+                            <a class="meals__instruction" id="meals__instruction">431234</a>
                         </div>
                     </div>
                     <div class="meals__card">

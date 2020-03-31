@@ -141,6 +141,26 @@ ul {
     }
 }
 
+/* Shopping Cart */
+
+.shopping-cart {
+    font-size: 1rem;
+    color: var(--primary-color);
+    top: 2.5rem;
+    right: 2.5rem;
+    z-index: 300;
+    position:fixed;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+    0 2px 4px rgba(0,0,0,0.07), 
+    0 4px 8px rgba(0,0,0,0.07), 
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07), 
+    0 32px 64px rgba(0,0,0,0.07);
+    padding: 0.5rem 0.7rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+}
+
 /* Popup */
 
 .popup {
@@ -238,6 +258,112 @@ ul {
 
 .popup__scale {
     transform:scale(1);
+}
+
+/* Meal Instruction */
+
+.instruction {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    padding: 10rem 15rem;
+    top:0;
+    left:0;
+    z-index:300;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    transition: all .3s;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0,0,0,0.2);
+}
+
+.instruction__meal {
+    width: 100%;
+    height: 100%;
+    background: var(--white-color);
+    display: flex;
+    border-radius: 3px;
+    box-shadow: 0 2rem 4rem rgba(0,0,0,0.2);
+    overflow: hidden;
+    position: relative;
+    transition: .7s all;
+    transform: scale(0.3);
+}
+
+.instruction__media {
+    width: 35%;
+    height: 100%;
+}
+
+.instruction__media img {
+    width: 100%;
+    height: 50%;
+    display: block;
+    object-fit: cover;
+}
+
+.instruction__media iframe {
+    width: 100%;
+    height: 50%;
+    display: block;
+    object-fit: cover;
+}
+
+.instruction__text {
+    padding: 2.5rem 4rem;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.instruction__close {
+    position: absolute;
+    top: 0;
+    right: 2.5rem;
+    color: var(--sub-header-color);
+    transition: all .3s;
+    display: inline-block;
+    font-size: 2.3rem !important;
+    line-height: 1;
+    cursor:pointer;
+}
+
+.instruction__close:hover {
+    color: var(--primary-color);
+}
+
+.instruction__title {
+    color: var(--primary-color);
+    font-size: 2.7rem;
+}
+
+.instruction__conditions {
+    font-size: 1.2rem;
+    color: var(--header-color);
+    margin: -3rem 0;
+}
+
+.instruction__details {
+    font-size: 1rem;
+    color: var(--sub-header-color);
+}
+
+.instruction__text a {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    display: inline-block;
+}
+
+.instruction__show {
+    transition: all .3s;
+    opacity: 1;
+    visibility: visible;
+}
+
+.instruction__scale {
+    transform: scale(1);
 }
 
 /* Header */
@@ -593,7 +719,7 @@ ul {
 
 .meals__instruction {
     color: var(--primary-color);
-    font-size:0.8rem;
+    font-size:0.8rem !important;
     position: absolute;
     bottom: 0;
     right:0;
