@@ -43,7 +43,7 @@ const create_Meal = (api) => {
                         <p><i class="fas fa-utensils"></i> ${data["meals"][i]["strCategory"]}</p>
                         <p><i class="far fa-clock"></i> 15 min</p>
                     </div>
-                    <a href="#" class="btn btn--small btn--red__outline">Order Now</a>
+                    <a class="btn btn--small btn--red__outline">Order Now</a>
                     <a class="meals__instruction" id="meals__instruction">${data["meals"][i]["idMeal"]}</a>
                 </div>
             </div>
@@ -81,6 +81,16 @@ const create_MealInstruction = (id) => {
 
 }
 
+const popup_Toggle = () => {
+    popup.classList.toggle("popup__show")
+    popup_coupon.classList.toggle("popup__scale");
+}
+
+const instruction_Toggle = () => {
+    instruction.classList.toggle("instruction__show")
+    meal_instruction.classList.toggle("instruction__scale");
+}
+
 add_meal.addEventListener("click", () => {
     clear_Data(meal_Cards);
     if(meal_Input.value !== ""){
@@ -91,13 +101,11 @@ add_meal.addEventListener("click", () => {
 });
 
 popup_open.addEventListener("click", () => {
-    popup.classList.toggle("popup__show")
-    popup_coupon.classList.toggle("popup__scale");
+    popup_Toggle();
 });
 
 popup_close.addEventListener("click", () => {
-    popup.classList.toggle("popup__show")
-    popup_coupon.classList.toggle("popup__scale");
+    popup_Toggle();
 });
 
 meals_instruction_open.forEach(item => {
@@ -105,8 +113,14 @@ meals_instruction_open.forEach(item => {
       if(event.target.classList.contains('meals__instruction')){
         clear_Data(meal_instruction)
         create_MealInstruction(event.target.innerHTML);
-        instruction.classList.toggle("instruction__show")
-        meal_instruction.classList.toggle("instruction__scale");
+        instruction_Toggle();
+      }else if(event.target.classList.contains('btn')){
+          const meal = event.target.parentElement.parentElement;
+          const meal_Info = {
+            image: meal.querySelector('img').src,
+            title: meal.querySelector('.meals__card-body h4').textContent,
+            price: meal.querySelector('.meals__price p').textContent,
+        }
       }
     })
   })
@@ -114,8 +128,7 @@ meals_instruction_open.forEach(item => {
 instruction_close.forEach(item => {
     item.addEventListener('click', event => {
         if(event.target.classList.contains('instruction__close')){
-            instruction.classList.toggle("instruction__show")
-            meal_instruction.classList.toggle("instruction__scale");
+            instruction_Toggle();
         }
     });
 })
