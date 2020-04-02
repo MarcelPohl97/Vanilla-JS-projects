@@ -5,4 +5,5 @@ API: https://www.themealdb.com/api.php
 todo:
 - add shopping card list functionality when you click order on a meal it adds to your shopping list the price + name of the meal
 - https://medium.com/sharing-and-learning/creating-a-shopping-cart-with-vanilla-javascript-23b2e4d8e1ef shopping cart inspiration
+- clean up the code a little 
 - make whole website responsive and add responsive nav simple one that pops op from top to botton includes buttons that are hovable like natours
