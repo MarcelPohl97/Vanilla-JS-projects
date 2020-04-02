@@ -14,7 +14,12 @@ const popup_coupon = document.getElementById("popup__coupon");
 const instruction_close = document.querySelectorAll(".instruction");
 const instruction = document.getElementById("instruction");
 
+const shopping_CartList = document.getElementById("shopping-cart__list");
+const shopping_CartPrice = document.getElementById("shopping-cart__fullprice");
+const shopping_CartDelete = document.querySelectorAll(".shopping-cart__list");
 
+const responsive_NavBtn = document.getElementById("responsive-Btn");
+const responsive_NavCover = document.getElementById("responsive-NavCover");
 
 const clear_Data = (data) => { 
     data.innerHTML = ""; 
@@ -32,7 +37,8 @@ const create_Meal = (api) => {
                 <div class="meals__card-header">
                     <img class="meals__image" src="${data["meals"][i]["strMealThumb"]}" alt="meal">
                     <div class="meals__price">
-                        <p>15.00€</p>
+                        <p class="meal__price">15</p>
+                        <p>€</p>
                     </div>
                 </div>
                 <div class="meals__card-body">
@@ -91,6 +97,40 @@ const instruction_Toggle = () => {
     meal_instruction.classList.toggle("instruction__scale");
 }
 
+const meal_Information = () => {
+    const meal = event.target.parentElement.parentElement;
+    const meal_Info = {
+        image: meal.querySelector('img').src,
+        title: meal.querySelector('.meals__card-body h4').textContent,
+        price: meal.querySelector('.meal__price').textContent,
+    }
+    add_ToCart(meal_Info);
+}
+
+const meal_CartInformation = () => {
+    const cart_Meal = event.target.parentElement;
+    const cart_MealPrice = {
+        price: cart_Meal.querySelector('.shopping-cart__price--nocurr').textContent
+    };
+    shopping_CartPrice.innerHTML = parseInt(shopping_CartPrice.innerHTML) - parseInt(cart_MealPrice.price);
+}
+
+const add_ToCart = (course) => {
+    const meal_item = document.createElement('div');
+    meal_item.className = "shopping-cart__item"
+    meal_item.innerHTML += `
+    <div class="shopping-cart__information">
+        <img src=${course["image"]} alt="Meal">
+        <h4 class="shopping-cart__meal">${course["title"]}</h4>
+        <p class="shopping-cart__price shopping-cart__price--nocurr">${course["price"]}</p>
+        <p class="shopping-cart__price">€</p>
+    </div>
+    <p class="shopping-cart__remove">Remove Article</p>
+    `
+    shopping_CartPrice.innerHTML = parseInt(shopping_CartPrice.innerHTML) + parseInt(course["price"]);
+    shopping_CartList.append(meal_item);
+}
+
 add_meal.addEventListener("click", () => {
     clear_Data(meal_Cards);
     if(meal_Input.value !== ""){
@@ -115,12 +155,7 @@ meals_instruction_open.forEach(item => {
         create_MealInstruction(event.target.innerHTML);
         instruction_Toggle();
       }else if(event.target.classList.contains('btn')){
-          const meal = event.target.parentElement.parentElement;
-          const meal_Info = {
-            image: meal.querySelector('img').src,
-            title: meal.querySelector('.meals__card-body h4').textContent,
-            price: meal.querySelector('.meals__price p').textContent,
-        }
+          meal_Information();
       }
     })
   })
@@ -131,4 +166,17 @@ instruction_close.forEach(item => {
             instruction_Toggle();
         }
     });
+})
+
+shopping_CartDelete.forEach(item => {
+    item.addEventListener('click', event => {
+        if(event.target.classList.contains('shopping-cart__remove')){
+            meal_CartInformation();
+            event.target.parentElement.remove();
+        }
+    });
+})
+
+responsive_NavBtn.addEventListener("click", () => {
+    responsive_NavCover.classList.toggle("responsive-NavToggle");
 })

@@ -9,19 +9,16 @@
     <title>Mealy</title>
 </head>
 <body>
+    <div class="responsive-BtnContainer">
+        <i class="fas fa-bars responsive-Btn" id="responsive-Btn"></i>
+    </div>
+    <div class="responsive-NavCover" id="responsive-NavCover"></div>
     <div class="shopping-cart">
         <i class="fas fa-shopping-cart"></i>
         <div class="shopping-cart__content">
             <h6 class="shopping-cart__title">Your Shopping Bag</h6>
-            <div class="shopping-cart__list">
-                <div class="shopping-cart__item">
-                    <div class="shopping-cart__information">
-                        <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80" alt="Meal">
-                        <h4 class="shopping-cart__meal">Steak ala Plaza</h4>
-                        <p class="shopping-cart__price">15€</p>
-                    </div>
-                    <p class="shopping-cart__remove">Remove Article</p>
-                </div>
+            <div class="shopping-cart__list" id="shopping-cart__list">
+                <div class="shopping-cart__item"></div>
             </div>
             <div class="shopping-cart__order">
                 <div class="shopping-cart__delivery">
@@ -30,7 +27,8 @@
                 </div>
                 <div class="shopping-cart__complete">
                     <h6 class="shopping-cart__total">Total(vat included)</h6>
-                    <h6 class="shopping-cart__fullprice">15€</h6>
+                    <h6 class="shopping-cart__fullprice" id="shopping-cart__fullprice">0</h6>
+                    <h6 class="shopping-cart__fullprice shopping-cart__fullprice--currency">€</h6>
                 </div>
                 <a href="#" class="btn btn--small">Order Now</a>
             </div>
@@ -135,17 +133,23 @@
                     <h3 class="booking__title-main">Book a Meal</h3>
                 </div>
                 <form action="#">
-                    <label for="date">Date</label>
-                    <input type="text" name="date" placeholder="Pick your date">
-                    <i class="far fa-calendar-alt"></i>
-                    <label for="time">Time</label>
-                    <input type="text" name="time" placeholder="Select time">
-                    <i class="far fa-clock"></i>
-                    <label for="people">People</label>
-                    <input type="text" name="people" placeholder="Select peoples">
-                    <i class="fas fa-chevron-down"></i>
-                </form>
-                <a href="#" class="btn btn--normal btn--red btn--animated">Book Now</a> 
+                    <div class="form__box">
+                        <label for="date">Date</label>
+                        <input type="text" name="date" placeholder="Pick your date">
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                    <div class="form__box">
+                        <label for="time">Time</label>
+                        <input type="text" name="time" placeholder="Select time">
+                        <i class="far fa-clock"></i>
+                    </div>
+                    <div class="form__box">
+                        <label for="people">People</label>
+                        <input type="text" name="people" placeholder="Select peoples">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <a href="#" class="btn btn--normal btn--red btn--animated">Book Now</a>
+                </form> 
             </div>
         </section>
         <section class="meals">
@@ -154,84 +158,7 @@
                     <h3 class="meals__title-main">Choose & Enjoy</h3>
                     <p class="meals__title-sub">Inspire by recipe and creations of worlds best chefs</p>
                 </div>
-                <div class="meals__list" id="meals__list">
-                    <div class="meals__card">
-                        <div class="meals__card-header">
-                            <img class="meals__image" src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80" alt="meal">
-                            <div class="meals__price">
-                                <p>15.00€</p>
-                            </div>
-                        </div>
-                        <div class="meals__card-body">
-                            <h4 class="meals__name">
-                                Steak ala Plaza
-                            </h4>
-                            <div class="meals__description">
-                                <p><i class="fas fa-utensils"></i> Rice</p>
-                                <p><i class="far fa-clock"></i> 15 min</p>
-                            </div>
-                            <a href="#" class="btn btn--small btn--red__outline">Order Now</a>
-                            <a class="meals__instruction" id="meals__instruction">431234</a>
-                        </div>
-                    </div>
-                    <div class="meals__card">
-                        <div class="meals__card-header">
-                            <img class="meals__image" src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80" alt="meal">
-                            <div class="meals__price">
-                                <p>15.00€</p>
-                        </div>
-                        </div>
-                        <div class="meals__card-body">
-                            <h4 class="meals__name">
-                                Steak ala Plaza
-                            </h4>
-                            <div class="meals__description">
-                                <p><i class="fas fa-utensils"></i> Rice</p>
-                                <p><i class="far fa-clock"></i> 15 min</p>
-                            </div>
-                            <a href="#" class="btn btn--small btn--red__outline">Order Now</a>
-                            <i class="fas fa-question meals__instruction" id="meals__instruction"></i>
-                        </div>
-                    </div>
-                    <div class="meals__card">
-                        <div class="meals__card-header">
-                            <img class="meals__image" src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80" alt="meal">
-                            <div class="meals__price">
-                                <p>15.00€</p>
-                        </div>
-                        </div>
-                        <div class="meals__card-body">
-                            <h4 class="meals__name">
-                                Steak ala Plaza
-                            </h4>
-                            <div class="meals__description">
-                                <p><i class="fas fa-utensils"></i> Rice</p>
-                                <p><i class="far fa-clock"></i> 15 min</p>
-                            </div>
-                            <a href="#" class="btn btn--small btn--red__outline">Order Now</a>
-                            <i class="fas fa-question meals__instruction" id="meals__instruction"></i>
-                        </div>
-                    </div>
-                    <div class="meals__card">
-                        <div class="meals__card-header">
-                            <img class="meals__image" src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80" alt="meal">
-                            <div class="meals__price">
-                                <p>15.00€</p>
-                            </div>
-                        </div>
-                        <div class="meals__card-body">
-                            <h4 class="meals__name">
-                                Steak ala Plaza
-                            </h4>
-                            <div class="meals__description">
-                                <p><i class="fas fa-utensils"></i> Rice</p>
-                                <p><i class="far fa-clock"></i> 15 min</p>
-                            </div>
-                            <a href="#" class="btn btn--small btn--red__outline">Order Now</a>
-                            <i class="fas fa-question meals__instruction" id="meals__instruction"></i>
-                        </div>
-                    </div>
-                </div>
+                <div class="meals__list" id="meals__list"></div>
                 <a href="#" class="btn btn--normal btn--red btn--animated">View All</a>
             </div>
         </section>
@@ -278,7 +205,7 @@
                     <div class="review__card">
                         <div class="review__layout">
                             <p class="review__message">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse cum exercitationem deserunt corrupti laborum, a asperiores soluta labore fugit veniam earum illo et quam tempore distinctio, corporis pariatur, fugiat maxime.                            
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae dicta tenetur optio reiciendis nihil voluptatem similique magni culpa ut temporibus?
                             </p>
                         </div>
                         <div class="review__testimonial">
@@ -292,7 +219,7 @@
                     <div class="review__card">
                         <div class="review__layout">
                             <p class="review__message">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse cum exercitationem deserunt corrupti laborum, a asperiores soluta labore fugit veniam earum illo et quam tempore distinctio, corporis pariatur, fugiat maxime.
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid dignissimos suscipit nesciunt veniam neque. Excepturi expedita alias iste nobis assumenda.
                             </p>
                         </div>
                         <div class="review__testimonial">
@@ -306,7 +233,7 @@
                     <div class="review__card">
                         <div class="review__layout">
                             <p class="review__message">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem asperiores voluptatum qui recusandae aut nostrum inventore eveniet delectus ab sint accusantium dolor est voluptas, quos corrupti nam impedit beatae maiores.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam dolorem maiores, facere consectetur quod doloribus possimus adipisci distinctio repudiandae! Nulla.
                             </p>
                         </div>
                         <div class="review__testimonial">
