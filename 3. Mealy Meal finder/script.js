@@ -21,6 +21,8 @@ const shopping_CartDelete = document.querySelectorAll(".shopping-cart__list");
 const responsive_NavBtn = document.getElementById("responsive-Btn");
 const responsive_NavCover = document.getElementById("responsive-NavCover");
 
+const header_Options = document.getElementById("header__options")
+
 const clear_Data = (data) => { 
     data.innerHTML = ""; 
 }
@@ -179,4 +181,5 @@ shopping_CartDelete.forEach(item => {
 
 responsive_NavBtn.addEventListener("click", () => {
     responsive_NavCover.classList.toggle("responsive-NavToggle");
+    header_Options.classList.toggle("header__options--moveIN");
 })

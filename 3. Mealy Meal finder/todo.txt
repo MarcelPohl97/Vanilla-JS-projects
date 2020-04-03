@@ -6,9 +6,6 @@ todo:
 - make whole website responsive 
 - add responsive nav
 - 1285 breakpoint:
-    fix- header content
-    - add nav items to absolute pos etc more fontsize and add a class to that while you hover that other button 
-    - keep working on responsiveness delete padding
-    - finally make popup and instruction responsive
-
+    - reduce padding at other breakpoints on popup and instruction
+    - booking section fix i breaking out of it
 
