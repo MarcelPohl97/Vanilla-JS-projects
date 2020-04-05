@@ -1,0 +1,13 @@
+Inspiration Design: https://cdn.dribbble.com/users/648289/screenshots/4152402/dribbb.png
+Waves: https://codepen.io/tedmcdo/pen/PqxKXg
+- Todos:
+- setup UI background:
+- things to add:
+    - at the beginning question what is your goal of drinking today? (design background blurry little input with button)
+    - app calculates the height and percentages through that (design change from inspiration we put a goal on top)
+    - button in bottom middle once you press on that background goes a littler darker and you have different options to choose
+    - after click it calculates how much percentage is left we do that by using vh example : height is 100vh we minus that by a bit
+    - since the waves start under the start calculation
+    - we use a time changer when its a new day it always asks you how much you want to drink today since we wont be using any backend
+    - we will be using local storage
+    - once your at 100% water bubbles appear (canvas)
