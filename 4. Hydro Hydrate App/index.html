@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/720dd1dc59.js" crossorigin="anonymous"></script>
     <title>Hydro</title>
 </head>
 <body>
-    <a class="btn" id="btn">Test</a>
-    <div class="ocean" id="ocean">
-        <div class="wave"></div>
-        <div class="wave"></div>
+    <div class="brand">
+        <img src="img/water.svg" alt="Hyrdo Brand Icon" class="brand__icon">
+        <h1 class="brand__name">Hydro</h1>
+    </div>
+    <div class="goal">
+        <h3 class="goal__drink">Goal:</h3>
+        <p class="goal__number">2500ml</p>
+        <i class="fas fa-crown goal__crown"></i>
+        </div>
+    </div>
+    <div class="drink">
+        <h3 class="drink__goal">Drinking</h2>
+        <h2 class="drink__percentage"><span class="drink__number">50</span>%</h2>
+    </div>
+    <div class="water" id="water">
+        <div class="water__option water__option--1" id="water__option--1"><i class="fas fa-tint"></i></div>
+        <div class="water__option water__option--2" id="water__option--2"><i class="fas fa-times"></i></div>
+        <div class="water__option water__option--3" id="water__option--3"><i class="fas fa-glass-whiskey"></i><p>200</p></div>
+        <div class="water__option water__option--4" id="water__option--4"><i class="fas fa-glass-whiskey"></i><p>300</p></div>
+        <div class="water__option water__option--5" id="water__option--5"><i class="fas fa-glass-whiskey"></i><p>100</p></div>
+    </div>
+    <div class="ocean">
+        <div class="ocean__wave"></div>
+        <div class="ocean__wave"></div>
     </div>
     <script src="script.js"></script>
 </body>
