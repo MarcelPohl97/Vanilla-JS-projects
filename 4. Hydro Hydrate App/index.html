@@ -15,24 +15,33 @@
     </div>
     <div class="goal">
         <h3 class="goal__drink">Goal:</h3>
-        <p class="goal__number">2500ml</p>
+        <p class="goal__number"><span id="goal__num">1000</span>ml</p>
         <i class="fas fa-crown goal__crown"></i>
         </div>
     </div>
     <div class="drink">
         <h3 class="drink__goal">Drinking</h2>
-        <h2 class="drink__percentage"><span class="drink__number">50</span>%</h2>
+        <h2 class="drink__progress"><span class="drink__percentage" id="drink__percentage">0</span>%</h2>
     </div>
     <div class="water" id="water">
         <div class="water__option water__option--1" id="water__option--1"><i class="fas fa-tint"></i></div>
         <div class="water__option water__option--2" id="water__option--2"><i class="fas fa-times"></i></div>
-        <div class="water__option water__option--3" id="water__option--3"><i class="fas fa-glass-whiskey"></i><p>200</p></div>
-        <div class="water__option water__option--4" id="water__option--4"><i class="fas fa-glass-whiskey"></i><p>300</p></div>
-        <div class="water__option water__option--5" id="water__option--5"><i class="fas fa-glass-whiskey"></i><p>100</p></div>
+        <div class="water__option water__option--3" id="water__option--3"><i class="fas fa-glass-whiskey"></i><p class="water__ml">200</p></div>
+        <div class="water__option water__option--4" id="water__option--4"><i class="fas fa-glass-whiskey"></i><p class="water__ml">300</p></div>
+        <div class="water__option water__option--5" id="water__option--5"><i class="fas fa-glass-whiskey"></i><p class="water__ml">100</p></div>
     </div>
-    <div class="ocean">
+    <div class="ocean" id="ocean">
         <div class="ocean__wave"></div>
         <div class="ocean__wave"></div>
+    </div>
+    <div class="input" id="input">
+        <div class="input__container">
+            <form action="#" class="form">
+                <h3 class="input__title">Set your drinking Goal <i class="fas fa-crown goal__crown"></i> </h3>
+                <input type="text" name="WaterInput" class="input__water" id="input__water" placeholder="What is your drinking goal?">
+                <a class="btn" id="btn">Set Goal &check;</a>
+            </form>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

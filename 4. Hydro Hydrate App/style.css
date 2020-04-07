@@ -81,12 +81,12 @@ body {
   color: var(--white-color);
 }
 
-.drink__percentage {
+.drink__progress {
   font-size: 4rem;
   color: var(--white-color);
 }
 
-.drink__number {
+.drink__percentage {
   font-size: 8rem;
   color: var(--white-color);
 }
@@ -121,6 +121,7 @@ body {
   border-radius: 50%;
   padding: 3rem;
   z-index: 1;
+  cursor: pointer;
 }
 
 .water__option i {
@@ -202,16 +203,18 @@ body {
   transform: translate(-50%, -50%);
 }
 
-
 /* Ocean */
 .ocean { 
   width:100%;
-  height: 5%;
   position:absolute;
   bottom:0;
   left:0;
   background: #015871;
   z-index: -1;
+}
+
+#ocean {
+  height: 0;
 }
 
 .ocean__wave {
@@ -247,3 +250,88 @@ body {
     transform: translate3d(0,5px,0);
   }
 }
+
+/* input Water */
+
+.input {
+  position: fixed;
+  top:0;
+  left:0;
+  z-index:7;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+  background-color: rgba(1, 89, 113, 0.2);
+  transform: scale(1);
+  transition: all .5s;
+  opacity: 1;
+}
+
+.input__toggle {
+  transform: scale(0);
+  opacity:0;
+}
+
+.input__container {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  animation: slideIn 1.5s ease-in-out;
+}
+
+.form {
+  background: rgba(1, 89, 113, 0.5);
+  width: 20rem;
+  height:20rem;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+    0 2px 4px rgba(0,0,0,0.07), 
+    0 4px 8px rgba(0,0,0,0.07), 
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07), 
+    0 32px 64px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.input__title {
+  color: var(--white-color);
+}
+
+.input__water {
+  border:none;
+  padding: 1rem;
+  width: 80%;
+  margin: 1rem 0;;
+  border-radius: 3px;
+}
+
+.btn {
+  padding: 0.8rem 0;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  font-size: 1rem;
+  width: 80%;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+@keyframes slideIn {
+  0% {
+    left: -10%;
+  }
+
+  50% {
+    left: 60%;
+  }
+
+  100% {
+    left: 50%;
+  }
+}
+
