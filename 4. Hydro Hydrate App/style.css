@@ -308,6 +308,7 @@ body {
   width: 80%;
   margin: 1rem 0;;
   border-radius: 3px;
+  color: #f1f1f1a6;
 }
 
 .btn {
@@ -333,5 +334,11 @@ body {
   100% {
     left: 50%;
   }
+}
+canvas {
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  opacity:1;
 }
 

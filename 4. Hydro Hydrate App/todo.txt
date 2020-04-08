@@ -1,6 +1,0 @@
-Inspiration Design: https://cdn.dribbble.com/users/648289/screenshots/4152402/dribbb.png
-Waves: https://codepen.io/tedmcdo/pen/PqxKXg
-- Todos:
-- setup UI background:
-- things to add:
-    - once your at 100% water bubbles appear (canvas) and little win sound 
