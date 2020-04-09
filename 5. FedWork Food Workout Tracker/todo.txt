@@ -1,0 +1,30 @@
+Workout Tracks Design Inspiration: https://cdn.dribbble.com/users/108163/screenshots/2497702/02-02-2016.png
+Food Track Design: Inspiration: https://cdn.dribbble.com/users/108163/screenshots/2534146/15-02-2015.png
+
+Appearance Goal/Functionality:
+
+API´s: 
+motivation api 
+- Landing page with background (designs https://dribbble.com/febinraj), current time, welcome speech, motivational text and mantra button to dashboard page
+- Dashboard Page with Calendar (inspiration for building https://medium.com/@nitinpatel_20236/challenge-of-building-a-calendar-with-pure-javascript-a86f1303267d,
+ inspiration for design https://cdn.dribbble.com/users/108163/screenshots/2471798/16-01-2015_.jpg), 
+ each day is clickable and you can choose between workout or food, it is clickable and to review it(looks like the inspiration designs)
+- 2 different html files for workout and food both is gonna get generated through the data that is in the db and based on that day
+- If there is data fetchable your gonna get send to an input file where your gonna input your workout or depending on your option your foods
+
+- Steps to programm:
+-Register/Login after that your name is on the welcoming page then you can go to calendar and choose to pick any date 2 options appear food or workout,
+after clicking on one of them it either directs you to your workout and food diary or if there is no data to that specific day its gonna redirect you
+to the input page where you can add your stuff and view it later
+
+In total: 6 Html files 4 static 2 dynamic
+- Landing Page
+- Calendar Page
+- Workout Page
+- Food Page
+- Workout Input Page
+- Food Input Page
+
+- Tools: Html5 Css3 Javascript Firebase
+
+After Project is stable and running think about adding a Monthly simple review data on how much you worked out (make with canvas)
