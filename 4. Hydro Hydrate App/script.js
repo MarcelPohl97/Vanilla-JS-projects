@@ -45,7 +45,7 @@ const water_Calculation = (ml) => {
 }
 
 const set_WaterGoal = () => {
-    if(input_water.value !== ""){
+    if(input_water.value !== "" && Number.isInteger((+input_water.value))){
         goal_number.innerHTML = input_water.value;
         input.classList.toggle("input__toggle");
     }
