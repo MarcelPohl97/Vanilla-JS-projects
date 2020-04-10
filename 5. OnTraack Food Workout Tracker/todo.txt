@@ -4,7 +4,8 @@ Food Track Design: Inspiration: https://cdn.dribbble.com/users/108163/screenshot
 Appearance Goal/Functionality:
 
 API´s: 
-motivation api 
+motivation api : https://type.fit/api/quotes;
+
 - Landing page with background (designs https://dribbble.com/febinraj), current time, welcome speech, motivational text and mantra button to dashboard page
 - Dashboard Page with Calendar (inspiration for building https://medium.com/@nitinpatel_20236/challenge-of-building-a-calendar-with-pure-javascript-a86f1303267d,
  inspiration for design https://cdn.dribbble.com/users/108163/screenshots/2471798/16-01-2015_.jpg), 
@@ -17,7 +18,7 @@ motivation api
 after clicking on one of them it either directs you to your workout and food diary or if there is no data to that specific day its gonna redirect you
 to the input page where you can add your stuff and view it later
 
-In total: 6 Html files 4 static 2 dynamic
+In total: 6 Dynamic HTML elements
 - Landing Page
 - Calendar Page
 - Workout Page

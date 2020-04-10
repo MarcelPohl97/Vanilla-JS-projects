@@ -1,0 +1,177 @@
+/* Init Reset */
+
+* {
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+body {
+    font-size: 62.5%;
+    line-height: 1.7;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Variables */
+:root {
+    --white-color:#fff;
+}
+
+/*Landing */
+
+.landing {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0, .7), rgba(0, 0, 0, .7)), url("img/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    z-index:0;
+}
+
+.landing__header {
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+}
+
+.landing__brand {
+    color: var(--white-color);
+    font-size: 2rem;
+}
+
+.landing__title {
+    color:var(--white-color);
+    font-size: 1.2rem;
+}
+
+.landing__calendar {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+}
+
+.fa-calendar-alt {
+    color: var(--white-color);
+    font-size: 2rem;
+    position: relative;
+    transition: all .5s;
+}
+
+.fa-calendar-alt:hover::after {
+    width: 100%;
+    opacity:1;
+}
+.fa-calendar-alt::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 2px;
+    background: var(--white-color);
+    opacity: 1;
+    top: 40px;
+    left:0;
+    transition: all .5s;
+}
+
+.landing__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+}
+
+.landing__time {
+    font-size: 10rem;
+    color:var(--white-color);
+    padding:0;
+    margin-bottom:-4rem;
+}
+
+.landing__greeting {
+    font-size: 3rem;
+    color:var(--white-color);
+    margin-bottom: 10rem;
+}
+
+.landing__focus {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.landing__main {
+    font-size: 2rem;
+    color:var(--white-color);
+}
+
+.landing__input {
+    border:none;
+    background: transparent;
+    border-bottom: 2px solid var(--white-color);
+    width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--white-color);
+}
+
+.landing__input:focus,
+.landing__input:active {
+    border:none;
+    background: transparent;
+    outline: none;
+    border-bottom: 2px solid var(--white-color);
+}
+
+.landing__motivation {
+    position: absolute;
+    top: 97%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
+.landing__quote {
+    font-size: 1.2rem;
+    color:var(--white-color);
+}
+
+/* Calendar */
+
+.calendar {
+    background: transparent;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100vh;
+    z-index:1;
+    backdrop-filter: blur(10px);
+}
+
+.calendar__container {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    background: var(--white-color);
+    border-radius: 5px;
+    width: 70%;
+    height: 50%;
+}
