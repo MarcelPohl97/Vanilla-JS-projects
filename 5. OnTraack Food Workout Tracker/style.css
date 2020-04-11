@@ -172,6 +172,10 @@ ul {
     transform: translate(-50%, -50%);
     background: var(--white-color);
     border-radius: 5px;
-    width: 70%;
-    height: 50%;
+    width: auto;
+    height: auto;
+}
+
+td:hover {
+    background: red;
 }
