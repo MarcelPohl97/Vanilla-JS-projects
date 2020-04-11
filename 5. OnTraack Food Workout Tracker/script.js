@@ -22,12 +22,11 @@ set_Motivation();
 
 //Calendar 
 
-
 let today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
-let selectYear = document.getElementById("year");
-let selectMonth = document.getElementById("month");
+let selectYear = document.getElementById("calendar__year");
+let selectMonth = document.getElementById("calendar__month");
 let calendarPrevious = document.getElementById("calendar__previous");
 let calendarNext = document.getElementById("calendar__next");
 let calendarMonth = document.getElementById("calendar__month");
@@ -35,16 +34,24 @@ let calendarYear = document.getElementById("calendar__year");
 
 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-monthAndYear = document.getElementById("monthAndYear");
+let monthAndYear = document.getElementById("calendar__monthAndYear");
 showCalendar(currentMonth, currentYear);
 
 calendarPrevious.addEventListener("click", () => {
     previous_Month();
-})
+});
 
 calendarNext.addEventListener("click", () => {
     next_Month();
-})
+});
+
+selectYear.addEventListener("change", () => {
+    jump_MY();
+});
+
+selectMonth.addEventListener("change", () => {
+    jump_MY();
+});
 
 let next_Month = () => {
     currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
@@ -58,7 +65,7 @@ let previous_Month = () => {
     showCalendar(currentMonth, currentYear);
 }
 
-function jump() {
+let jump_MY = () => {
     currentYear = parseInt(selectYear.value);
     currentMonth = parseInt(selectMonth.value);
     showCalendar(currentMonth, currentYear);
@@ -68,7 +75,7 @@ function showCalendar(month, year) {
 
     let firstDay = (new Date(year, month)).getDay();
 
-    tbl = document.getElementById("calendar-body"); // body of the calendar
+    tbl = document.getElementById("calendar__body"); // body of the calendar
 
     // clearing all previous cells
     tbl.innerHTML = "";
@@ -88,6 +95,7 @@ function showCalendar(month, year) {
         for (let j = 0; j < 7; j++) {
             if (i === 0 && j < firstDay) {
                 cell = document.createElement("td");
+                cell.className += "calendar__data"
                 cellText = document.createTextNode("");
                 cell.appendChild(cellText);
                 row.appendChild(cell);
@@ -98,6 +106,7 @@ function showCalendar(month, year) {
 
             else {
                 cell = document.createElement("td");
+                cell.className += "calendar__data"
                 cellText = document.createTextNode(date);
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
                     cell.classList.add("bg-info");

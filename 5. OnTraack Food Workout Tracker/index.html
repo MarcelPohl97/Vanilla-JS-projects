@@ -31,64 +31,64 @@
     </div>
     <div class="calendar">
         <div class="calendar__container">
-                <h3 id="monthAndYear"></h3>
-                <table id="calendar">
-                    <thead>
+            <h3 class="calendar__monthAndYear" id="calendar__monthAndYear"></h3>
+            <table class="calendar__table" id="calendar">
+                <thead>
 
-                    <tr>
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                    </tr>
+                <tr>
+                    <th class="calendar__data calendar__days">Sun</th>
+                    <th class="calendar__data calendar__days">Mon</th>
+                    <th class="calendar__data calendar__days">Tue</th>
+                    <th class="calendar__data calendar__days">Wed</th>
+                    <th class="calendar__data calendar__days">Thu</th>
+                    <th class="calendar__data calendar__days">Fri</th>
+                    <th class="calendar__data calendar__days">Sat</th>
+                </tr>
 
-                    </thead>
-                    <tbody id="calendar-body">
-        
-                    </tbody>
-                </table>
-        
-                <a id="calendar__previous">Previous</a>
-                <a id="calendar__next">Next</a>
+                </thead>
+                <tbody class="calendar__body" id="calendar__body">
+    
+                </tbody>
+            </table>
+    
+            <a id="calendar__previous">Previous</a>
+            <a id="calendar__next">Next</a>
 
-                <br/>
+            <br/>
 
-                <form>
-                    <label" for="month">Jump To: </label">
-                    <select name="month" id="calendar__month">
-                        <option value=0>January</option>s
-                        <option value=1>February</option>
-                        <option value=2>March</option>
-                        <option value=3>April</option>
-                        <option value=4>May</option>
-                        <option value=5>June</option>
-                        <option value=6>July</option>
-                        <option value=7>August</option>
-                        <option value=8>September</option>
-                        <option value=9>October</option>
-                        <option value=10>November</option>
-                        <option value=11>December</option>
-                    </select>
-                    <label for="year"></label>
-                    <select name="year" id="calendar__year">
-                        <option value=2020>2020</option>
-                        <option value=2021>2021</option>
-                        <option value=2022>2022</option>
-                        <option value=2023>2023</option>
-                        <option value=2024>2024</option>
-                        <option value=2025>2025</option>
-                        <option value=2026>2026</option>
-                        <option value=2027>2027</option>
-                        <option value=2028>2028</option>
-                        <option value=2029>2029</option>
-                        <option value=2030>2030</option>
-                    </select>
-                </form>
-            </div>
+            <form>
+                <label" for="month">Jump To: </label">
+                <select name="month" id="calendar__month">
+                    <option value=0>January</option>s
+                    <option value=1>February</option>
+                    <option value=2>March</option>
+                    <option value=3>April</option>
+                    <option value=4>May</option>
+                    <option value=5>June</option>
+                    <option value=6>July</option>
+                    <option value=7>August</option>
+                    <option value=8>September</option>
+                    <option value=9>October</option>
+                    <option value=10>November</option>
+                    <option value=11>December</option>
+                </select>
+                <label for="year"></label>
+                <select name="year" id="calendar__year">
+                    <option value=2020>2020</option>
+                    <option value=2021>2021</option>
+                    <option value=2022>2022</option>
+                    <option value=2023>2023</option>
+                    <option value=2024>2024</option>
+                    <option value=2025>2025</option>
+                    <option value=2026>2026</option>
+                    <option value=2027>2027</option>
+                    <option value=2028>2028</option>
+                    <option value=2029>2029</option>
+                    <option value=2030>2030</option>
+                </select>
+            </form>
         </div>
+    </div>
     <script src="script.js" ></script>
 </body>
 </html>

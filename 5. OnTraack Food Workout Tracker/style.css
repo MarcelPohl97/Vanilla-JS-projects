@@ -173,9 +173,40 @@ ul {
     background: var(--white-color);
     border-radius: 5px;
     width: auto;
-    height: auto;
+    padding: 2rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+    0 2px 4px rgba(0,0,0,0.07), 
+    0 4px 8px rgba(0,0,0,0.07), 
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07), 
+    0 32px 64px rgba(0,0,0,0.07);
 }
 
-td:hover {
-    background: red;
+.calendar__monthAndYear {
+    color: #FCD462;
+    font-size: 3rem;
+}
+
+.calendar__body {
+    background: #FCD462;
+}
+
+.calendar__days {
+    background: #4D5C7D;
+    color: #FCD462 !important;
+}
+
+.calendar__data {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #4D5C7D;
+    border: 2px solid #4D5C7D;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+    0 2px 4px rgba(0,0,0,0.07), 
+    0 4px 8px rgba(0,0,0,0.07), 
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07), 
+    0 32px 64px rgba(0,0,0,0.07);
+    width: calc(100% / 7) !important;
 }
