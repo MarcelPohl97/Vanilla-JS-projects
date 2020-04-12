@@ -8,6 +8,7 @@ setInterval(function(){
     landing_timer.innerHTML = time;
 }, 1000);
 
+// Set Motivation API Quote
 const set_Motivation = () => {
     fetch("https://type.fit/api/quotes")
     .then((response) => {
@@ -25,12 +26,21 @@ set_Motivation();
 let today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
+
 let selectYear = document.getElementById("calendar__year");
 let selectMonth = document.getElementById("calendar__month");
+
 let calendarPrevious = document.getElementById("calendar__previous");
 let calendarNext = document.getElementById("calendar__next");
+
 let calendarMonth = document.getElementById("calendar__month");
 let calendarYear = document.getElementById("calendar__year");
+
+let calendarClose = document.getElementById("calendar__close");
+let calendarOpen = document.getElementById("landing__calendar")
+
+let calendar = document.getElementById("calendar");
+let calendarContainer = document.getElementById("calendar__container");
 
 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -53,6 +63,14 @@ selectMonth.addEventListener("change", () => {
     jump_MY();
 });
 
+calendarClose.addEventListener("click", () => {
+    calendar.classList.toggle("calendar--toggle");
+});
+
+calendarOpen.addEventListener("click", () => {
+    calendar.classList.toggle("calendar--toggle");
+})
+
 let next_Month = () => {
     currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
     currentMonth = (currentMonth + 1) % 12;
@@ -69,6 +87,10 @@ let jump_MY = () => {
     currentYear = parseInt(selectYear.value);
     currentMonth = parseInt(selectMonth.value);
     showCalendar(currentMonth, currentYear);
+}
+
+let calendar_Toggle = () => {
+
 }
 
 function showCalendar(month, year) {

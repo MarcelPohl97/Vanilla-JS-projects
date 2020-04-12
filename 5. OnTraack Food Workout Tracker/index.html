@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/720dd1dc59.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/720dd1dc59.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>OT - OnTraack</title>
 </head>
@@ -15,7 +16,7 @@
             <h3 class="landing__title">OnTraack</h3>
         </div>
         <div class="landing__calendar">
-            <i class="far fa-calendar-alt"></i>
+            <i class="far fa-calendar-alt" id="landing__calendar"></i>
         </div>
         <div class="landing__content">
             <h2 class="landing__time" id="landing__time">14:32</h2>
@@ -29,8 +30,9 @@
             <p class="landing__quote" id="landing__quote">“A pessimist sees the difficulty in every opportunity; an optimist sees the opportunity in every difficulty.”</p>
         </div>
     </div>
-    <div class="calendar">
-        <div class="calendar__container">
+    <div class="calendar" id="calendar">
+        <div class="calendar__container" id="calendar__container">
+            <i class="fas fa-times calendar__close" id="calendar__close"></i>
             <h3 class="calendar__monthAndYear" id="calendar__monthAndYear"></h3>
             <table class="calendar__table" id="calendar">
                 <thead>
@@ -50,42 +52,42 @@
     
                 </tbody>
             </table>
-    
-            <a id="calendar__previous">Previous</a>
-            <a id="calendar__next">Next</a>
+            <div class="calendar__MY">
+                <a class="btn btn--small" id="calendar__previous">&#8592 Previous</a>
+                <a class="btn btn--small" id="calendar__next">Next &#8594</a>
+            </div>
 
             <br/>
 
-            <form>
-                <label" for="month">Jump To: </label">
-                <select name="month" id="calendar__month">
-                    <option value=0>January</option>s
-                    <option value=1>February</option>
-                    <option value=2>March</option>
-                    <option value=3>April</option>
-                    <option value=4>May</option>
-                    <option value=5>June</option>
-                    <option value=6>July</option>
-                    <option value=7>August</option>
-                    <option value=8>September</option>
-                    <option value=9>October</option>
-                    <option value=10>November</option>
-                    <option value=11>December</option>
-                </select>
+            <form class="calendar__selectors">
+                <label" class="calendar__jump" for="month">Jump To: </label">
+                <div class="calendar__select-wrapper">
+                    <select class="calendar__select" name="month" id="calendar__month">
+                        <option value=0>January</option>
+                        <option value=1>February</option>
+                        <option value=2>March</option>
+                        <option value=3>April</option>
+                        <option value=4>May</option>
+                        <option value=5>June</option>
+                        <option value=6>July</option>
+                        <option value=7>August</option>
+                        <option value=8>September</option>
+                        <option value=9>October</option>
+                        <option value=10>November</option>
+                        <option value=11>December</option>
+                    </select>
+                </div>
                 <label for="year"></label>
-                <select name="year" id="calendar__year">
-                    <option value=2020>2020</option>
-                    <option value=2021>2021</option>
-                    <option value=2022>2022</option>
-                    <option value=2023>2023</option>
-                    <option value=2024>2024</option>
-                    <option value=2025>2025</option>
-                    <option value=2026>2026</option>
-                    <option value=2027>2027</option>
-                    <option value=2028>2028</option>
-                    <option value=2029>2029</option>
-                    <option value=2030>2030</option>
-                </select>
+                <div class="calendar__select-wrapper">
+                    <select class="calendar__select fa fa-angle-down" name="year" id="calendar__year">
+                        <option value=2020>2020</option>
+                        <option value=2021>2021</option>
+                        <option value=2022>2022</option>
+                        <option value=2023>2023</option>
+                        <option value=2024>2024</option>
+                        <option value=2025>2025</option>
+                    </select>
+                </div>
             </form>
         </div>
     </div>
