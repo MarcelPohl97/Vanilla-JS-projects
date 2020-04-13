@@ -13,11 +13,6 @@ motivation api : https://type.fit/api/quotes;
 - 2 different html files for workout and food both is gonna get generated through the data that is in the db and based on that day
 - If there is no data fetchable your gonna get send to an input file where your gonna input your workout or depending on your option your foods
 
-- Steps to programm:
--Register/Login after that your name is on the welcoming page then you can go to calendar and choose to pick any date 2 options appear food or workout,
-after clicking on one of them it either directs you to your workout and food diary or if there is no data to that specific day its gonna redirect you
-to the input page where you can add your stuff and view it later
-
 In total: 6 Dynamic HTML elements
 - Landing Page
 - Calendar Page
@@ -52,30 +47,13 @@ In total: 6 Dynamic HTML elements
                                         -> set
                                         -> set
                                         -> set
-2020 may 15
-    example query:
-    -> years
-        -> 2020
-            -> months
-                -> may
-                    -> days
-                        -> 15
-                            -> foodtrack
-                                -> breakfast
-                                    - food
-                                    - food
-                                -> lunch
-                                    ->food
-                                -> dinner 
-                                    -> food
-                                -> snacks/drinks
-                                    -> food
-                            -> workouttrack
-                                -> exercises
-                                    -> exercise
-                                        -> set
-                                        -> set
-                                        -> set
+
 
 
 After Project is stable and running think about adding a Monthly simple review data on how much you worked out (make with canvas)
+
+- 13.04.2020 Tasks:
+    -> Click on a day to get the day, month and year output as an object
+    -> add dynamic opening 2 popup buttons that ask you to choose between workouttrack or foodtrack
+    -> after clicking on one of them new page is going to appear with dummy data (build out those 2 pages with dummy data)
+    -> make queries to create the fetched data from db and add them in the pafge

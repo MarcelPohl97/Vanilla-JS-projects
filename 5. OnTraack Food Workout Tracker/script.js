@@ -150,3 +150,18 @@ function showCalendar(month, year) {
 function daysInMonth(iMonth, iYear) {
     return 32 - new Date(iYear, iMonth, 32).getDate();
 }
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyDaTAYxZiMqzgvX-Z927IChrP5CD11CCzM",
+    authDomain: "ontraack.firebaseapp.com",
+    databaseURL: "https://ontraack.firebaseio.com",
+    projectId: "ontraack",
+    storageBucket: "ontraack.appspot.com",
+    messagingSenderId: "939576556836",
+    appId: "1:939576556836:web:c617e0e011af870ca307b1",
+    measurementId: "G-XDRV9SXZW9"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
