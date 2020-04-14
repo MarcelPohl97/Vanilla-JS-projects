@@ -7,7 +7,6 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
     <script src="https://kit.fontawesome.com/720dd1dc59.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/720dd1dc59.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>OT - OnTraack</title>
 </head>
@@ -35,7 +34,10 @@
     <div class="calendar" id="calendar">
         <div class="calendar__container" id="calendar__container">
             <i class="fas fa-times calendar__close" id="calendar__close"></i>
-            <h3 class="calendar__monthAndYear" id="calendar__monthAndYear"></h3>
+            <div class="calendar__header">
+                <h3 class="calendar__monthAndYear calendar__headerMonth" id="calendar__headerMonth"></h3>
+                <h3 class="calendar__monthAndYear calendar__headerYear" id="calendar__headerYear"></h3>
+            </div>
             <table class="calendar__table" id="calendar">
                 <thead>
 
@@ -91,6 +93,17 @@
                     </select>
                 </div>
             </form>
+        </div>
+    </div>
+    <div class="workout" id="workout">
+        <div class="workout__cover">
+            <h2 class="workout__title" id="workout__title">Workout - Track</h2>
+        </div>
+    </div>
+    <div class="food" id="food">
+        <i class="fas fa-times track--close" id="track--close"></i>
+        <div class="food__cover">
+            <h2 class="food__title" id="food__title">Food - Track</h2>
         </div>
     </div>
     <script src="script.js" ></script>

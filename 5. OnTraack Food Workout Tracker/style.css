@@ -12,6 +12,7 @@ body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     position: relative;
+    overflow-x: hidden;
 }
 
 a {
@@ -56,7 +57,7 @@ ul {
 
 .landing {
     height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0, .7), rgba(0, 0, 0, .7)), url("img/bg.jpg");
+    background-image: linear-gradient(rgba(0,0,0, .5), rgba(0, 0, 0, .5)), url("img/bg.jpg");
     background-position: center;
     background-repeat: no-repeat; 
     background-size: cover;
@@ -186,7 +187,6 @@ ul {
     left:0;
     width: 100%;
     height: 100vh;
-    z-index:1;
     backdrop-filter: blur(10px);
     transition: all .7s;
 }
@@ -226,9 +226,17 @@ ul {
     color: #4D5C7D;
 }
 
+.calendar__header {
+    display: flex;
+}
+
 .calendar__monthAndYear {
     color: #FCD462;
     font-size: 3rem;
+}
+
+.calendar__monthAndYear:not(:last-child) {
+    margin-right: 1rem;
 }
 
 .calendar__table {
@@ -340,4 +348,152 @@ ul {
 
 .calendar__select-wrapper:not(:last-child){
     margin: 0 0.5rem;
+}
+
+.track--toggle {
+    width: 50% !important;
+    opacity:1 !important;
+    z-index: 2;
+}
+
+.track--toggle:hover {
+    width: 60% !important;
+    z-index: 3;
+}
+
+.track--left {
+    left: 0 !important;
+}
+
+.track--right {
+    right:0 !important;
+}
+
+.track--close {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    color: var(--white-color);
+    font-size: 1.5rem;
+    transition: all .2s;
+    z-index:1;
+}
+
+.track--close:hover {
+    border-bottom: 2px solid var(--white-color);
+}
+
+.workout {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left:-50%;
+    width: 0;
+    height: 100vh;
+    z-index:0;
+    opacity:0;
+    transition: all .7s;
+}
+
+.workout__cover {
+    background-image: linear-gradient(rgba(0,0,0, .3), rgba(0, 0, 0, .3)), url("img/workout.jpg");
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.workout__title {
+    position: absolute;
+    top: 30%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    color: var(--white-color);
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    border: 2px solid var(--white-color);
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.workout__title:hover {
+    color: #333;
+}
+
+.workout__title::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    background: var(--white-color);
+    top: 0;
+    left:0;
+    z-index:-1;
+    transition: all .5s;
+}
+
+.workout__title:hover::after {
+    transition: all .5s;
+    width: 100%;
+    color: #333;
+}
+
+.food {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    right: -50%;
+    width:0;
+    height: 100vh;
+    z-index:0;
+    transition: all .7s;
+    opacity:1;
+}
+
+.food__cover {
+    background-image: linear-gradient(rgba(0,0,0, .3), rgba(0, 0, 0, .3)), url("img/food.jpg");
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.food__title {
+    position: absolute;
+    top: 30%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    color: var(--white-color);
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    border: 2px solid var(--white-color);
+    cursor: pointer;
+    padding: 1rem;
+    transition: all .5s;
+}
+
+.food__title:hover {
+    color: #333;
+}
+
+.food__title::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    background: var(--white-color);
+    top: 0;
+    left:0;
+    z-index:-1;
+    transition: all .5s;
+}
+
+.food__title:hover::after {
+    transition: all .5s;
+    width: 100%;
+    color: #333;
 }

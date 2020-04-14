@@ -41,10 +41,19 @@ let calendarOpen = document.getElementById("landing__calendar")
 
 let calendar = document.getElementById("calendar");
 let calendarContainer = document.getElementById("calendar__container");
+let calendar_Container = document.querySelectorAll(".calendar__container");
 
 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-let monthAndYear = document.getElementById("calendar__monthAndYear");
+let calendar_HeaderMonth = document.getElementById("calendar__headerMonth");
+let calendar_HeaderYear = document.getElementById("calendar__headerYear");
+
+const workout = document.getElementById("workout");
+const food = document.getElementById("food");
+const workout_Title = document.getElementById("workout__title");
+const food_Title = document.getElementById("food__title");
+const track_Close = document.getElementById("track--close")
+
 showCalendar(currentMonth, currentYear);
 
 calendarPrevious.addEventListener("click", () => {
@@ -55,21 +64,17 @@ calendarNext.addEventListener("click", () => {
     next_Month();
 });
 
-selectYear.addEventListener("change", () => {
-    jump_MY();
+[selectYear, selectMonth].forEach(item => {
+    item.addEventListener("change", () => {
+        jump_MY();
+    });
 });
 
-selectMonth.addEventListener("change", () => {
-    jump_MY();
+[calendarOpen, calendarClose].forEach(item => {
+    item.addEventListener("click", () => {
+        calendar.classList.toggle("calendar--toggle");
+    });
 });
-
-calendarClose.addEventListener("click", () => {
-    calendar.classList.toggle("calendar--toggle");
-});
-
-calendarOpen.addEventListener("click", () => {
-    calendar.classList.toggle("calendar--toggle");
-})
 
 let next_Month = () => {
     currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
@@ -89,9 +94,6 @@ let jump_MY = () => {
     showCalendar(currentMonth, currentYear);
 }
 
-let calendar_Toggle = () => {
-
-}
 
 function showCalendar(month, year) {
 
@@ -103,7 +105,8 @@ function showCalendar(month, year) {
     tbl.innerHTML = "";
 
     // filing data about month and in the page via DOM.
-    monthAndYear.innerHTML = months[month] + " " + year;
+    calendar_HeaderMonth.innerHTML = months[month]
+    calendar_HeaderYear.innerHTML = year;
     selectYear.value = year;
     selectMonth.value = month;
 
@@ -117,7 +120,7 @@ function showCalendar(month, year) {
         for (let j = 0; j < 7; j++) {
             if (i === 0 && j < firstDay) {
                 cell = document.createElement("td");
-                cell.className += "calendar__data"
+                
                 cellText = document.createTextNode("");
                 cell.appendChild(cellText);
                 row.appendChild(cell);
@@ -150,6 +153,52 @@ function showCalendar(month, year) {
 function daysInMonth(iMonth, iYear) {
     return 32 - new Date(iYear, iMonth, 32).getDate();
 }
+
+
+const calendar_Information = () => {
+    var calendar_Info = {
+        calendar_Year: calendar_HeaderMonth.innerHTML,
+        calendar_Month: calendar_HeaderYear.innerHTML,
+        calendar_Day: event.target.textContent,
+    };
+    workout_Query(calendar_Info);
+}
+
+const workout_Query = (query) => {
+    console.log(query);
+};
+
+const food_Query = () => {
+    console.log("Query and Show food");
+}
+
+const track_toggle = () => {
+    workout.classList.toggle("track--toggle");
+    workout.classList.toggle("track--left");
+    food.classList.toggle("track--toggle");
+    food.classList.toggle("track--right");
+}
+
+calendar_Container.forEach(item => {
+    item.addEventListener('click', event => {
+        if(event.target.classList.contains('calendar__data')){
+            calendar_Information();
+            track_toggle();
+        };
+    });
+});
+
+track_Close.addEventListener("click", () => {
+    track_toggle();
+});
+
+workout_Title.addEventListener("click", () => {
+    track_toggle();
+})
+
+food_Title.addEventListener("click", () => {
+    track_toggle();
+});
 
 // Your web app's Firebase configuration
 var firebaseConfig = {

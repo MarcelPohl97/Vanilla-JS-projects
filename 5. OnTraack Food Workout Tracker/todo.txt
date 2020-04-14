@@ -52,8 +52,13 @@ In total: 6 Dynamic HTML elements
 
 After Project is stable and running think about adding a Monthly simple review data on how much you worked out (make with canvas)
 
-- 13.04.2020 Tasks:
-    -> Click on a day to get the day, month and year output as an object
-    -> add dynamic opening 2 popup buttons that ask you to choose between workouttrack or foodtrack
-    -> after clicking on one of them new page is going to appear with dummy data (build out those 2 pages with dummy data)
-    -> make queries to create the fetched data from db and add them in the pafge
+- 14.04.2020 Tasks:
+    -> after clicking on a date workout and food are coming in from 2 sides and are 50% width and split once u hover over something,
+        it gets a little wider if u click on it it reduces width to 0 again and shows the picked tracker
+    -> add a button to go back to the tracked options
+    -> add dummy data to the pages 
+    -> once everything works start working on the queries
+
+
+- Bugfixes Cleanups:
+    -> Fix clicking the specific day gets an object
