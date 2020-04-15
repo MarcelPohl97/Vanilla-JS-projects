@@ -53,11 +53,13 @@ In total: 6 Dynamic HTML elements
 After Project is stable and running think about adding a Monthly simple review data on how much you worked out (make with canvas)
 
 - 14.04.2020 Tasks:
-    -> after clicking on a date workout and food are coming in from 2 sides and are 50% width and split once u hover over something,
-        it gets a little wider if u click on it it reduces width to 0 again and shows the picked tracker
-    -> add a button to go back to the tracked options
-    -> add dummy data to the pages 
+    
     -> once everything works start working on the queries
+    -> add input field to add data
+    -> add button to delete specific data
+    -> add feature to add your name through data
+    -> add daily what is your main focus to add or querie daily data 
+    -> make responsive
 
 
 - Bugfixes Cleanups:

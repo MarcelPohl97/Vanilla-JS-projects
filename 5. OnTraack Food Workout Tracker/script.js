@@ -52,7 +52,14 @@ const workout = document.getElementById("workout");
 const food = document.getElementById("food");
 const workout_Title = document.getElementById("workout__title");
 const food_Title = document.getElementById("food__title");
-const track_Close = document.getElementById("track--close")
+const workout_Cover = document.getElementById("workout__cover");
+const food_Cover = document.getElementById("food__cover");
+const track_Close = document.getElementById("track--close");
+const workout_Close = document.getElementById("workout--close");
+const food_Close = document.getElementById("food--close");
+const food_Categorie = document.querySelectorAll(".food__categorie");
+const food__Items = document.querySelectorAll(".food__items");
+
 
 showCalendar(currentMonth, currentYear);
 
@@ -179,6 +186,16 @@ const track_toggle = () => {
     food.classList.toggle("track--right");
 }
 
+const workout_Show = () => {
+    workout.classList.toggle("workout--fullView");
+    workout_Cover.classList.toggle("workout--show");
+}
+
+const food_Show = () => {
+    food.classList.toggle("food--fullView");
+    food_Cover.classList.toggle("food--show");
+}
+
 calendar_Container.forEach(item => {
     item.addEventListener('click', event => {
         if(event.target.classList.contains('calendar__data')){
@@ -194,11 +211,32 @@ track_Close.addEventListener("click", () => {
 
 workout_Title.addEventListener("click", () => {
     track_toggle();
+    workout_Show();
+})
+
+workout_Close.addEventListener("click", () => {
+    track_toggle();
+    workout_Show();
 })
 
 food_Title.addEventListener("click", () => {
     track_toggle();
+    food_Show();
 });
+
+food_Close.addEventListener("click", () => {
+    track_toggle();
+    food_Show();
+})
+
+food_Categorie.forEach(item => {
+    item.addEventListener("click", (event) => {
+        food__Items.forEach(item => {
+            item.classList.remove("food__items--visible");
+        })
+        document.getElementsByClassName(`food__${event.target.innerHTML.toLowerCase()}`)[0].classList.toggle("food__items--visible");
+    })
+})
 
 // Your web app's Firebase configuration
 var firebaseConfig = {

@@ -96,14 +96,83 @@
         </div>
     </div>
     <div class="workout" id="workout">
-        <div class="workout__cover">
+        <div class="workout__cover" id="workout__cover">
             <h2 class="workout__title" id="workout__title">Workout - Track</h2>
+        </div>
+        <div class="workout__content">
+            <i class="fas fa-times workout--close" id="workout--close"></i>
+            <div class="workout__container">
+                <img src="img/sit-up.svg" alt="Situp Workout Icon" class="workout__icon">
+                <div class="workout__exercise">
+                    <h3 class="workout__name">Barbell Curl</h3>
+                    <ul class="workout__sets">
+                        <li class="workout__set">1 Set &#8594</li>
+                        <li class="workout__weight">80 kg &#xD7;</li>
+                        <li class="workout__reps">15 REPS</li>
+                    </ul>
+                    <ul class="workout__sets">
+                        <li class="workout__set">2 Set &#8594</li>
+                        <li class="workout__weight">85 kg &#xD7;</li>
+                        <li class="workout__reps">12 REPS</li>
+                    </ul>
+                    <ul class="workout__sets">
+                        <li class="workout__set">3Set &#8594</li>
+                        <li class="workout__weight">90 kg &#xD7;</li>
+                        <li class="workout__reps">10 REPS</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     <div class="food" id="food">
-        <i class="fas fa-times track--close" id="track--close"></i>
-        <div class="food__cover">
+        <div class="food__cover" id="food__cover">
+            <i class="fas fa-times track--close" id="track--close"></i>
             <h2 class="food__title" id="food__title">Food - Track</h2>
+        </div>
+        <div class="food__content">
+            <i class="fas fa-times food--close" id="food--close"></i>
+            <div class="food__container">
+                <div class="food__nav">
+                    <ul class="food__categories">
+                        <li class="food__categorie">
+                            <i class="fas fa-egg food__icon"></i>
+                            <p class="food__description">Breakfast</p>
+                        </li>
+                        <li class="food__categorie">
+                            <i class="fas fa-drumstick-bite food__icon"></i>
+                            <p class="food__description">Lunch</p>
+                        </li>
+                        <li class="food__categorie">
+                            <i class="fas fa-carrot food__icon"></i>
+                            <p class="food__description">Dinner</p>
+                        </li>
+                        <li class="food__categorie">
+                            <i class="fas fa-apple-alt food__icon"></i>
+                            <p class="food__description">Snacks</p>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="food__items food__breakfast" id="food__items">
+                    <li class="food__item">Strawberries</li>
+                    <li class="food__item">Oats</li>
+                    <li class="food__item">Milk</li>
+                </ul>
+                <ul class="food__items food__lunch" id="food__items">
+                    <li class="food__item">Rice</li>
+                    <li class="food__item">Broccoli</li>
+                    <li class="food__item">Chicken</li>
+                </ul>
+                <ul class="food__items food__dinner" id="food__items">
+                    <li class="food__item">Protein Bread</li>
+                    <li class="food__item">Salmon</li>
+                    <li class="food__item">Tomatoes</li>
+                </ul>
+                <ul class="food__items food__snacks" id="food__items">
+                    <li class="food__item">Walnuts</li>
+                    <li class="food__item">Coke Zero</li>
+                    <li class="food__item">Apple</li>
+                </ul>
+            </div>
         </div>
     </div>
     <script src="script.js" ></script>
