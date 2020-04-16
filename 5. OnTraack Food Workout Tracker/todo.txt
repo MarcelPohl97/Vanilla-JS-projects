@@ -1,5 +1,6 @@
 Workout Tracks Design Inspiration: https://cdn.dribbble.com/users/108163/screenshots/2497702/02-02-2016.png
 Food Track Design: Inspiration: https://cdn.dribbble.com/users/108163/screenshots/2534146/15-02-2015.png
+Carousel Plugin: https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/;
 
 Appearance Goal/Functionality:
 
@@ -53,8 +54,8 @@ In total: 6 Dynamic HTML elements
 After Project is stable and running think about adding a Monthly simple review data on how much you worked out (make with canvas)
 
 - 14.04.2020 Tasks:
-    
-    -> once everything works start working on the queries
+    -> 
+    -> add database queries to generate data when clicking a date 
     -> add input field to add data
     -> add button to delete specific data
     -> add feature to add your name through data

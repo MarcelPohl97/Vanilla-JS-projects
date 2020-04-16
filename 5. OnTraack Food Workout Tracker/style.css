@@ -494,16 +494,49 @@ ul {
     text-align: center;
 }
 
-.workout__icon {
-    width: 316px;
+#previousBtn{
     position: absolute;
-    top:-145px;
-    left:50%;
+    top: 50%;
+    left: -10%;
     transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: #333;
+    cursor: pointer;
+ }
+ #nextBtn{
+     position: absolute;
+     top: 50%;
+     transform: translate(-50%, -50%);
+     left: 110%;
+     font-size: 3rem;
+     color: #333;
+     cursor: pointer;
+ }
+
+.carousel-container{
+    width: 270px;
+    height: auto;
+    overflow: hidden;
+    position: relative;
 }
 
+.carousel-slide{
+    width: auto;
+    height: auto;
+    display: flex;   
+}
+
+.workout__icon {
+    width: 300px;
+    position: absolute;
+    top:-135px;
+    left:50.5%;
+    transform: translate(-50%, -50%);
+}
 .workout__exercise {
     width: 100%;
+    flex-shrink:0;
+    height: auto
 }
 
 .workout__name {
@@ -522,6 +555,14 @@ ul {
 
 .workout__sets:not(:last-child){
     margin-bottom: 1rem;
+}
+
+.workout__arrow {
+    margin:0 0.5rem;
+}
+
+.workout__times {
+    margin: 0 0.5rem;
 }
 
 .food {
@@ -664,11 +705,6 @@ ul {
     transition: all .2s;
 }
 
-.food__categorie:hover .food__description::after{
-    width: 100%;
-    transition: all .2s;
-}
-
 .food__categorie:not(:last-child){
     margin-right: 2.5rem;
 }
@@ -682,6 +718,7 @@ ul {
     transition: all .2s;
     font-size: 1rem;
     position: relative;
+    cursor: pointer;
 }
 
 .food__description::after {
@@ -692,6 +729,11 @@ ul {
     content: "";
     background: var(--white-color);
     height: 3px;
+    transition: all .2s;
+}
+
+.food__description:hover::after{
+    width: 100%;
     transition: all .2s;
 }
 

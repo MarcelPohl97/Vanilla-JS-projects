@@ -102,24 +102,138 @@
         <div class="workout__content">
             <i class="fas fa-times workout--close" id="workout--close"></i>
             <div class="workout__container">
+                <i class="fas fa-caret-left" id="previousBtn"></i>
+                <i class="fas fa-caret-right" id="nextBtn"></i>
                 <img src="img/sit-up.svg" alt="Situp Workout Icon" class="workout__icon">
-                <div class="workout__exercise">
-                    <h3 class="workout__name">Barbell Curl</h3>
-                    <ul class="workout__sets">
-                        <li class="workout__set">1 Set &#8594</li>
-                        <li class="workout__weight">80 kg &#xD7;</li>
-                        <li class="workout__reps">15 REPS</li>
-                    </ul>
-                    <ul class="workout__sets">
-                        <li class="workout__set">2 Set &#8594</li>
-                        <li class="workout__weight">85 kg &#xD7;</li>
-                        <li class="workout__reps">12 REPS</li>
-                    </ul>
-                    <ul class="workout__sets">
-                        <li class="workout__set">3Set &#8594</li>
-                        <li class="workout__weight">90 kg &#xD7;</li>
-                        <li class="workout__reps">10 REPS</li>
-                    </ul>
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <div class="workout__exercise" id="firstClone">
+                            <h3 class="workout__name">LegPress</h3>
+                            <ul class="workout__sets">
+                                <li class="workout__set">1 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">80 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">15 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">2 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">850 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">12 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">3Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">900kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">10 REPS</li>
+                            </ul>
+                        </div>
+                        <div class="workout__exercise">
+                            <h3 class="workout__name">Squats</h3>
+                            <ul class="workout__sets">
+                                <li class="workout__set">10 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">800 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">150 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">2 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">850 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">12 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">3Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">90 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">10 REPS</li>
+                            </ul>
+                        </div>
+                        <div class="workout__exercise">
+                            <h3 class="workout__name">Dips</h3>
+                            <ul class="workout__sets">
+                                <li class="workout__set">1 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">80 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">15 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">2 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">85 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">12 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">3Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">90 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">10 REPS</li>
+                            </ul>
+                        </div>
+                        <div class="workout__exercise">
+                            <h3 class="workout__name">Rows</h3>
+                            <ul class="workout__sets">
+                                <li class="workout__set">1 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">80 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">15 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">2 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">85 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">12 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">3Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">90 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">10 REPS</li>
+                            </ul>
+                        </div>
+                        <div class="workout__exercise">
+                            <h3 class="workout__name">Pushups</h3>
+                            <ul class="workout__sets">
+                                <li class="workout__set">1 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">80 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">15 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">2 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">85 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">12 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">3Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">90 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">10 REPS</li>
+                            </ul>
+                        </div>
+                        <div class="workout__exercise">
+                            <h3 class="workout__name">Leg Press</h3>
+                            <ul class="workout__sets">
+                                <li class="workout__set">1 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">80 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">15 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">2 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">85 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">12 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">3Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">90 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">10 REPS</li>
+                            </ul>
+                        </div>
+                        <div class="workout__exercise" id="lastClone">
+                            <h3 class="workout__name">Squats</h3>
+                            <ul class="workout__sets">
+                                <li class="workout__set">1 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">80 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">15 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">2 Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">85 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">12 REPS</li>
+                            </ul>
+                            <ul class="workout__sets">
+                                <li class="workout__set">3Set <span class="workout__arrow">&#8594</span></li>
+                                <li class="workout__weight">90 kg <span class="workout__times">&#xD7;</span></li>
+                                <li class="workout__reps">10 REPS</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
