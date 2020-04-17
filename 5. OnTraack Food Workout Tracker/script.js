@@ -57,7 +57,7 @@ const food_Cover = document.getElementById("food__cover");
 const track_Close = document.getElementById("track--close");
 const workout_Close = document.getElementById("workout--close");
 const food_Close = document.getElementById("food--close");
-const food_Categorie = document.querySelectorAll(".food__categorie");
+const food_Categorie = document.querySelectorAll(".food__description");
 const food__Items = document.querySelectorAll(".food__items");
 
 
@@ -135,7 +135,6 @@ function showCalendar(month, year) {
             else if (date > daysInMonth(month, year)) {
                 break;
             }
-
             else {
                 cell = document.createElement("td");
                 cell.className += "calendar__data"
@@ -147,13 +146,9 @@ function showCalendar(month, year) {
                 row.appendChild(cell);
                 date++;
             }
-
-
         }
-
         tbl.appendChild(row); // appending each row into calendar body.
     }
-
 }
 
 // check how many days in a month code from https://dzone.com/articles/determining-number-days-month
@@ -164,16 +159,40 @@ function daysInMonth(iMonth, iYear) {
 
 const calendar_Information = () => {
     var calendar_Info = {
-        calendar_Year: calendar_HeaderMonth.innerHTML,
-        calendar_Month: calendar_HeaderYear.innerHTML,
+        calendar_Year: calendar_HeaderYear.innerHTML,
+        calendar_Month: calendar_HeaderMonth.innerHTML,
         calendar_Day: event.target.textContent,
     };
-    workout_Query(calendar_Info);
+    //clear_Data(carouselSlide);
+    db_query(calendar_Info["calendar_Year"], calendar_Info["calendar_Month"], calendar_Info["calendar_Day"]);
 }
 
-const workout_Query = (query) => {
-    console.log(query);
+const create_Workout = (data) => {
+    carouselSlide.innerHTML += `
+    <div class="workout__exercise">
+        <h3 class="workout__name">${data.data().exercise}</h3>
+        <ul class="workout__sets">
+            <li class="workout__set">1 Set <span class="workout__arrow">&#8594</span></li>
+            <li class="workout__weight">${data.data().set1_weight} kg <span class="workout__times">&#xD7;</span></li>
+            <li class="workout__reps">${data.data().set1_reps} REPS</li>
+        </ul>
+        <ul class="workout__sets">
+            <li class="workout__set">2 Set <span class="workout__arrow">&#8594</span></li>
+            <li class="workout__weight">${data.data().set2_weight} kg <span class="workout__times">&#xD7;</span></li>
+            <li class="workout__reps">${data.data().set2_reps} REPS</li>
+        </ul>
+        <ul class="workout__sets">
+            <li class="workout__set">3Set <span class="workout__arrow">&#8594</span></li>
+            <li class="workout__weight">${data.data().set3_weight} kg <span class="workout__times">&#xD7;</span></li>
+            <li class="workout__reps">${data.data().set3_reps} REPS</li>
+        </ul>
+    </div>
+    `
 };
+
+const clear_Data = (data) => { 
+    data.innerHTML = ""; 
+}
 
 const food_Query = () => {
     console.log("Query and Show food");
@@ -209,25 +228,20 @@ track_Close.addEventListener("click", () => {
     track_toggle();
 });
 
-workout_Title.addEventListener("click", () => {
-    track_toggle();
-    workout_Show();
-})
-
-workout_Close.addEventListener("click", () => {
-    track_toggle();
-    workout_Show();
-})
-
-food_Title.addEventListener("click", () => {
-    track_toggle();
-    food_Show();
+[workout_Title, workout_Close].forEach(item => {
+    item.addEventListener("click", () => {
+        track_toggle();
+        workout_Show();
+        carousel_REInit(); 
+    });
 });
 
-food_Close.addEventListener("click", () => {
-    track_toggle();
-    food_Show();
-})
+[food_Title, food_Close].forEach(item => {
+    item.addEventListener("click", () => {
+        track_toggle();
+        food_Show();
+    });
+});
 
 food_Categorie.forEach(item => {
     item.addEventListener("click", (event) => {
@@ -239,7 +253,7 @@ food_Categorie.forEach(item => {
 })
 
 // Your web app's Firebase configuration
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyDaTAYxZiMqzgvX-Z927IChrP5CD11CCzM",
     authDomain: "ontraack.firebaseapp.com",
     databaseURL: "https://ontraack.firebaseio.com",
@@ -251,49 +265,46 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
   firebase.analytics();
 
+  const db_query = (year, month, day) => {
+    db.collection('workout').where('year', '==', `${year}`).where('month', '==', `${month}`).where('day', '==', `${day}`).get().then((snapshot) => {
+        snapshot.forEach(item => {
+            create_Workout(item);
+        });
+    });
+  }
 
   //Carousel
 
-  const carouselSlide = document.querySelector('.carousel-slide');
-  const carouselImages = document.querySelectorAll('.carousel-slide div');
+  const carouselSlide = document.querySelector('.workout__carousel-slide');
+  let carouselElements = document.querySelectorAll('.workout__carousel-slide div');
+
   //Buttons
-  const previousBtn = document.querySelector('#previousBtn');
-  const nextBtn = document.querySelector('#nextBtn');
-  //Counter
-  let counter = 1;
-  const size = carouselImages[0].clientWidth;
-  alert(size);
-  
-  
-  carouselSlide.style.transform = 'translateX(' + (-size*counter) + 'px)';
+  const previousBtn = document.querySelector('#workout__previous-Btn');
+  const nextBtn = document.querySelector('#workout__next-Btn');
+  //element_Counter
+  let element_Counter = 0;
+  let element_Size = carouselElements[0].clientWidth;
+
+  const carousel_REInit = () => {
+    carouselElements = document.querySelectorAll('.workout__carousel-slide div');
+    element_Size = carouselElements[0].clientWidth;
+    carouselSlide.style.transform = 'translateX(' + (-element_Size * element_Counter) + 'px)';
+  };
   
   nextBtn.addEventListener('click',()=>{
-      if(counter >= carouselImages.length - 1) return;
+      if(element_Counter >= carouselElements.length - 1) return;
       carouselSlide.style.transition = 'transform 0.2s ease-in-out';
-      counter++;
-      carouselSlide.style.transform = 'translateX(' + (-size*counter) + 'px)';
+      element_Counter++;
+      carouselSlide.style.transform = 'translateX(' + (-element_Size * element_Counter) + 'px)';
   });
   
   previousBtn.addEventListener('click',()=>{
-      if(counter <= 0) return;
+      if(element_Counter <= 0) return;
       carouselSlide.style.transition = 'transform 0.2s ease-in-out';
-      counter--;
-      carouselSlide.style.transform = 'translateX(' + (-size*counter) + 'px)';
+      element_Counter--;
+      carouselSlide.style.transform = 'translateX(' + (-element_Size * element_Counter) + 'px)';
   });
   
-  
-  carouselSlide.addEventListener('transitionend',()=>{
-      if(carouselImages[counter].id === 'lastClone'){
-          carouselSlide.style.transition = 'none';
-          counter = carouselImages.length - counter;
-          carouselSlide.style.transform = 'translateX(' + (-size*counter) + 'px)';
-      }
-      if(carouselImages[counter].id === 'firstClone'){
-          carouselSlide.style.transition = 'none';
-          counter = carouselImages.length - 2;
-          carouselSlide.style.transform = 'translateX(' + (-size*counter) + 'px)';
-  
-      }
-  });

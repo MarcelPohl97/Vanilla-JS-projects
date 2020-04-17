@@ -54,7 +54,6 @@ In total: 6 Dynamic HTML elements
 After Project is stable and running think about adding a Monthly simple review data on how much you worked out (make with canvas)
 
 - 14.04.2020 Tasks:
-    -> 
     -> add database queries to generate data when clicking a date 
     -> add input field to add data
     -> add button to delete specific data
@@ -65,3 +64,4 @@ After Project is stable and running think about adding a Monthly simple review d
 
 - Bugfixes Cleanups:
     -> Fix clicking the specific day gets an object
+    -> Add a fix for the carousel (firstclone and lastclone) when the carousel ends
