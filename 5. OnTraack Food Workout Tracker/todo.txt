@@ -66,3 +66,14 @@ After Project is stable and running think about adding a Monthly simple review d
 - Bugfixes Cleanups:
     -> Fix clicking the specific day gets an object
     -> Add a fix for the carousel (firstclone and lastclone) when the carousel ends
+
+food db -> naming:
+
+
+day
+dish_time
+extra_dish
+main_dish
+month
+side_dish
+year

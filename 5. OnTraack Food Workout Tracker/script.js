@@ -59,6 +59,7 @@ const workout_Close = document.getElementById("workout--close");
 const food_Close = document.getElementById("food--close");
 const food_Categorie = document.querySelectorAll(".food__description");
 const food__Items = document.querySelectorAll(".food__items");
+let food_Container = document.querySelectorAll(".food__container")
 
 
 showCalendar(currentMonth, currentYear);
@@ -156,6 +157,7 @@ function daysInMonth(iMonth, iYear) {
     return 32 - new Date(iYear, iMonth, 32).getDate();
 }
 
+let dish_times = ["breakfast", "lunch", "dinner", "snacks"];
 
 const calendar_Information = () => {
     var calendar_Info = {
@@ -166,7 +168,10 @@ const calendar_Information = () => {
     document.getElementById("workout__date").innerHTML = calendar_Info["calendar_Month"] + " " + calendar_Info["calendar_Day"] + " " + calendar_Info["calendar_Year"];
     document.getElementById("food__date").innerHTML = calendar_Info["calendar_Month"] + " " + calendar_Info["calendar_Day"] + " " + calendar_Info["calendar_Year"];
     clear_Data(carouselSlide);
-    db_query(calendar_Info["calendar_Year"], calendar_Info["calendar_Month"].toLowerCase(), calendar_Info["calendar_Day"]);
+    workout_DBQuery(calendar_Info["calendar_Year"], calendar_Info["calendar_Month"].toLowerCase(), calendar_Info["calendar_Day"]);
+    dish_times.forEach(dish => {
+        food_DBQuery(calendar_Info["calendar_Year"], calendar_Info["calendar_Month"].toLowerCase(), calendar_Info["calendar_Day"], dish);
+    });
 }
 
 const create_Workout = (data) => {
@@ -192,12 +197,18 @@ const create_Workout = (data) => {
     `
 };
 
-const clear_Data = (data) => { 
-    data.innerHTML = ""; 
+const create_Meal = (data) => {
+    food_Container.innerHTML += `
+    <ul class="food__items food__${data.data().dish_time}" id="food__items">
+        <li class="food__item">${data.data().main_dish}</li>
+        <li class="food__item">${data.data().side_dish}</li>
+        <li class="food__item">${data.data().extra_dish}</li>
+    </ul>
+    `
 }
 
-const food_Query = () => {
-    console.log("Query and Show food");
+const clear_Data = (data) => { 
+    data.innerHTML = ""; 
 }
 
 const track_toggle = () => {
@@ -270,12 +281,21 @@ const firebaseConfig = {
   const db = firebase.firestore();
   firebase.analytics();
 
-  const db_query = (year, month, day) => {
+  const workout_DBQuery = (year, month, day) => {
     db.collection('workout').where('year', '==', `${year}`).where('month', '==', `${month}`).where('day', '==', `${day}`).get().then((snapshot) => {
         snapshot.forEach(item => {
             create_Workout(item);
         });
     });
+  }
+
+  const food_DBQuery = (year, month, day, dish_time) => {
+      db.collection('food').where('year', '==', `${year}`).where('month', '==', `${month}`).where('day', '==', `${day}`).where('dish_time', '==', `${dish_time}`).get().then((snapshot) => {
+          snapshot.forEach(item => {
+              console.log(item.data());
+              create_Meal(item);
+          })
+      })
   }
 
   //Carousel
