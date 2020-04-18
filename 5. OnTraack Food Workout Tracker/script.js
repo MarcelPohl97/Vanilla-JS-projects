@@ -163,8 +163,10 @@ const calendar_Information = () => {
         calendar_Month: calendar_HeaderMonth.innerHTML,
         calendar_Day: event.target.textContent,
     };
-    //clear_Data(carouselSlide);
-    db_query(calendar_Info["calendar_Year"], calendar_Info["calendar_Month"], calendar_Info["calendar_Day"]);
+    document.getElementById("workout__date").innerHTML = calendar_Info["calendar_Month"] + " " + calendar_Info["calendar_Day"] + " " + calendar_Info["calendar_Year"];
+    document.getElementById("food__date").innerHTML = calendar_Info["calendar_Month"] + " " + calendar_Info["calendar_Day"] + " " + calendar_Info["calendar_Year"];
+    clear_Data(carouselSlide);
+    db_query(calendar_Info["calendar_Year"], calendar_Info["calendar_Month"].toLowerCase(), calendar_Info["calendar_Day"]);
 }
 
 const create_Workout = (data) => {
@@ -219,7 +221,7 @@ calendar_Container.forEach(item => {
     item.addEventListener('click', event => {
         if(event.target.classList.contains('calendar__data')){
             calendar_Information();
-            track_toggle();
+            track_toggle(); 
         };
     });
 });
@@ -232,7 +234,7 @@ track_Close.addEventListener("click", () => {
     item.addEventListener("click", () => {
         track_toggle();
         workout_Show();
-        carousel_REInit(); 
+        carousel_REInit();
     });
 });
 

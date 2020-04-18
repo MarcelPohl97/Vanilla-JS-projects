@@ -464,6 +464,14 @@ ul {
     z-index: -1;
 }
 
+.workout__date {
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    font-size: 1.5rem;
+    color: #DC4D41;
+}
+
 .workout--close {
     position: absolute;
     top: 2.5rem;
@@ -648,6 +656,14 @@ ul {
     top:0;
     left:0;
     z-index: -1;
+}
+
+.food__date {
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    font-size: 1.5rem;
+    color: #DC4D41;
 }
 
 .food--close {

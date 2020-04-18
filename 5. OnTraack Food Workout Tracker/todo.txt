@@ -54,7 +54,8 @@ In total: 6 Dynamic HTML elements
 After Project is stable and running think about adding a Monthly simple review data on how much you worked out (make with canvas)
 
 - 14.04.2020 Tasks:
-    -> add database queries to generate data when clicking a date 
+    -> add date on calendar and workout
+    -> add db query for calendar 
     -> add input field to add data
     -> add button to delete specific data
     -> add feature to add your name through data
