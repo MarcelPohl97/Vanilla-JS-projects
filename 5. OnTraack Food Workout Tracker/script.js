@@ -59,7 +59,8 @@ const workout_Close = document.getElementById("workout--close");
 const food_Close = document.getElementById("food--close");
 const food_Categorie = document.querySelectorAll(".food__description");
 const food__Items = document.querySelectorAll(".food__items");
-let food_Container = document.querySelectorAll(".food__container")
+let food_Container = document.querySelector(".food__container");
+
 
 
 showCalendar(currentMonth, currentYear);
@@ -197,13 +198,12 @@ const create_Workout = (data) => {
     `
 };
 
-const create_Meal = (data) => {
-    food_Container.innerHTML += `
-    <ul class="food__items food__${data.data().dish_time}" id="food__items">
-        <li class="food__item">${data.data().main_dish}</li>
-        <li class="food__item">${data.data().side_dish}</li>
-        <li class="food__item">${data.data().extra_dish}</li>
-    </ul>
+const create_Meal = (data, dish_time) => {
+    let food_DishItems = document.querySelector(`.food__${dish_time}`)
+    food_DishItems.innerHTML += `
+    <li class="food__item">${data.data().main_dish}</li>
+    <li class="food__item">${data.data().side_dish}</li>
+    <li class="food__item">${data.data().extra_dish}</li>
     `
 }
 
@@ -292,8 +292,7 @@ const firebaseConfig = {
   const food_DBQuery = (year, month, day, dish_time) => {
       db.collection('food').where('year', '==', `${year}`).where('month', '==', `${month}`).where('day', '==', `${day}`).where('dish_time', '==', `${dish_time}`).get().then((snapshot) => {
           snapshot.forEach(item => {
-              console.log(item.data());
-              create_Meal(item);
+              create_Meal(item, dish_time);
           })
       })
   }

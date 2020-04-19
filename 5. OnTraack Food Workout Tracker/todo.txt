@@ -54,8 +54,7 @@ In total: 6 Dynamic HTML elements
 After Project is stable and running think about adding a Monthly simple review data on how much you worked out (make with canvas)
 
 - 14.04.2020 Tasks:
-    -> add date on calendar and workout
-    -> add db query for calendar 
+    -> add delete data for calendar after switching date
     -> add input field to add data
     -> add button to delete specific data
     -> add feature to add your name through data
@@ -65,15 +64,4 @@ After Project is stable and running think about adding a Monthly simple review d
 
 - Bugfixes Cleanups:
     -> Fix clicking the specific day gets an object
-    -> Add a fix for the carousel (firstclone and lastclone) when the carousel ends
 
-food db -> naming:
-
-
-day
-dish_time
-extra_dish
-main_dish
-month
-side_dish
-year
