@@ -58,8 +58,16 @@ const track_Close = document.getElementById("track--close");
 const workout_Close = document.getElementById("workout--close");
 const food_Close = document.getElementById("food--close");
 const food_Categorie = document.querySelectorAll(".food__description");
-const food__Items = document.querySelectorAll(".food__items");
+const food_Items = document.querySelectorAll(".food__items");
 let food_Container = document.querySelector(".food__container");
+let workout_Date = document.getElementById("workout__date");
+let food_Date = document.getElementById("food__date");
+
+const workout_Dropdown = document.getElementById("workout__dropdown")
+const workout_Form = document.getElementById("workout__form");
+const workout_addData = document.getElementById("workout__add-data");
+const workout_Add = document.getElementById("workout__add");
+const workout_FormInput = document.querySelector(".workout__form")
 
 
 
@@ -166,9 +174,10 @@ const calendar_Information = () => {
         calendar_Month: calendar_HeaderMonth.innerHTML,
         calendar_Day: event.target.textContent,
     };
-    document.getElementById("workout__date").innerHTML = calendar_Info["calendar_Month"] + " " + calendar_Info["calendar_Day"] + " " + calendar_Info["calendar_Year"];
-    document.getElementById("food__date").innerHTML = calendar_Info["calendar_Month"] + " " + calendar_Info["calendar_Day"] + " " + calendar_Info["calendar_Year"];
-    clear_Data(carouselSlide);
+    workout_Date.innerHTML = calendar_Info["calendar_Month"] + " " + calendar_Info["calendar_Day"] + " " + calendar_Info["calendar_Year"];
+    food_Date.innerHTML = calendar_Info["calendar_Month"] + " " + calendar_Info["calendar_Day"] + " " + calendar_Info["calendar_Year"];
+    clear_Workout(carouselSlide);
+    clear_Food(food_Items);
     workout_DBQuery(calendar_Info["calendar_Year"], calendar_Info["calendar_Month"].toLowerCase(), calendar_Info["calendar_Day"]);
     dish_times.forEach(dish => {
         food_DBQuery(calendar_Info["calendar_Year"], calendar_Info["calendar_Month"].toLowerCase(), calendar_Info["calendar_Day"], dish);
@@ -207,8 +216,14 @@ const create_Meal = (data, dish_time) => {
     `
 }
 
-const clear_Data = (data) => { 
-    data.innerHTML = ""; 
+const clear_Workout = (data) => { 
+    data.innerHTML = "";
+}
+
+const clear_Food = (data) => {
+    data.forEach(item => {
+        item.innerHTML = "";
+    })
 }
 
 const track_toggle = () => {
@@ -258,11 +273,17 @@ track_Close.addEventListener("click", () => {
 
 food_Categorie.forEach(item => {
     item.addEventListener("click", (event) => {
-        food__Items.forEach(item => {
+        food_Items.forEach(item => {
             item.classList.remove("food__items--visible");
         })
         document.getElementsByClassName(`food__${event.target.innerHTML.toLowerCase()}`)[0].classList.toggle("food__items--visible");
     })
+})
+
+workout_Dropdown.addEventListener("click", () => {
+    workout_Dropdown.classList.toggle("workout__dropdown--toggle");
+    workout_addData.classList.toggle("workout__add-data--toggle");
+    workout_Form.classList.toggle("workout__form--toggle");
 })
 
 // Your web app's Firebase configuration
@@ -310,9 +331,10 @@ const firebaseConfig = {
   let element_Size = carouselElements[0].clientWidth;
 
   const carousel_REInit = () => {
+    element_Counter = 0
     carouselElements = document.querySelectorAll('.workout__carousel-slide div');
     element_Size = carouselElements[0].clientWidth;
-    carouselSlide.style.transform = 'translateX(' + (-element_Size * element_Counter) + 'px)';
+    carouselSlide.style.transform = 'translateX(' + 0 + 'px)';
   };
   
   nextBtn.addEventListener('click',()=>{
@@ -329,3 +351,29 @@ const firebaseConfig = {
       carouselSlide.style.transform = 'translateX(' + (-element_Size * element_Counter) + 'px)';
   });
   
+// submit data to db from form
+
+workout_Add.addEventListener("click", () => {
+    db.collection('workout').add({
+        month: workout_Date.innerHTML.split(" ")[0].toLowerCase(),
+        day: workout_Date.innerHTML.split(" ")[1],
+        year: workout_Date.innerHTML.split(" ")[2],
+        exercise: workout_FormInput.exercise.value,
+        set1_reps: workout_FormInput.set1_reps.value,
+        set1_weight: workout_FormInput.set1_weight.value,
+        set2_reps: workout_FormInput.set2_reps.value,
+        set2_weight: workout_FormInput.set2_weight.value,
+        set3_reps: workout_FormInput.set3_reps.value,
+        set3_weight: workout_FormInput.set3_weight.value,
+    })
+    workout_FormInput.exercise.value = "";
+    workout_FormInput.set1_reps.value = "";
+    workout_FormInput.set1_weight.value = "";
+    workout_FormInput.set2_reps.value = "";
+    workout_FormInput.set2_weight.value = "";
+    workout_FormInput.set3_reps.value = "";
+    workout_FormInput.set3_weight.value = "";
+
+
+
+})
