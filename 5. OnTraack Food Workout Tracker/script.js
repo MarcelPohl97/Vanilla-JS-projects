@@ -67,7 +67,11 @@ const workout_Dropdown = document.getElementById("workout__dropdown")
 const workout_Form = document.getElementById("workout__form");
 const workout_addData = document.getElementById("workout__add-data");
 const workout_Add = document.getElementById("workout__add");
-const workout_FormInput = document.querySelector(".workout__form")
+const workout_FormInput = document.querySelector(".workout__form");
+
+const food_Dropdown = document.getElementById("food__dropdown");
+const food_Form = document.getElementById("food__form");
+const food_addData = document.getElementById("food__add-data");
 
 
 
@@ -186,7 +190,8 @@ const calendar_Information = () => {
 
 const create_Workout = (data) => {
     carouselSlide.innerHTML += `
-    <div class="workout__exercise">
+    <div data-id=${data.id} class="workout__exercise">
+        <i class="fas fa-trash-alt workout__delete" id="workout__delete"></i>
         <h3 class="workout__name">${data.data().exercise}</h3>
         <ul class="workout__sets">
             <li class="workout__set">1 Set <span class="workout__arrow">&#8594</span></li>
@@ -284,7 +289,13 @@ workout_Dropdown.addEventListener("click", () => {
     workout_Dropdown.classList.toggle("workout__dropdown--toggle");
     workout_addData.classList.toggle("workout__add-data--toggle");
     workout_Form.classList.toggle("workout__form--toggle");
-})
+});
+
+food_Dropdown.addEventListener("click", () => {
+    food_Dropdown.classList.toggle("food__dropdown--toggle");
+    food_addData.classList.toggle("food__add-data--toggle");
+    food_Form.classList.toggle("food__form--toggle");
+});
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -302,12 +313,12 @@ const firebaseConfig = {
   const db = firebase.firestore();
   firebase.analytics();
 
-  const workout_DBQuery = (year, month, day) => {
-    db.collection('workout').where('year', '==', `${year}`).where('month', '==', `${month}`).where('day', '==', `${day}`).get().then((snapshot) => {
-        snapshot.forEach(item => {
-            create_Workout(item);
-        });
+  const workout_DBQuery = async (year, month, day) => {
+    const workout_Data = await db.collection('workout').where('year', '==', `${year}`).where('month', '==', `${month}`).where('day', '==', `${day}`).get()
+    await workout_Data.forEach(item => {
+        create_Workout(item);
     });
+    carousel_REInit();
   }
 
   const food_DBQuery = (year, month, day, dish_time) => {
@@ -353,8 +364,8 @@ const firebaseConfig = {
   
 // submit data to db from form
 
-workout_Add.addEventListener("click", () => {
-    db.collection('workout').add({
+const add_Workout = async () => {
+    await db.collection('workout').add({
         month: workout_Date.innerHTML.split(" ")[0].toLowerCase(),
         day: workout_Date.innerHTML.split(" ")[1],
         year: workout_Date.innerHTML.split(" ")[2],
@@ -373,7 +384,26 @@ workout_Add.addEventListener("click", () => {
     workout_FormInput.set2_weight.value = "";
     workout_FormInput.set3_reps.value = "";
     workout_FormInput.set3_weight.value = "";
+}
 
+workout_Add.addEventListener("click", () => {
+    add_Workout();
+    clear_Workout(carouselSlide);
+    workout_DBQuery(workout_Date.innerHTML.split(" ")[2], workout_Date.innerHTML.split(" ")[0].toLowerCase(), workout_Date.innerHTML.split(" ")[1]);
+})
 
+const delete_Workout = async () => {
+    var workout_ID = event.target.parentElement.getAttribute("data-id");
+    await db.collection('workout').doc(workout_ID).delete();
 
+    clear_Workout(carouselSlide);
+    workout_DBQuery(workout_Date.innerHTML.split(" ")[2], workout_Date.innerHTML.split(" ")[0].toLowerCase(), workout_Date.innerHTML.split(" ")[1]);
+}
+
+// delete data from carousel to db
+
+carouselSlide.addEventListener("click", async (event) => {
+    if(event.target.classList.contains("workout__delete")){
+        delete_Workout();
+    };
 })

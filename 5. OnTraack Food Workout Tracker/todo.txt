@@ -54,10 +54,10 @@ In total: 6 Dynamic HTML elements
 After Project is stable and running think about adding a Monthly simple review data on how much you worked out (make with canvas)
 
 - 14.04.2020 Tasks:
-    -> add input field to add data
-    -> add button to delete specific data
+    -> add input functionality add data for food, delete data button + functionality
     -> add feature to add your name through data
-    -> add daily what is your main focus to add or querie daily data 
+    -> add daily what is your main focus to add or querie daily data like in Momentum
+    -> change color layout 
     -> make responsive
 
 
