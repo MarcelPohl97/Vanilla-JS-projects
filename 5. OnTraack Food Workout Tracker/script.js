@@ -72,6 +72,8 @@ const workout_FormInput = document.querySelector(".workout__form");
 const food_Dropdown = document.getElementById("food__dropdown");
 const food_Form = document.getElementById("food__form");
 const food_addData = document.getElementById("food__add-data");
+const food_FormInput = document.querySelector(".food__form");
+const food_Add = document.getElementById("food__add");
 
 
 
@@ -213,7 +215,8 @@ const create_Workout = (data) => {
 };
 
 const create_Meal = (data, dish_time) => {
-    let food_DishItems = document.querySelector(`.food__${dish_time}`)
+    let food_DishItems = document.querySelector(`.food__${dish_time}`);
+    food_DishItems.setAttribute('data-id', data.id)
     food_DishItems.innerHTML += `
     <li class="food__item">${data.data().main_dish}</li>
     <li class="food__item">${data.data().side_dish}</li>
@@ -276,12 +279,17 @@ track_Close.addEventListener("click", () => {
     });
 });
 
+let selected_FoodTime = "";
+let selected_FoodID = "";
+
 food_Categorie.forEach(item => {
     item.addEventListener("click", (event) => {
         food_Items.forEach(item => {
             item.classList.remove("food__items--visible");
         })
         document.getElementsByClassName(`food__${event.target.innerHTML.toLowerCase()}`)[0].classList.toggle("food__items--visible");
+        selected_FoodTime = event.target.innerHTML.toLowerCase();
+        selected_FoodID = getElementsByClassName(`food__${event.target.innerHTML.toLowerCase()}`)[0].getAttribute('data-id');
     })
 })
 
@@ -393,7 +401,7 @@ workout_Add.addEventListener("click", () => {
 })
 
 const delete_Workout = async () => {
-    var workout_ID = event.target.parentElement.getAttribute("data-id");
+    let workout_ID = event.target.parentElement.getAttribute("data-id");
     await db.collection('workout').doc(workout_ID).delete();
 
     clear_Workout(carouselSlide);
@@ -407,3 +415,26 @@ carouselSlide.addEventListener("click", async (event) => {
         delete_Workout();
     };
 })
+
+const add_Food = async () => {
+    await db.collection('food').add({
+        month: food_Date.innerHTML.split(" ")[0].toLowerCase(),
+        day: food_Date.innerHTML.split(" ")[1],
+        year: food_Date.innerHTML.split(" ")[2],
+        dish_time: selected_FoodTime,
+        main_dish: food_FormInput.main_dish.value,
+        side_dish: food_FormInput.side_dish.value,
+        extra_dish: food_FormInput.extra_dish.value
+    });
+}
+
+const check_ExistingFood = async () => {
+    const food_ID = document.getElementsByClassName(`food__${event.target.innerHTML.toLowerCase()}`)[0];
+    await db.collection('food').doc(food_ID).get();
+    
+}
+    
+
+food_Add.addEventListener("click", () => {
+    add_Food();
+});

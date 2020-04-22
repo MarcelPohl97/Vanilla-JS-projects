@@ -49,10 +49,6 @@ In total: 6 Dynamic HTML elements
                                         -> set
                                         -> set
 
-
-
-After Project is stable and running think about adding a Monthly simple review data on how much you worked out (make with canvas)
-
 - 14.04.2020 Tasks:
     -> add input functionality add data for food, delete data button + functionality
     -> add feature to add your name through data
@@ -63,4 +59,7 @@ After Project is stable and running think about adding a Monthly simple review d
 
 - Bugfixes Cleanups:
     -> Fix clicking the specific day gets an object
+    -> add cursor pointer on some buttons
 
+Add food -> check for day month year and same id if it exists delete it and add new after that delete everything from dom and requery so it reappears
+Delete food -> check for id delete it dont forget async await and delete dom and requery
