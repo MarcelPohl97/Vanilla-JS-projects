@@ -1,57 +1,8 @@
-Workout Tracks Design Inspiration: https://cdn.dribbble.com/users/108163/screenshots/2497702/02-02-2016.png
-Food Track Design: Inspiration: https://cdn.dribbble.com/users/108163/screenshots/2534146/15-02-2015.png
-Carousel Plugin: https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/;
 
-Appearance Goal/Functionality:
-
-API´s: 
-motivation api : https://type.fit/api/quotes;
-
-
-- Dashboard Page with Calendar (inspiration for building https://medium.com/@nitinpatel_20236/challenge-of-building-a-calendar-with-pure-javascript-a86f1303267d,
- inspiration for design https://cdn.dribbble.com/users/108163/screenshots/2471798/16-01-2015_.jpg), 
- each day is clickable and you can choose between workout or food, it is clickable and to review it(looks like the inspiration designs)
-- 2 different html files for workout and food both is gonna get generated through the data that is in the db and based on that day
-- If there is no data fetchable your gonna get send to an input file where your gonna input your workout or depending on your option your foods
-
-In total: 6 Dynamic HTML elements
-- Landing Page
-- Calendar Page
-- Workout Page
-- Food Page
-- Workout Input Page
-- Food Input Page
-
-- Tools: Html5 Css3 Javascript Firebase
-
-- Database planning/Execution when clicking a specific date in the calendar:
-- database-layer:
-    -> years
-        -> year
-            -> months
-                -> month
-                    -> days
-                        -> day
-                            -> foodtrack
-                                -> breakfast
-                                    -> food
-                                    -> food
-                                -> lunch
-                                    -> food
-                                -> dinner
-                                    -> food
-                                -> snacks/drinks
-                                    -> food
-                            -> workouttrack
-                                -> exercises
-                                    -> exercise
-                                        -> set
-                                        -> set
-                                        -> set
-
-- 14.04.2020 Tasks:
-    -> add input functionality add data for food, delete data button + functionality
-    -> add feature to add your name through data
+- 23.04.2020 Tasks:
+    -> redesign database for account 
+    -> add register / login window
+    -> after you login your name is getting shown on the good morning "example name"
     -> add daily what is your main focus to add or querie daily data like in Momentum
     -> change color layout 
     -> make responsive
@@ -60,6 +11,17 @@ In total: 6 Dynamic HTML elements
 - Bugfixes Cleanups:
     -> Fix clicking the specific day gets an object
     -> add cursor pointer on some buttons
+    -> add different timezones welcoming speeches 
+    -> classlist toggle add classlist after eachother instead of having alot of toggles
 
-Add food -> check for day month year and same id if it exists delete it and add new after that delete everything from dom and requery so it reappears
-Delete food -> check for id delete it dont forget async await and delete dom and requery
+- Clean Up Code and files:
+    -> You can create a javascript function that takes the path as a parameter and creates these HTML lines:
+
+        <script src="js/toolkit/Toolkit.js"></script>
+        <script src="js/toolkit/Viewable.js"></script>
+        <script src="js/toolkit/Overlay.js"></script>
+        And you'll just have to call this:
+
+        loadLib("toolkit/Toolkit");
+        loadLib("toolkit/Viewable");
+        loadLib("toolkit/Overlay");

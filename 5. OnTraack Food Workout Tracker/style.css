@@ -862,6 +862,14 @@ ul {
     display: flex;
 }
 
+.food__delete {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    color: #333;
+    font-size: 1.2rem;
+}
+
 .food__item {
     font-size: 1.5rem;
 }

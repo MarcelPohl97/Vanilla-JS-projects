@@ -62,6 +62,7 @@ const food_Items = document.querySelectorAll(".food__items");
 let food_Container = document.querySelector(".food__container");
 let workout_Date = document.getElementById("workout__date");
 let food_Date = document.getElementById("food__date");
+let workout_Container = document.querySelector(".workout__container");
 
 const workout_Dropdown = document.getElementById("workout__dropdown")
 const workout_Form = document.getElementById("workout__form");
@@ -175,7 +176,7 @@ function daysInMonth(iMonth, iYear) {
 let dish_times = ["breakfast", "lunch", "dinner", "snacks"];
 
 const calendar_Information = () => {
-    var calendar_Info = {
+    let calendar_Info = {
         calendar_Year: calendar_HeaderYear.innerHTML,
         calendar_Month: calendar_HeaderMonth.innerHTML,
         calendar_Day: event.target.textContent,
@@ -218,6 +219,7 @@ const create_Meal = (data, dish_time) => {
     let food_DishItems = document.querySelector(`.food__${dish_time}`);
     food_DishItems.setAttribute('data-id', data.id)
     food_DishItems.innerHTML += `
+    <i class="fas fa-trash-alt food__delete" id="food__delete"></i>
     <li class="food__item">${data.data().main_dish}</li>
     <li class="food__item">${data.data().side_dish}</li>
     <li class="food__item">${data.data().extra_dish}</li>
@@ -289,7 +291,7 @@ food_Categorie.forEach(item => {
         })
         document.getElementsByClassName(`food__${event.target.innerHTML.toLowerCase()}`)[0].classList.toggle("food__items--visible");
         selected_FoodTime = event.target.innerHTML.toLowerCase();
-        selected_FoodID = getElementsByClassName(`food__${event.target.innerHTML.toLowerCase()}`)[0].getAttribute('data-id');
+        selected_FoodID = document.getElementsByClassName(`food__${event.target.innerHTML.toLowerCase()}`)[0].getAttribute('data-id');
     })
 })
 
@@ -370,6 +372,7 @@ const firebaseConfig = {
       carouselSlide.style.transform = 'translateX(' + (-element_Size * element_Counter) + 'px)';
   });
   
+  
 // submit data to db from form
 
 const add_Workout = async () => {
@@ -410,7 +413,7 @@ const delete_Workout = async () => {
 
 // delete data from carousel to db
 
-carouselSlide.addEventListener("click", async (event) => {
+workout_Container.addEventListener("click", async (event) => {
     if(event.target.classList.contains("workout__delete")){
         delete_Workout();
     };
@@ -426,15 +429,38 @@ const add_Food = async () => {
         side_dish: food_FormInput.side_dish.value,
         extra_dish: food_FormInput.extra_dish.value
     });
+    food_FormInput.main_dish.value = "";
+    food_FormInput.side_dish.value = "";
+    food_FormInput.extra_dish.value = "";
 }
 
 const check_ExistingFood = async () => {
-    const food_ID = document.getElementsByClassName(`food__${event.target.innerHTML.toLowerCase()}`)[0];
-    await db.collection('food').doc(food_ID).get();
-    
+    let food_ID = selected_FoodID;
+    const check_FoodID = food_ID == null ? alert("There is currently no food added feel free to add your food!") : db.collection('food').doc(food_ID).delete()
+    await check_FoodID;
 }
     
 
-food_Add.addEventListener("click", () => {
-    add_Food();
+food_Add.addEventListener("click", async() => {
+    await check_ExistingFood();
+    await add_Food();
+    clear_Food(food_Items);
+    dish_times.forEach(dish => {
+        food_DBQuery(food_Date.innerHTML.split(" ")[2], food_Date.innerHTML.split(" ")[0].toLowerCase(), food_Date.innerHTML.split(" ")[1], dish);
+    });
 });
+
+food_Container.addEventListener("click", async (event) => {
+    if(event.target.classList.contains("food__delete")){
+        delete_Food();
+    };
+})
+
+const delete_Food = async () => {
+    food_ID = event.target.parentElement.getAttribute("data-id");
+    await db.collection('food').doc(food_ID).delete();
+    clear_Food(food_Items);
+    dish_times.forEach(dish => {
+        food_DBQuery(food_Date.innerHTML.split(" ")[2], food_Date.innerHTML.split(" ")[0].toLowerCase(), food_Date.innerHTML.split(" ")[1], dish);
+    });
+}
