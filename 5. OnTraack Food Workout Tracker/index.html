@@ -7,11 +7,37 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
     <script src="https://kit.fontawesome.com/720dd1dc59.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>OT - OnTraack</title>
 </head>
 <body>
+    <div class="auth">
+        <div class="auth__container">
+            <i class="far fa-address-card"></i>
+            <form class="auth__register">
+                <h3 class="auth__title">Register</h3>
+                <label for="name" class="auth__label">Name</label>
+                <input type="text" class="auth__input" name="name">
+                <label for="email" class="auth__label">Side Dish</label>
+                <input type="text" class="auth__input" name="email">
+                <label for="password" class="auth__label">Extra Dish</label>
+                <input type="text" class="auth__input" name="password">
+                <a>Already have an Account?</a>
+                <a class="btn auth__btn" id="auth__register-btn">Create Account</a>
+            </form>
+            <form class="auth__login">
+                <h3 class="auth__title">Register</h3>
+                <label for="email" class="auth__label">Email</label>
+                <input type="text" class="auth__input" name="email">
+                <label for="password" class="auth__label">Password</label>
+                <input type="text" class="auth__input" name="password">
+                <a>Register</a>
+                <a class="btn auth__btn" id="auth__login-btn">Create Account</a>
+            </form>
+        </div>
+    </div>
     <div class="landing">
         <div class="landing__header">
             <i class="fas fa-running landing__brand"></i>

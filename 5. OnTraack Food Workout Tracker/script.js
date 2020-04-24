@@ -43,7 +43,7 @@ let calendar = document.getElementById("calendar");
 let calendarContainer = document.getElementById("calendar__container");
 let calendar_Container = document.querySelectorAll(".calendar__container");
 
-months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 let calendar_HeaderMonth = document.getElementById("calendar__headerMonth");
 let calendar_HeaderYear = document.getElementById("calendar__headerYear");
@@ -464,3 +464,5 @@ const delete_Food = async () => {
         food_DBQuery(food_Date.innerHTML.split(" ")[2], food_Date.innerHTML.split(" ")[0].toLowerCase(), food_Date.innerHTML.split(" ")[1], dish);
     });
 }
+
+//firebase.auth().createUserWithEmailAndPassword("Marcel.Pohl12345@gmx.de", "Hallo12345");
