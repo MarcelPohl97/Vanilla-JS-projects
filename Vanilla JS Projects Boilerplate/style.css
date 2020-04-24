@@ -1,0 +1,28 @@
+/* Init Reset */
+
+* {
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+body {
+    font-size: 62.5%;
+    line-height: 1.7;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Variables */
+:root {
+    --white-color:#fff;
+}

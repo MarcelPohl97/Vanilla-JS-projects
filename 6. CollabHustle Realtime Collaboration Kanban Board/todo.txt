@@ -1,0 +1,10 @@
+Full functionality complete APP:
+-> After starting you need to choose a name, you see a list of "rooms" you can join them they can be password protected or not
+-> Once you are in you can see Kanban Boards which get updated in realtime when someone is working on them for example adding new tasks
+-> they are draggable the boards itself and the task can be switched over to other boards and in the boards itself switched between the tasks 
+-> you can switch the title of the board and when you add a task you can set a title and its possible to edit it and switch title or label color 
+
+
+
+-> Design Inspiration: https://pixinvent.com/materialize-material-design-admin-template/html/ltr/vertical-gradient-menu-template/app-kanban.html?
+-> Drag and Drop for Mobile: http://touchpunch.furf.com/
