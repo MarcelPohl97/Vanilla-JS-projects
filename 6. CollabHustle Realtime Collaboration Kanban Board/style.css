@@ -43,6 +43,7 @@ ul {
     background: var(--white-color-dark-1);
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .kanban__board {
@@ -63,7 +64,7 @@ ul {
 .kanban__title {
     width: 100%;
     height: auto;
-    padding: 1rem;
+    padding: 1rem 1.2rem;
     background: #2196F3;
 }
 
@@ -74,27 +75,32 @@ ul {
 .kanban__name {
     width: 70%;
     color: var(--white-color);
-    font-size: 1rem;
+    font-size: 1.2rem;
     border-radius: 5px;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.kanban__main {
+.container {
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 0 1.2rem;
-    margin: 1rem 0;
 }
 
-.kanban__item {
+.draggable {
     margin-bottom: 0.2rem;
     width: 100%;
     background: var(--white-color);
     color: var(--black-color);
-    padding: 0.2rem;
+    padding: 0.7rem 1rem;
     border-radius: 3px;
     border-top: 3px solid #4CAF50;
     font-size: 1rem;
+    cursor:move;
+    margin: 1rem 0;
+}
+
+.draggable.dragging {
+    opacity: .5;
 }
 
