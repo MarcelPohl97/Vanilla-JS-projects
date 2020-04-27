@@ -1,0 +1,107 @@
+/* Init Reset */
+
+* {
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+body {
+    font-size: 62.5%;
+    line-height: 1.7;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Variables */
+:root {
+    --white-color:#fff;
+}
+
+.header {
+    background-color: #0067A3;
+    color: #fff;
+    min-height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__left {
+    padding: 0.3rem;
+}
+
+.header__middle {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0.3rem;
+}
+
+.header__brand {
+    height: 30px;
+    margin-right: 0.2rem
+}
+
+.header__title {
+    font-size: 1.2rem;
+}
+
+.header__list {
+    display: flex;
+    padding: 0.3rem;
+}
+
+.header__options:not(:last-child){
+    margin-right: 0.5rem;
+}
+
+.header__options--styling {
+    transition: all .2s;
+    background: rgba(255,255,255, .3);
+    border-radius: 3px;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.header__options--styling:hover {
+    background: rgba(255,255,255, .2);
+}
+
+.header__options:hover {
+    background: #333;
+    color: #fff;
+}
+
+.container {
+    height:95vh;
+    background-color: #0079BF;
+    position: relative;
+    overflow: hidden;
+}
+
+.card {
+    width: 250px;
+    height: auto;
+    background: #fff;
+    border-radius: 3px;
+    color: #333;
+    font-size: 1rem;
+    padding: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+    0 2px 4px rgba(0,0,0,0.07), 
+    0 4px 8px rgba(0,0,0,0.07), 
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07), 
+    0 32px 64px rgba(0,0,0,0.07);
+    position: absolute;
+    
+}

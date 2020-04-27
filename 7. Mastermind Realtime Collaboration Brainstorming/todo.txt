@@ -1,0 +1,9 @@
+App Vision: 
+-> You can Register/Login search for your room or create a room and join it with your displayed name
+-> You can create a brainstorm card type text in and drag it around
+-> theres a button to make the brainstorm cards float around and stop them floating
+-> theres a button to collect all brainstorm cards in a fancy animation and align them all together
+
+
+
+-> fix bug when element gets bigger and you have to calculate the bounce back animation

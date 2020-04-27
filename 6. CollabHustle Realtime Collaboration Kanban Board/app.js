@@ -14,8 +14,20 @@ kanban_Container.addEventListener('dragend', event => {
   }
 })
 
+kanban_Container.addEventListener('dragover', event => {
+  event.preventDefault();
+  if(event.target.classList.contains('.container')){
+    const afterElement = getDragAfterElement(event, event.clientY)
+    const draggable = document.querySelector('.dragging')
+    if (afterElement == null) {
+      container.appendChild(draggable)
+    } else {
+      container.insertBefore(draggable, afterElement)
+    }
+  }
+})
 
-kanban_Board.forEach(container => {
+/*kanban_Board.forEach(container => {
   container.addEventListener('dragover', e => {
     e.preventDefault()
     const afterElement = getDragAfterElement(container, e.clientY)
@@ -26,7 +38,7 @@ kanban_Board.forEach(container => {
       container.insertBefore(draggable, afterElement)
     }
   })
-})
+})*/
 
 function getDragAfterElement(container, y) {
   const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
@@ -66,3 +78,4 @@ class KanbanBoard {
 }
 
 const test = new KanbanBoard("test");
+
