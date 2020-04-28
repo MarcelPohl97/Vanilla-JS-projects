@@ -6,4 +6,6 @@ App Vision:
 
 
 
+
 -> fix bug when element gets bigger and you have to calculate the bounce back animation
+-> fix on mobile view screen and drag and drop maybe add preventdefault for a quick fix
