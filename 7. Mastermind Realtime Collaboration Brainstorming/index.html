@@ -4,14 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
     <script src="https://kit.fontawesome.com/720dd1dc59.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Mastermind - Realtime Collaboration Brainstorming</title>
 </head>
 <body>
-    <div class="header">
+    <div class="authentication" id="authentication">
+        <div class="authentication__header">
+            <img src="img/brain.svg" alt="" class="authentication__brand">
+            <h1 class="authentication__title">Mastermind</h1>
+        </div>
+        <div class="authentication__form">
+            <form class="authentication__auth" id="authentication__register">
+                <h2 class="authentication__authtitle">Register for Mastermind</h2>
+                <input type="email" class="input header__input authentication__input" placeholder="Enter E-Mail-Adress" required>
+                <input type="text" class="input header__input authentication__input" placeholder="Enter your Name" required>
+                <input type="password" class="input header__input authentication__input" placeholder="Enter Password" required>
+                <a class="authentication__button authentication__registerUser">Register</a>
+                <a class="authentication__info authentication__login--switch">Already have an Account?</a>
+            </form>
+            <form class="authentication__auth authentication__auth--switch" id="authentication__login">
+                <h2 class="authentication__authtitle">Login for Mastermind</h2>
+                <input type="email" class="input header__input authentication__input" placeholder="Enter E-Mail-Adress" required>
+                <input type="password" class="input header__input authentication__input" placeholder="Enter Password" required>
+                <a class="authentication__button authentication__loginUser">Login</a>
+                <a class="authentication__info authentication__register--switch">Register to get an Account</a>
+            </form>
+        </div>
+        <img src="img/undraw_add_tasks_mxew.svg" alt="" class="authentication__illustration authentication__illustration--1">
+        <img src="img/undraw_online_collaboration_7pfp.svg" alt="" class="authentication__illustration authentication__illustration--2">
+    </div>
+    <div class="header" id="header">
         <div class="header__left header__flex--positioning">
-            <i class="fas fa-bars header__options--styling"></i>
+            <i class="fas fa-bars header__options--styling header__menu"></i>
+            <i class="fab fa-chromecast header__options--styling header__rooms"></i>
+        </div>
+        <div class="header__popup" id="header__popup">
+            <input type="text" class="header__input input header__options--styling" placeholder="Search for boards...">
+            <i class="fab fa-chromecast header__roomtitle"> Your active boards</i>
+            <ul class="header__roomlist">
+                <li class="header__room">
+                    Test Room1
+                </li>
+                <li class="header__room">
+                    Test Room1
+                </li>
+                <li class="header__room">
+                    Test Room1
+                </li>
+            </ul>
+
+            <ul class="header__popOptions">
+                <li class="header__popOption">Create new Board...</li>
+            </ul>
         </div>
         <div class="header__middle header__flex--positioning">
             <img src="img/brain.svg" alt="" class="header__brand">
@@ -19,9 +68,10 @@
         </div>
         <div class="header__right header__flex--positioning">
             <ul class="header__list">
-                <input type="text" class="header__input header__options--styling" id="header__input">
-                <i class="fas fa-plus header__add-card header__options--styling" id="header__add-card"></i>
-                <i class="fas fa-brain header__options--styling"> Storm</i>
+                <input type="text" class="header__input header__input--cards header__options--styling" id="header__input">
+                <i class="fas fa-plus header__add-card header__options--styling"></i>
+                <i class="fas fa-brain header__options--styling header__brainstorm"></i>
+                <i class="far fa-question-circle header__options--styling"></i>
             </ul>
         </div>
     </div>
