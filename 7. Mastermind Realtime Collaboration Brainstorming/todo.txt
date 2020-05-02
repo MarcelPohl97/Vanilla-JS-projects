@@ -1,7 +1,9 @@
 App Vision: 
 
--> Register Login functionality
 -> frontend for room search/create
+-> after you login window closes and room search shows up, same with register you register and automatically login
+-> find a way to get UID to add to user database to get name and stuff
+-> database design for rooms incöuding cards
 -> room create/ search funcionality with password protection
 -> Join room functionality and loading data (cards)
 -> when adding a cart people can see who created it
