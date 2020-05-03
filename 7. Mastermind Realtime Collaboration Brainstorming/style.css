@@ -218,7 +218,7 @@ ul {
 
 /* Room Search */
 
-.rooms {
+.boards {
     height: 100vh;
     width: 100%;
     position: absolute;
@@ -226,8 +226,42 @@ ul {
     left:0;
     background:var(--light-grey-color-2);
     z-index:2;
+    padding: 5rem 35rem;
 }
 
+.boards__search {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.boards__container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.boards__room {
+    background: #0079BF;
+    border-radius: 3px;
+    padding: .5rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    height: auto;
+}
+
+.boards__room:hover {
+    background: #0067A3;
+}
+
+.boards__new-room {
+    background: var(--light-grey-color);
+    color: var(--dark-grey-color);
+}
+
+.boards__new-room:hover {
+    background: var(--grey-color);
+}
 
 
 /*Header*/
