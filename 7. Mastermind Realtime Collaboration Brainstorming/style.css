@@ -71,8 +71,6 @@ ul {
     padding: .5rem;
     background: var(--white-color);
     position: absolute;
-    top: 53px;
-    left: 3px;
     z-index:1;
     box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
     0 2px 4px rgba(0,0,0,0.07), 
@@ -99,6 +97,16 @@ ul {
     background: var(--light-grey-color);
 }
 
+.close__window {
+    position: absolute; 
+    top:1rem;
+    right: .5rem;
+    transform: translate(-50%, -50%);
+    color: var(--white-color);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
 /* Authentication */
 
 .authentication {
@@ -108,7 +116,8 @@ ul {
     top:0;
     left:0;
     background:var(--light-grey-color-2);
-    z-index:1;
+    z-index:5;
+    display: none;
 }
 
 .authentication__header {
@@ -225,7 +234,7 @@ ul {
     top:0;
     left:0;
     background:var(--light-grey-color-2);
-    z-index:2;
+    z-index:3;
     padding: 5rem 35rem;
 }
 
@@ -254,15 +263,116 @@ ul {
     background: #0067A3;
 }
 
-.boards__new-room {
+.boards__newroom {
     background: var(--light-grey-color);
     color: var(--dark-grey-color);
 }
 
-.boards__new-room:hover {
+.boards__newroom:hover {
     background: var(--grey-color);
 }
 
+/*create */
+
+.create {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    background:rgba(0,0,0, .7);
+    z-index:9999;
+    display: none;
+}
+
+.create__container {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0067A3;
+    width: 300px;
+    border-radius: 3px;
+    padding: .6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.create__name {
+    width: 90%;
+}
+
+.create__name:focus {
+    border: 2px solid var(--white-color);
+}
+
+.create__privacy {
+    color: var(--white-color);
+    margin: .5rem 0;
+    display:inline-flex;
+    font-size: .8rem;
+    align-items: center;
+    border-radius: 3px;
+    padding: .2rem .5rem;
+}
+
+.create__privacy:hover {
+    background: rgba(0,0,0, .3);
+}
+
+.create__private {
+    margin:0 .5rem;
+}
+
+.create__board {
+    padding: .3rem 2rem;
+    background: transparent;
+    font-size: .8rem;
+    border-radius: 3px;
+    border: 2px solid var(--white-color);
+    color: var(--white-color);
+}
+
+.create__board:hover {
+    background: var(--white-color);
+    color: #0079BF;
+}
+
+.create__popup {
+    background: var(--white-color);
+    border-radius: 3px;
+    padding: .5rem 0;
+    position: absolute;
+    top: 89px;
+    left: 12px;
+    width: 100%;
+    display:none;
+}
+
+.create__privacyoption {
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    color: var(--dark-grey-color)
+}
+
+.create__privacyoption:hover {
+    background: var(--light-grey-color);
+}
+
+
+.create__option {
+    margin: 0 .3rem;
+}
+
+.create__privaticon {
+    color: #EF8F83;
+} 
+
+.create__publicicon {
+    color: #61BD4F;
+} 
 
 /*Header*/
 
@@ -273,6 +383,7 @@ ul {
     display: flex;
     align-items: center;
     position: relative;
+    z-index:5;
 }
 
 .header__left {
@@ -296,6 +407,17 @@ ul {
     display: none;
 }
 
+.header__popup--boards {
+    top: 53px;
+    left: 3px;
+}
+
+.header__popup--user {
+    top: 53px;
+    right: 3px;
+    text-align:center;
+}
+
 .header__roomtitle {
     margin:1rem 0.5rem;
     color: var(--dark-grey-color);
@@ -308,11 +430,11 @@ ul {
     width: 100%;
 }
 
-.header__room:not(:last-child){
+.header__cards:not(:last-child){
     margin-bottom: .3rem;
 }
 
-.header__room {
+.header__cards {
     width: 100%;
     background:rgba(198, 225, 241, 0.705);
     color: var(--dark-color);
@@ -325,16 +447,16 @@ ul {
     font-weight: 600;
 }
 
-.header__room:hover {
+.header__cards:hover {
     background: #C6E1F1;
 }
 
-.header__room:hover::before {
+.header__cards:hover::before {
     background:#0079BF;
 }
 
 
-.header__room::before {
+.header__cards::before {
     content: '';
     width: 15%;
     height: 100%;
@@ -360,6 +482,23 @@ ul {
 
 .header__popOption:hover {
     background: var(--light-grey-color);
+    color: var(--dark-color);
+}
+
+.header__user {
+    color: var(--dark-color);
+    font-size: 1rem;
+}
+
+.header__userimg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 1rem;
+}
+
+.header__userinfo {
+    font-size: 1rem;
     color: var(--dark-color);
 }
 
@@ -409,6 +548,7 @@ ul {
     background-color: #0079BF;
     position: relative;
     overflow-x: hidden;
+    z-index: 1;
 }
 
 .container--sorted {

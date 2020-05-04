@@ -1,8 +1,5 @@
 App Vision: 
-
--> frontend for room search/create
--> after you login window closes and room search shows up, same with register you register and automatically login
--> find a way to get UID to add to user database to get name and stuff
+-> logout functionality in header and room 
 -> database design for rooms incöuding cards
 -> room create/ search funcionality with password protection
 -> Join room functionality and loading data (cards)
@@ -12,7 +9,7 @@ App Vision:
 
 -> add a fancy animation when aligning them
 
-
+-> room search functionality searches rooms that match up in alphabetical order for example: -> type in r every room that starts with r is first and so on
 
 
 -> fix bug when element gets bigger and you have to calculate the bounce back animation

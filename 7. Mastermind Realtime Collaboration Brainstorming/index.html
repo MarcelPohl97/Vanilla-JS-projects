@@ -13,7 +13,7 @@
     <title>Mastermind - Realtime Collaboration Brainstorming</title>
 </head>
 <body>
-    <div class="authentication" id="authentication">
+    <div class="authentication toggle--Visibility" id="authentication">
         <div class="authentication__header">
             <img src="img/brain.svg" alt="" class="authentication__brand">
             <h1 class="authentication__title">Mastermind</h1>
@@ -47,7 +47,33 @@
             <div class="boards__room">Hustling</div>
             <div class="boards__room">Marketing</div>
             <div class="boards__room">Test</div>
-            <div class="boards__room boards__new-room">Create new board</div>
+            <div class="boards__room">Test</div>
+            <div class="boards__room">Test</div>
+            <div class="boards__room boards__newroom" id="boards__newroom">Create new board</div>
+        </div>
+    </div>
+    <div class="create" id="create">
+        <div class="create__container">
+            <i class="fas fa-times close__window" id="close__createboard"></i>
+            <input type="text" class="create__name input header__input" placeholder="Board name..." required>
+            <div class="create__privacy" id="create__privacy">
+                <i class="fas fa-lock create__icon"></i>
+                <p class="create__private">Private</p>
+                <i class="fas fa-chevron-down create__option"></i>
+                <div class="create__popup" id="create__popup">
+                    <div class="create__privacyoption">
+                        <i class="fas fa-lock create__privaticon"></i>
+                        <p class="create__option">Private</p>
+                        <p class="create__popupinfo">Password protected</p>
+                    </div>
+                    <div class="create__privacyoption">
+                        <i class="fas fa-globe-europe create__publicicon"></i>
+                        <p class="create__option">Public</p>
+                        <p class="create__popupinfo">Everybody is allowed to join</p>
+                    </div>
+                </div>
+            </div>
+            <a class="create__board">Create new board</a>
         </div>
     </div>
     <div class="header" id="header">
@@ -55,24 +81,34 @@
             <i class="fas fa-bars header__options--styling header__menu"></i>
             <i class="fab fa-chromecast header__options--styling header__rooms"></i>
         </div>
-        <div class="header__popup" id="header__popup">
+        <div class="header__popup header__popup--boards" id="header__popup--boards">
             <input type="text" class="header__input input header__options--styling" placeholder="Search for boards...">
             <i class="fab fa-chromecast header__roomtitle"> Your active boards</i>
             <ul class="header__roomlist">
-                <li class="header__room">
-                    Test Room1
+                <li class="header__cards">
+                    Test cards1
                 </li>
-                <li class="header__room">
-                    Test Room1
+                <li class="header__cards">
+                    Test cards1
                 </li>
-                <li class="header__room">
+                <li class="header__cards">
                     Test Room1
                 </li>
             </ul>
 
             <ul class="header__popOptions">
-                <li class="header__popOption">Create new Board...</li>
+                <li class="header__popOption" id="header__newboard">Create new Board...</li>
             </ul>
+        </div>
+        <div class="header__popup header__popup--user" id="header__popup--user">
+            <h3 class="header__user">
+                Welcome <span id="header__username"> Jochen</span>
+            </h3>
+            <img src="/img/testimonial.png" class="header__userimg">
+            <p class="header__roomtitle">You currently have</p>
+            <p class="header__cards"><span class="boards__count"> 13 </span> active boards</p>
+            <p class="header__cards"><span class="boards__count"> 16 </span> succesfull brainstorms</p>
+            <p class="header__cards"><span class="boards__count"> 54 </span> brainstorm cards</p>
         </div>
         <div class="header__middle header__flex--positioning">
             <img src="img/brain.svg" alt="" class="header__brand">
@@ -83,7 +119,7 @@
                 <input type="text" class="header__input header__input--cards header__options--styling" id="header__input">
                 <i class="fas fa-plus header__add-card header__options--styling"></i>
                 <i class="fas fa-brain header__options--styling header__brainstorm"></i>
-                <i class="far fa-question-circle header__options--styling"></i>
+                <i class="far fa-question-circle header__options--styling header__optionsuser"></i>
             </ul>
         </div>
     </div>

@@ -11,8 +11,16 @@ let firstX;
 let firstY;
 
 const card_Input = document.getElementById('header__input');
-const header_Popup = document.getElementById('header__popup');
+const header_PopupBoards = document.getElementById('header__popup--boards');
+const header_PopupUser = document.getElementById('header__popup--user');
 const authentication = document.getElementById('authentication');
+const create_PrivacySettings = document.getElementById('create__privacy');
+const create_PopUp = document.getElementById('create__popup');
+const close_CreateBoard = document.getElementById('close__createboard');
+const create_Window = document.getElementById('create');
+const board_NewRoom = document.getElementById('boards__newroom')
+const header_NewBoard = document.getElementById('header__newboard')
+const header_UserName = document.getElementById('header__username');
 
 //Card Class
 class Card {
@@ -153,7 +161,7 @@ header.addEventListener('click', event => {
             alert('Open Menu');
             break;
         case condition.contains('header__rooms'):
-            header_Popup.classList.toggle('toggle--Visibility');
+            header_PopupBoards.classList.toggle('toggle--Visibility');
             break;
         case condition.contains('header__brainstorm'):
             const brain_Start = (brain_Storm == false) ? brain_Storm = true : brain_Storm = false;
@@ -161,6 +169,9 @@ header.addEventListener('click', event => {
         case condition.contains('header__add-card'):
             cards.push(new Card(card_Input.value));
             card_Input.value = "";
+            break;
+        case condition.contains('header__optionsuser'):
+            header_PopupUser.classList.toggle('toggle--Visibility');
             break;
     }
 })
@@ -185,14 +196,33 @@ authentication.addEventListener('click', event => {
             form_Switch();
             break;
         case condition.contains('authentication__loginUser'):
-            login();
+            login(auth_Input[3].value, auth_Input[4].value);
             break;
         case condition.contains('authentication__registerUser'):
-            register();
+            register(auth_Input[0].value, auth_Input[1].value, auth_Input[2].value);
             break;
     }
 })
 
+create_PrivacySettings.addEventListener('click', () => {
+   create_PopUp.classList.toggle('toggle--Visibility');
+})
+
+header_NewBoard.addEventListener('click', () => {
+    create_Window.classList.toggle('toggle--Visibility');
+})
+
+board_NewRoom.addEventListener('click', () => {
+    create_Window.classList.toggle('toggle--Visibility');
+})
+
+close_CreateBoard.addEventListener('click', () => {
+    create_Window.classList.toggle('toggle--Visibility');
+})
+
+const update_Username = (name) => {
+    header_UserName.innerHTML = name
+}
 
 //Firebase Init
 
@@ -208,22 +238,36 @@ let firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
 
 //Firebause Auth
 const auth_Input = document.getElementsByClassName('authentication__input')
 
-const login = () => {
-    firebase.auth().signInWithEmailAndPassword(auth_Input[3].value, auth_Input[4].value).then(() => {
-        alert("Successfully Logged in")
+const login = (email, password) => {
+    firebase.auth().signInWithEmailAndPassword(email, password).then((cred) => {
+        alert("Successfully Logged in");
+        authentication.classList.toggle('toggle--Visibility');
+        alert(cred.user.uid);
+        let document = db.collection("user").doc(cred.user.uid);
+        document.get().then((doc) => {
+            update_Username(doc.data()["name"]);  
+        })
     }).catch((error) => {
         alert(error);
     })
 }
 
-const register = () => {
-    firebase.auth().createUserWithEmailAndPassword(auth_Input[0].value, auth_Input[2].value).then(() => {
+const register = (email, name, password) => {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then((cred) => {
         alert("You successfully registered and your automatically logged in! feel free to create or join a board to start Brainstorming")
+        db.collection("user").doc(cred.user.uid).set({
+            name: name,
+            email: email,
+            password: password
+        })
+        login(email, password);
+
     }).catch((error) => {
         alert(error);
     })
