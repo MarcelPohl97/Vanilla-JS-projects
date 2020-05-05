@@ -38,18 +38,18 @@
         <img src="img/undraw_add_tasks_mxew.svg" alt="" class="authentication__illustration authentication__illustration--1">
         <img src="img/undraw_online_collaboration_7pfp.svg" alt="" class="authentication__illustration authentication__illustration--2">
     </div>
-    <div class="boards">
+    <div class="boards" id="boards">
         <div class="boards__search">
             <i class="fab fa-chromecast header__options--styling header__boards"> Boards</i>
             <input type="text" class="input header__input">
         </div>
-        <div class="boards__container">
+        <div class="boards__container" id="boards__container">
             <div class="boards__room">Hustling</div>
             <div class="boards__room">Marketing</div>
             <div class="boards__room">Test</div>
             <div class="boards__room">Test</div>
             <div class="boards__room">Test</div>
-            <div class="boards__room boards__newroom" id="boards__newroom">Create new board</div>
+            <div class="boards__newroom" id="boards__newroom">Create new board</div>
         </div>
     </div>
     <div class="create" id="create">
@@ -79,12 +79,16 @@
     <div class="header" id="header">
         <div class="header__left header__flex--positioning">
             <i class="fas fa-bars header__options--styling header__menu"></i>
+            <i class="fas fa-home header__options--styling header__home"></i>
             <i class="fab fa-chromecast header__options--styling header__rooms"></i>
+        </div>
+        <div class="header__popup header__popup--options" id="header__popupoptions">
+            <a class="header__popupButton header__logout">Logout</a>
         </div>
         <div class="header__popup header__popup--boards" id="header__popup--boards">
             <input type="text" class="header__input input header__options--styling" placeholder="Search for boards...">
             <i class="fab fa-chromecast header__roomtitle"> Your active boards</i>
-            <ul class="header__roomlist">
+            <ul class="header__roomlist" id="header__boards">
                 <li class="header__cards">
                     Test cards1
                 </li>
@@ -107,7 +111,7 @@
             <img src="/img/testimonial.png" class="header__userimg">
             <p class="header__roomtitle">You currently have</p>
             <p class="header__cards"><span class="boards__count"> 13 </span> active boards</p>
-            <p class="header__cards"><span class="boards__count"> 16 </span> succesfull brainstorms</p>
+            <p class="header__cards"><span class="boards__count"> 16 </span> successful brainstorms</p>
             <p class="header__cards"><span class="boards__count"> 54 </span> brainstorm cards</p>
         </div>
         <div class="header__middle header__flex--positioning">

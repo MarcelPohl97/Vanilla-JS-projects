@@ -21,6 +21,10 @@ const create_Window = document.getElementById('create');
 const board_NewRoom = document.getElementById('boards__newroom')
 const header_NewBoard = document.getElementById('header__newboard')
 const header_UserName = document.getElementById('header__username');
+const header_PopUpOptions = document.getElementById('header__popupoptions');
+const boards = document.getElementById('boards');
+const boards_Container = document.getElementById('boards__container');
+const header_Boards = document.getElementById('header__boards');
 
 //Card Class
 class Card {
@@ -153,12 +157,21 @@ function swipeIt(event) {
 	this.style.top = initY+contact[0].pageY-firstY + 'px';
 };
 
+boards.addEventListener('click', event => {
+    const condition = event.target.classList
+    switch(true) {
+        case condition.contains('boards__room'):
+            boards.classList.toggle('toggle--Visibility');
+            break;
+    }
+})
+
 //Eventlistener for various tasks that include the main page focused on the header
 header.addEventListener('click', event => {
     const condition = event.target.classList
     switch(true) {
         case condition.contains('header__menu'):
-            alert('Open Menu');
+            header_PopUpOptions.classList.toggle('toggle--Visibility');
             break;
         case condition.contains('header__rooms'):
             header_PopupBoards.classList.toggle('toggle--Visibility');
@@ -173,6 +186,13 @@ header.addEventListener('click', event => {
         case condition.contains('header__optionsuser'):
             header_PopupUser.classList.toggle('toggle--Visibility');
             break;
+        case condition.contains('header__logout'):
+            logout();
+            authentication.classList.toggle('toggle--Visibility');
+            break;
+        case condition.contains('header__home'):
+            boards.classList.toggle('toggle--Visibility');
+            break;
     }
 })
 
@@ -186,6 +206,7 @@ const form_Switch = () => {
     login_Form.classList.toggle('authentication__auth--switch');
 }
 
+//Authentication Eventlistener for formswitch and Login/Register
 authentication.addEventListener('click', event => {
     const condition = event.target.classList
     switch(true) {
@@ -220,6 +241,7 @@ close_CreateBoard.addEventListener('click', () => {
     create_Window.classList.toggle('toggle--Visibility');
 })
 
+//Update Username after Login function
 const update_Username = (name) => {
     header_UserName.innerHTML = name
 }
@@ -244,28 +266,42 @@ let firebaseConfig = {
 //Firebause Auth
 const auth_Input = document.getElementsByClassName('authentication__input')
 
-const login = (email, password) => {
-    firebase.auth().signInWithEmailAndPassword(email, password).then((cred) => {
-        alert("Successfully Logged in");
-        authentication.classList.toggle('toggle--Visibility');
-        alert(cred.user.uid);
-        let document = db.collection("user").doc(cred.user.uid);
+//Get UserUID from Firebase
+const get_UserUID = (user) => {
+    let document = db.collection("user").doc(user);
         document.get().then((doc) => {
             update_Username(doc.data()["name"]);  
         })
+}
+
+//Login 
+const login = (email, password) => {
+    firebase.auth().signInWithEmailAndPassword(email, password).then((cred) => {
+        alert("Successfully Logged in");
+        //Delete all existing boards and clear dom and reload/fetch them
+        get_Boards();
+        //Toggle boards view
+        boards.classList.toggle('toggle--Visibility');
+        //Toggle authentication view
+        authentication.classList.toggle('toggle--Visibility');
+        //Update User Infos
+        get_UserUID(cred.user.uid);
     }).catch((error) => {
         alert(error);
     })
 }
 
+//Register
 const register = (email, name, password) => {
     firebase.auth().createUserWithEmailAndPassword(email, password).then((cred) => {
         alert("You successfully registered and your automatically logged in! feel free to create or join a board to start Brainstorming")
+        //Set a document in user collection with the useruid that just got registered
         db.collection("user").doc(cred.user.uid).set({
             name: name,
             email: email,
             password: password
         })
+        //After register automatically login
         login(email, password);
 
     }).catch((error) => {
@@ -273,3 +309,21 @@ const register = (email, name, password) => {
     })
 }
 
+//Logout
+const logout = () => {
+    firebase.auth().signOut().then(() => {
+        alert("Logout successfull see you next time!")
+      }).catch((error) => {
+        alert(error)
+      });
+}
+
+const get_Boards = () => {
+    clear_Data([boards_Container, header_Boards]);
+}
+
+const clear_Data = (data) => {
+    data.forEach(element => {
+        element.innerHTML = "";
+    })
+}

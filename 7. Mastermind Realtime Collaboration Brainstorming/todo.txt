@@ -1,5 +1,4 @@
-App Vision: 
--> logout functionality in header and room 
+App Vision:  
 -> database design for rooms incöuding cards
 -> room create/ search funcionality with password protection
 -> Join room functionality and loading data (cards)
