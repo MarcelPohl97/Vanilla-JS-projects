@@ -1,7 +1,5 @@
 App Vision:  
--> database design for rooms incöuding cards
 -> room create/ search funcionality with password protection
--> Join room functionality and loading data (cards)
 -> when adding a cart people can see who created it
 -> brain storming is also based on the value in the database so everybody can see the cards floating around at the same time
 
@@ -13,5 +11,14 @@ App Vision:
 
 -> fix bug when element gets bigger and you have to calculate the bounce back animation
 -> fix on mobile view screen and drag and drop maybe add preventdefault for a quick fix
+-> fix for board view when switching between boards and relogging
+-> fix for privacy settings not whole elemement clickable only free space
+-> fix removing board view on user info when clicking the achievements
 
 -> add drag realtime update
+
+board: UHjfA17SEtnGzdcRUNs4
+creator:
+text:
+xcoord:
+ycoord:

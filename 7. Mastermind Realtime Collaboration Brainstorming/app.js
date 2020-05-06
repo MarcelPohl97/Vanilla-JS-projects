@@ -1,5 +1,6 @@
 const header = document.getElementById('header');
 const container = document.querySelector('.container');
+const container_Card = document.getElementById('container');
 let container_Width = document.getElementById("container").offsetWidth;
 let container_Height = document.getElementById("container").offsetHeight;
 let brain_Storm = false;
@@ -14,25 +15,26 @@ const card_Input = document.getElementById('header__input');
 const header_PopupBoards = document.getElementById('header__popup--boards');
 const header_PopupUser = document.getElementById('header__popup--user');
 const authentication = document.getElementById('authentication');
-const create_PrivacySettings = document.getElementById('create__privacy');
 const create_PopUp = document.getElementById('create__popup');
-const close_CreateBoard = document.getElementById('close__createboard');
 const create_Window = document.getElementById('create');
-const board_NewRoom = document.getElementById('boards__newroom')
-const header_NewBoard = document.getElementById('header__newboard')
 const header_UserName = document.getElementById('header__username');
 const header_PopUpOptions = document.getElementById('header__popupoptions');
 const boards = document.getElementById('boards');
 const boards_Container = document.getElementById('boards__container');
 const header_Boards = document.getElementById('header__boards');
 
+let container_BoardID;
+
 //Card Class
 class Card {
-    constructor(text) {
-        this.x = 10;
-        this.y = 1;
+    constructor(text, x, y, creator, cardid) {
         this.text = text;
+        this.x = x;
+        this.y = y;
+        this.creator = creator
+        this.cardid = cardid
         this.element = document.createElement('div');
+        this.element.setAttribute('data-id' , this.cardid);
         this.element.style.top = this.y + "px";
         this.element.style.left = this.x + "px";
         this.element.innerHTML = text;
@@ -161,10 +163,28 @@ boards.addEventListener('click', event => {
     const condition = event.target.classList
     switch(true) {
         case condition.contains('boards__room'):
-            boards.classList.toggle('toggle--Visibility');
+            container_BoardID = event.target.getAttribute('data-id');
+            clear_Data([container_Card]);
+            get_Cards(event.target.getAttribute('data-id'));
+            boards.classList.remove('toggle--Visibility');
+            break;
+        case condition.contains('boards__newroom'):
+            create_Window.classList.toggle('toggle--Visibility');
             break;
     }
 })
+
+const get_Cards = (board_ID) => {
+    db.collection("card").where('board', '==', `${board_ID}`).get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            load_Cards(doc.data()["text"], doc.data()["xcoord"], doc.data()["ycoord"], doc.data()["creator"], doc.id)
+        });
+    });
+}
+
+const load_Cards = (text, x, y, creator, cardid) => {
+    cards.push(new Card(text, x, y, creator, cardid));
+}
 
 //Eventlistener for various tasks that include the main page focused on the header
 header.addEventListener('click', event => {
@@ -191,7 +211,15 @@ header.addEventListener('click', event => {
             authentication.classList.toggle('toggle--Visibility');
             break;
         case condition.contains('header__home'):
-            boards.classList.toggle('toggle--Visibility');
+            boards.classList.add('toggle--Visibility');
+            break;
+        case condition.contains('header__newboard'):
+            create_Window.classList.toggle('toggle--Visibility');
+            break;
+        case condition.contains('header__cards'):
+            clear_Data([container_Card]);
+            get_Cards(event.target.getAttribute('data-id'));
+            boards.classList.remove('toggle--Visibility');
             break;
     }
 })
@@ -225,21 +253,18 @@ authentication.addEventListener('click', event => {
     }
 })
 
-create_PrivacySettings.addEventListener('click', () => {
-   create_PopUp.classList.toggle('toggle--Visibility');
+create_Window.addEventListener('click', event => {
+    const condition = event.target.classList
+    switch(true) {
+        case condition.contains('close__window'):
+            create_Window.classList.toggle('toggle--Visibility');
+            break;
+        case condition.contains('create__privacy'):
+            create_PopUp.classList.toggle('toggle--Visibility');
+            break;
+    }
 })
 
-header_NewBoard.addEventListener('click', () => {
-    create_Window.classList.toggle('toggle--Visibility');
-})
-
-board_NewRoom.addEventListener('click', () => {
-    create_Window.classList.toggle('toggle--Visibility');
-})
-
-close_CreateBoard.addEventListener('click', () => {
-    create_Window.classList.toggle('toggle--Visibility');
-})
 
 //Update Username after Login function
 const update_Username = (name) => {
@@ -281,7 +306,7 @@ const login = (email, password) => {
         //Delete all existing boards and clear dom and reload/fetch them
         get_Boards();
         //Toggle boards view
-        boards.classList.toggle('toggle--Visibility');
+        boards.classList.add('toggle--Visibility');
         //Toggle authentication view
         authentication.classList.toggle('toggle--Visibility');
         //Update User Infos
@@ -320,10 +345,54 @@ const logout = () => {
 
 const get_Boards = () => {
     clear_Data([boards_Container, header_Boards]);
+    load_Boards();
 }
 
+//Clear specific data in the dom 
 const clear_Data = (data) => {
     data.forEach(element => {
         element.innerHTML = "";
     })
 }
+
+//Load boards through firestore
+const load_Boards = () => {
+    //Query boards in firestore and get their id and name
+    db.collection("boards").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            //generate boards with the specific id and name for the boards
+            create_Boards(doc.id, doc.data()["name"], "boards__room", boards_Container);
+            create_Boards(doc.id, doc.data()["name"], "header__cards", header_Boards);
+        });
+        //Create adding board to add new boards
+        let create_Board = document.createElement('div');
+        create_Board.innerHTML = "Create new board";
+        create_Board.className = "boards__newroom";
+        boards_Container.appendChild(create_Board);
+    });
+}
+
+//Create boards with id and name, classname and container since we have a board view main and a nav small view on the boards
+const create_Boards = (id, name, classname, container) => {
+    let board = document.createElement('div');
+    board.innerHTML = name
+    board.setAttribute('data-id' , id);
+    board.className = classname;
+    container.appendChild(board);
+}
+
+/*db.collection("card").onSnapshot(snapshot => {
+    snapshot.forEach(doc => {
+        console.log(doc.data());
+    })
+})*/
+
+db.collection("card").onSnapshot((snapshot) => {
+    snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+            if(change.doc.data()["board"] == container_BoardID){
+                load_Cards(change.doc.data()["text"], change.doc.data()["xcoord"], change.doc.data()["ycoord"], change.doc.data()["creator"], change.doc.id)
+            }
+        }
+    });
+});

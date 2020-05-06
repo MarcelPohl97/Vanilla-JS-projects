@@ -41,6 +41,7 @@ ul {
     border-radius: 3px;
     padding: 0.5rem;
     font-size: 1.1rem;
+    cursor:pointer;
 }
 
 .header__options--styling:hover {
@@ -258,6 +259,7 @@ ul {
     font-size: 1rem;
     color: var(--white-color);
     height: auto;
+    cursor:pointer;
 }
 
 .boards__room:hover {
@@ -469,6 +471,7 @@ ul {
     border-radius: 3px;
     overflow:hidden;
     font-weight: 600;
+    cursor:pointer;
 }
 
 .header__cards:hover {
