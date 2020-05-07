@@ -1,8 +1,9 @@
-App Vision:  
+App Vision:   
 -> room create/ search funcionality with password protection
 -> when adding a cart people can see who created it
 -> brain storming is also based on the value in the database so everybody can see the cards floating around at the same time
-
+-> card delete functionality
+-> card update functionality(x, y and text)
 
 -> add a fancy animation when aligning them
 
@@ -16,9 +17,3 @@ App Vision:
 -> fix removing board view on user info when clicking the achievements
 
 -> add drag realtime update
-
-board: UHjfA17SEtnGzdcRUNs4
-creator:
-text:
-xcoord:
-ycoord:

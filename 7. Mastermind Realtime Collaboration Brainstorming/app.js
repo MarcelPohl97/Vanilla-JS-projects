@@ -24,7 +24,7 @@ const boards_Container = document.getElementById('boards__container');
 const header_Boards = document.getElementById('header__boards');
 
 let container_BoardID;
-
+let container_CardID;
 //Card Class
 class Card {
     constructor(text, x, y, creator, cardid) {
@@ -37,9 +37,15 @@ class Card {
         this.element.setAttribute('data-id' , this.cardid);
         this.element.style.top = this.y + "px";
         this.element.style.left = this.x + "px";
-        this.element.innerHTML = text;
+        this.element.innerHTML = this.text;
         this.element.classList = 'card';
         this.element.contentEditable = 'true';
+
+        this.creator_note = document.createElement('div');
+        this.creator_note.classList = 'card__creator';
+        this.creator_note.innerHTML = `Submitted by ${this.creator}`;
+        this.element.appendChild(this.creator_note);
+
         
         this.xvel = Math.random() * (4 - 2) - 1;
         this.yvel = Math.random() * (4 - 2) - 1;
@@ -117,6 +123,7 @@ container.addEventListener('mousedown', event => {
 	    initY = event.target.offsetTop;
         firstX = event.pageX;
         firstY = event.pageY;
+        container_CardID = event.target.getAttribute('data-id');
         event.target.addEventListener('mousemove', dragIt, false);
     }
 
@@ -130,8 +137,16 @@ container.addEventListener('mousedown', event => {
 
 function dragIt(event) {
 	this.style.left = initX+event.pageX-firstX + 'px';
-	this.style.top = initY+event.pageY-firstY + 'px';
+    this.style.top = initY+event.pageY-firstY + 'px';
+    update_CardPosition(initX+event.pageX-firstX, initY+event.pageY-firstY, event.target.getAttribute('data-id'));
 };
+
+const update_CardPosition = (x, y, cardid) => {
+    db.collection("card").doc(cardid).update({
+        xcoord: x,
+        ycoord: y
+    });
+}
 
 //Eventlistener for Touch drag 
 container.addEventListener('touchstart', event => {
@@ -200,7 +215,7 @@ header.addEventListener('click', event => {
             const brain_Start = (brain_Storm == false) ? brain_Storm = true : brain_Storm = false;
             break;
         case condition.contains('header__add-card'):
-            cards.push(new Card(card_Input.value));
+            add_Card(card_Input.value, "5", "10", header_UserName.innerHTML, container_BoardID);
             card_Input.value = "";
             break;
         case condition.contains('header__optionsuser'):
@@ -217,6 +232,7 @@ header.addEventListener('click', event => {
             create_Window.classList.toggle('toggle--Visibility');
             break;
         case condition.contains('header__cards'):
+            container_BoardID = event.target.getAttribute('data-id');
             clear_Data([container_Card]);
             get_Cards(event.target.getAttribute('data-id'));
             boards.classList.remove('toggle--Visibility');
@@ -381,18 +397,41 @@ const create_Boards = (id, name, classname, container) => {
     container.appendChild(board);
 }
 
-/*db.collection("card").onSnapshot(snapshot => {
-    snapshot.forEach(doc => {
-        console.log(doc.data());
-    })
-})*/
 
+//Realtime Listener for the current Active board your brainstorming to add new cards in realtime
 db.collection("card").onSnapshot((snapshot) => {
     snapshot.docChanges().forEach((change) => {
         if (change.type === "added") {
+            //Only adds cards for your currently active board that has the same ID that you choose from the board or board header
             if(change.doc.data()["board"] == container_BoardID){
                 load_Cards(change.doc.data()["text"], change.doc.data()["xcoord"], change.doc.data()["ycoord"], change.doc.data()["creator"], change.doc.id)
             }
         }
     });
 });
+
+//Realtime Listener for the current Active board your brainstorming to add new cards in realtime
+db.collection("card").onSnapshot((snapshot) => {
+    snapshot.docChanges().forEach((change) => {
+        if (change.type === "modified") {
+            //Only adds cards for your currently active board that has the same ID that you choose from the board or board header
+            if(change.doc.data()["board"] == container_BoardID){
+                load_Cards(change.doc.data()["text"], change.doc.data()["xcoord"], change.doc.data()["ycoord"], change.doc.data()["creator"], change.doc.id)
+            }
+        }
+    });
+});
+
+//Add card to board
+const add_Card = (text, x, y, creator, board) => {
+    db.collection("card").add({
+        board: board,
+        creator: creator,
+        text: text,
+        xcoord: x,
+        ycoord: y
+    })
+    .catch((error) => {
+        alert("Error adding card: ", error);
+    });
+}
