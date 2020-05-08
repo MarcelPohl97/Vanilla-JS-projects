@@ -1,12 +1,12 @@
-App Vision:   
--> room create/ search funcionality with password protection
--> when adding a cart people can see who created it
+App Vision:
+-> update cards when they are brainstorming (try to find a way that they dont update in realtime but after the brainstorm is stopped they all position at a certain place)
 -> brain storming is also based on the value in the database so everybody can see the cards floating around at the same time
+-> card text update
 -> card delete functionality
--> card update functionality(x, y and text)
+-> room create/ search funcionality with password protection
+
 
 -> add a fancy animation when aligning them
-
 -> room search functionality searches rooms that match up in alphabetical order for example: -> type in r every room that starts with r is first and so on
 
 
@@ -16,4 +16,3 @@ App Vision:
 -> fix for privacy settings not whole elemement clickable only free space
 -> fix removing board view on user info when clicking the achievements
 
--> add drag realtime update

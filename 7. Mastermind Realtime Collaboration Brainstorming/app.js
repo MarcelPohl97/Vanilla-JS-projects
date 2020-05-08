@@ -46,7 +46,6 @@ class Card {
         this.creator_note.innerHTML = `Submitted by ${this.creator}`;
         this.element.appendChild(this.creator_note);
 
-        
         this.xvel = Math.random() * (4 - 2) - 1;
         this.yvel = Math.random() * (4 - 2) - 1;
         container.appendChild(this.element);
@@ -58,6 +57,9 @@ class Card {
                 this.y += this.yvel;
                 this.element.style.left = `${Math.floor(this.x)}px`;
                 this.element.style.top = `${Math.floor(this.y)}px`;
+                console.log(this.x)
+                console.log(Math.floor(this.x))
+                //update_CardPosition(Math.floor(this.x), Math.floor(this.y), this.cardid);
             }
         }
         /*Function to control the collisions when hitting left and right xVel is always 1 or -1 
@@ -310,9 +312,9 @@ const auth_Input = document.getElementsByClassName('authentication__input')
 //Get UserUID from Firebase
 const get_UserUID = (user) => {
     let document = db.collection("user").doc(user);
-        document.get().then((doc) => {
-            update_Username(doc.data()["name"]);  
-        })
+    document.get().then((doc) => {
+        update_Username(doc.data()["name"]);  
+    })
 }
 
 //Login 
@@ -414,10 +416,8 @@ db.collection("card").onSnapshot((snapshot) => {
 db.collection("card").onSnapshot((snapshot) => {
     snapshot.docChanges().forEach((change) => {
         if (change.type === "modified") {
-            //Only adds cards for your currently active board that has the same ID that you choose from the board or board header
-            if(change.doc.data()["board"] == container_BoardID){
-                load_Cards(change.doc.data()["text"], change.doc.data()["xcoord"], change.doc.data()["ycoord"], change.doc.data()["creator"], change.doc.id)
-            }
+            //Get new card pos that are beeing modified which means someone is dragging them
+            get_NewCardPos(change);
         }
     });
 });
@@ -434,4 +434,11 @@ const add_Card = (text, x, y, creator, board) => {
     .catch((error) => {
         alert("Error adding card: ", error);
     });
+}
+
+//get new card position and add it to clientside dom
+const get_NewCardPos = (data) => {
+    let selected_Element = document.querySelector(`[data-id="${data.doc.id}"]`);
+    selected_Element.style.left = data.doc.data()["xcoord"] + "px";
+    selected_Element.style.top = data.doc.data()["ycoord"] + "px";
 }
