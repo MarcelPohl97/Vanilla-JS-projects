@@ -3,6 +3,10 @@ const container = document.querySelector('.container');
 const container_Card = document.getElementById('container');
 let container_Width = document.getElementById("container").offsetWidth;
 let container_Height = document.getElementById("container").offsetHeight;
+
+
+let container_FullHeight = window.innerHeight;
+let container_FullWidth = window.innerWidth;
 let brain_Storm = false;
 
 //Variables for Mouse/Touch Input Coordinates
@@ -10,7 +14,6 @@ let initX;
 let initY;
 let firstX; 
 let firstY;
-
 
 const card_Input = document.getElementById('header__input');
 const header_PopupBoards = document.getElementById('header__popup--boards');
@@ -39,8 +42,8 @@ class Card {
         this.cardid = cardid
         this.element = document.createElement('div');
         this.element.setAttribute('data-id' , this.cardid);
-        this.element.style.top = this.y + "px";
-        this.element.style.left = this.x + "px";
+        this.element.style.top = (container_FullHeight * (this.y / 100)) + "px";
+        this.element.style.left = (container_FullWidth * (this.x / 100)) + "px";
         this.element.innerHTML = this.text;
         this.element.classList = 'card card--styling';
         this.element.contentEditable = 'false';
@@ -170,8 +173,8 @@ function dragIt(event) {
 
 const update_CardPosition = (x, y, cardid) => {
     db.collection("card").doc(cardid).update({
-        xcoord: x,
-        ycoord: y
+        xcoord: (x / container_FullWidth) * 100, 
+        ycoord: (y / container_FullHeight) * 100
     });
 }
 
@@ -282,7 +285,7 @@ header.addEventListener('click', event => {
             check_Brainstorm(container_BoardID);
             break;
         case condition.contains('header__add-card'):
-            add_Card(card_Input.value, "5", "10", header_UserName.innerHTML, container_BoardID);
+            add_Card(card_Input.value, 10, 10, header_UserName.innerHTML, container_BoardID);
             card_Input.value = "";
             break;
         case condition.contains('header__optionsuser'):
@@ -563,8 +566,8 @@ const deleteCard = (data) => {
 //set card position clientside dom
 const set_CardPos = (data) => {
     let selected_Element = document.querySelector(`div[data-id="${data.id}"]`);
-    selected_Element.style.left = data.data()["xcoord"] + "px";
-    selected_Element.style.top = data.data()["ycoord"] + "px";
+    selected_Element.style.left = (container_FullWidth * (data.data()["xcoord"] / 100)) + "px"; 
+    selected_Element.style.top = (container_FullHeight * (data.data()["ycoord"] / 100)) + "px";
 }
 
 //set card text clientside dom
@@ -589,3 +592,4 @@ const convert_PercentageToPx = () => {
 const convert_PxToPercentage = () => {
     console.log("just")
 }
+

@@ -1,15 +1,15 @@
 App Vision: 
 
--> fix not draggable bug
+-> add calculations for different width and heights as a function to make code more clean
 -> make input have full width at mobile view
 
 -> deploy app and test in mobile
 -> clean up js code and comment out
 
 High Bugfixes for usability:
--> maybe theres a away to calculate the current position of a card through the actualy width of a screen
 -> fix bug when element gets bigger and you have to calculate the bounce back animation/ when element is saved at 900px and someone reopens in mobile its bugged
 (find a away to replace the elements)
+-> fix crossbrowser compatibility
 
 Medium Bugfixes for better usability:
 -> fix for board view when switching between boards and relogging
@@ -27,13 +27,3 @@ but maybe fixable when animations might come in place and cards start randomly a
 
 Implementation:
 -> try to implement destructuring for data
-
--> Basic Value is the window with example: 1920px;
--> we want to work with percentages to use the app in all screensizes to get the positions through percentages
--> mathematical calculation example: user1: uses a screen of a width 1920px
-                                     user2: uses a screen of a width 800px
-                                     -> both should see all cards to let them both see the cards we need to convert the pixels into percentages so that for user1:
-                                     the card at the coord 1600 is around 80%
-                                     -> and for user2: 600 is around 80%
-                                     -> we need to also calculate the whole 
--> first problem: load the cards percentage wise in
