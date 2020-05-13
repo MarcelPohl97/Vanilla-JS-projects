@@ -11,6 +11,7 @@ let initY;
 let firstX; 
 let firstY;
 
+
 const card_Input = document.getElementById('header__input');
 const header_PopupBoards = document.getElementById('header__popup--boards');
 const header_PopupUser = document.getElementById('header__popup--user');
@@ -22,6 +23,9 @@ const header_PopUpOptions = document.getElementById('header__popupoptions');
 const boards = document.getElementById('boards');
 const boards_Container = document.getElementById('boards__container');
 const header_Boards = document.getElementById('header__boards');
+const delete_Cards = document.getElementById('header__popup--cards');
+const header_PopupCards = document.getElementById('header__popup-cards');
+const create_BoardName = document.getElementById('create__boardname');
 
 let container_BoardID;
 let container_CardID;
@@ -38,8 +42,9 @@ class Card {
         this.element.style.top = this.y + "px";
         this.element.style.left = this.x + "px";
         this.element.innerHTML = this.text;
-        this.element.classList = 'card';
-        this.element.contentEditable = 'true';
+        this.element.classList = 'card card--styling';
+        this.element.contentEditable = 'false';
+        this.element.tabIndex= "0";
 
         this.creator_note = document.createElement('div');
         this.creator_note.classList = 'card__creator';
@@ -57,9 +62,6 @@ class Card {
                 this.y += this.yvel;
                 this.element.style.left = `${Math.floor(this.x)}px`;
                 this.element.style.top = `${Math.floor(this.y)}px`;
-                console.log(this.x)
-                console.log(Math.floor(this.x))
-                //update_CardPosition(Math.floor(this.x), Math.floor(this.y), this.cardid);
             }
         }
         /*Function to control the collisions when hitting left and right xVel is always 1 or -1 
@@ -118,6 +120,29 @@ setInterval(function(){
     animate();
 }, 10);
 
+//Eventlistener to make element Editable
+container.addEventListener('dblclick', event => {
+    if(event.target.classList.contains('card')) {
+        event.target.contentEditable = 'true';
+    }
+})
+
+//Eventlistener to make element uneditable and change text
+container.addEventListener('focusout', event => {
+    if(event.target.classList.contains('card')){
+        event.target.contentEditable = 'false';
+        update_CardText(event.target.innerHTML, event.target.getAttribute('data-id'));
+    }
+});
+
+//Update card text after focus out of card
+const update_CardText = (text, cardid) => {
+    db.collection("card").doc(cardid).update({
+        text: text,
+    });
+}
+
+
 //Eventlistener for Mouse drag 
 container.addEventListener('mousedown', event => {
     if(event.target.classList.contains("card")){
@@ -158,7 +183,7 @@ container.addEventListener('touchstart', event => {
         let touch = event.touches;
         firstX = touch[0].pageX;
         firstY = touch[0].pageY;
-
+        container_CardID = event.target.getAttribute('data-id');
         event.target.addEventListener('touchmove', swipeIt, false);
     }
 
@@ -173,16 +198,25 @@ container.addEventListener('touchstart', event => {
 function swipeIt(event) {
 	let contact = event.touches;
 	this.style.left = initX+contact[0].pageX-firstX + 'px';
-	this.style.top = initY+contact[0].pageY-firstY + 'px';
+    this.style.top = initY+contact[0].pageY-firstY + 'px';
+    update_CardPosition(initX+contact[0].pageX-firstX, initY+contact[0].pageY-firstY, event.target.getAttribute('data-id'));
 };
 
+const check_BrainStormAfterJoin = (board_ID) => {
+    db.collection('boards').doc(board_ID).get().then((data) => {
+        brain_Storm = data.data()["brainstorm"];
+    });
+}
+
+//Eventlistener for board elements
 boards.addEventListener('click', event => {
     const condition = event.target.classList
     switch(true) {
         case condition.contains('boards__room'):
             container_BoardID = event.target.getAttribute('data-id');
-            clear_Data([container_Card]);
+            clear_Data([container_Card, header_PopupCards]);
             get_Cards(event.target.getAttribute('data-id'));
+            check_BrainStormAfterJoin(container_BoardID);
             boards.classList.remove('toggle--Visibility');
             break;
         case condition.contains('boards__newroom'):
@@ -191,6 +225,7 @@ boards.addEventListener('click', event => {
     }
 })
 
+//Get the cards from db and load them in clientside
 const get_Cards = (board_ID) => {
     db.collection("card").where('board', '==', `${board_ID}`).get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -199,8 +234,38 @@ const get_Cards = (board_ID) => {
     });
 }
 
+//Load cards in and add them to clientside container and header delete board
 const load_Cards = (text, x, y, creator, cardid) => {
+    //Push card to container
     cards.push(new Card(text, x, y, creator, cardid));
+    //Add card on delete Header board
+    const card = document.createElement('li');
+    card.innerHTML = text;
+    card.classList = 'card--styling card--popup card--delete'
+    card.setAttribute('data-id' , cardid);
+    header_PopupCards.appendChild(card);
+}
+
+//Check for brainstorm 
+const check_Brainstorm = (id) => {
+    db.collection('boards').doc(id).get().then((data) => {
+        //let brainstorm_Check = (data.data()["brainstorm"] == false) ? update_Brainstorm(true, container_BoardID) : update_Brainstorm(false, container_BoardID),get_CardsPos(board_ID);
+        //When brainstorm button is pressed and it is false
+        if(data.data()["brainstorm"] == false){
+            //Set it to true so brainstorm starts
+            update_Brainstorm(true, container_BoardID)
+        }else {
+            //if its currently active set it to false and set the cards back to original positions
+            update_Brainstorm(false, container_BoardID);
+        }
+    });
+}
+
+//Update the brainstorm value for the specific board someone is currently active
+const update_Brainstorm = (boolean, id) => {
+    db.collection("boards").doc(id).update({
+        brainstorm: boolean,
+    });
 }
 
 //Eventlistener for various tasks that include the main page focused on the header
@@ -214,7 +279,7 @@ header.addEventListener('click', event => {
             header_PopupBoards.classList.toggle('toggle--Visibility');
             break;
         case condition.contains('header__brainstorm'):
-            const brain_Start = (brain_Storm == false) ? brain_Storm = true : brain_Storm = false;
+            check_Brainstorm(container_BoardID);
             break;
         case condition.contains('header__add-card'):
             add_Card(card_Input.value, "5", "10", header_UserName.innerHTML, container_BoardID);
@@ -235,10 +300,16 @@ header.addEventListener('click', event => {
             break;
         case condition.contains('header__cards'):
             container_BoardID = event.target.getAttribute('data-id');
-            clear_Data([container_Card]);
+            clear_Data([container_Card, header_PopupCards]);
             get_Cards(event.target.getAttribute('data-id'));
+            check_BrainStormAfterJoin(container_BoardID);
             boards.classList.remove('toggle--Visibility');
             break;
+        case condition.contains('header__delete-card'):
+            delete_Cards.classList.toggle('toggle--Visibility');
+            break;
+        case condition.contains('card--delete'):
+            delete_CardQuery(event.target.getAttribute('data-id'));
     }
 })
 
@@ -246,7 +317,7 @@ header.addEventListener('click', event => {
 const register_Form = document.getElementById('authentication__register');
 const login_Form = document.getElementById('authentication__login');
 
-
+//Switch from login to register and back
 const form_Switch = () => {
     register_Form.classList.toggle('authentication__auth--switch');
     login_Form.classList.toggle('authentication__auth--switch');
@@ -271,6 +342,7 @@ authentication.addEventListener('click', event => {
     }
 })
 
+//Create window event listener
 create_Window.addEventListener('click', event => {
     const condition = event.target.classList
     switch(true) {
@@ -279,6 +351,11 @@ create_Window.addEventListener('click', event => {
             break;
         case condition.contains('create__privacy'):
             create_PopUp.classList.toggle('toggle--Visibility');
+            break;
+        case condition.contains('create__board'):
+            add_Board(create_BoardName.value)
+            create_BoardName.value = '';
+            create_Window.classList.toggle('toggle--Visibility');
             break;
     }
 })
@@ -290,16 +367,15 @@ const update_Username = (name) => {
 }
 
 //Firebase Init
-
 let firebaseConfig = {
-    apiKey: "AIzaSyA8px5YoU9DX9jZpyCTb3uhD1YaXZQCpKs",
-    authDomain: "my-project-1555317659839.firebaseapp.com",
-    databaseURL: "https://my-project-1555317659839.firebaseio.com",
-    projectId: "my-project-1555317659839",
-    storageBucket: "my-project-1555317659839.appspot.com",
-    messagingSenderId: "936975139412",
-    appId: "1:936975139412:web:148dee3d352446303e63c1",
-    measurementId: "G-GWV5FD85XY"
+    apiKey: "AIzaSyAHz93ex9oLVzlL6LBMfhwAVT4So1LkwAc",
+    authDomain: "my-project-1555317015462.firebaseapp.com",
+    databaseURL: "https://my-project-1555317015462.firebaseio.com",
+    projectId: "my-project-1555317015462",
+    storageBucket: "my-project-1555317015462.appspot.com",
+    messagingSenderId: "437270505058",
+    appId: "1:437270505058:web:e34441279d0c189e2e133b",
+    measurementId: "G-6SJFYRYLSY"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
@@ -313,6 +389,7 @@ const auth_Input = document.getElementsByClassName('authentication__input')
 const get_UserUID = (user) => {
     let document = db.collection("user").doc(user);
     document.get().then((doc) => {
+        //Update the user stats in clientside currently only the name
         update_Username(doc.data()["name"]);  
     })
 }
@@ -361,6 +438,7 @@ const logout = () => {
       });
 }
 
+//get Boards from DB and load them one time after logging in
 const get_Boards = () => {
     clear_Data([boards_Container, header_Boards]);
     load_Boards();
@@ -399,25 +477,56 @@ const create_Boards = (id, name, classname, container) => {
     container.appendChild(board);
 }
 
+//Add a board to db
+const add_Board = (boardname) => {
+    db.collection("boards").add({
+        name: boardname,
+        brainstorm: false
+    })
+    .catch((error) => {
+        alert("Error adding board: ", error);
+    });
+}
+
 
 //Realtime Listener for the current Active board your brainstorming to add new cards in realtime
 db.collection("card").onSnapshot((snapshot) => {
     snapshot.docChanges().forEach((change) => {
-        if (change.type === "added") {
-            //Only adds cards for your currently active board that has the same ID that you choose from the board or board header
-            if(change.doc.data()["board"] == container_BoardID){
-                load_Cards(change.doc.data()["text"], change.doc.data()["xcoord"], change.doc.data()["ycoord"], change.doc.data()["creator"], change.doc.id)
-            }
+        switch(true) {
+            //Add new cards in realtime
+            case change.type === "added":
+                if(change.doc.data()["board"] == container_BoardID){
+                    load_Cards(change.doc.data()["text"], change.doc.data()["xcoord"], change.doc.data()["ycoord"], change.doc.data()["creator"], change.doc.id)
+                }
+                break;
+            //Change text and pos in real time
+            case change.type === "modified":
+                set_CardText(change.doc);
+                set_CardPos(change.doc);
+                break;
+            //Check if card is deleted in db and remove it from clientside in real time
+            case change.type === "removed":
+                deleteCard(change.doc)
+                break;
         }
     });
 });
 
-//Realtime Listener for the current Active board your brainstorming to add new cards in realtime
-db.collection("card").onSnapshot((snapshot) => {
+//Realtimelistener for Board activities
+db.collection("boards").onSnapshot((snapshot) => {
     snapshot.docChanges().forEach((change) => {
-        if (change.type === "modified") {
-            //Get new card pos that are beeing modified which means someone is dragging them
-            get_NewCardPos(change);
+        switch(true) {
+            //Check if a new board is added and append it to clientside
+            case change.type === "added":
+                create_Boards(change.doc.id, change.doc.data()["name"], "boards__room", boards_Container);
+                create_Boards(change.doc.id, change.doc.data()["name"], "header__cards", header_Boards);
+                break;
+            //Check if brainstorm value of a board is changed and activate or deactivate brainstorming
+            case change.type === "modified" && change.doc.id == container_BoardID:
+                brain_Storm = change.doc.data()["brainstorm"];
+                if(change.doc.data()["brainstorm"] == false) {
+                    get_BeforeBrainStormCardPos(container_BoardID);
+                }
         }
     });
 });
@@ -436,9 +545,47 @@ const add_Card = (text, x, y, creator, board) => {
     });
 }
 
-//get new card position and add it to clientside dom
-const get_NewCardPos = (data) => {
-    let selected_Element = document.querySelector(`[data-id="${data.doc.id}"]`);
-    selected_Element.style.left = data.doc.data()["xcoord"] + "px";
-    selected_Element.style.top = data.doc.data()["ycoord"] + "px";
+//Delete card in DB
+const delete_CardQuery = (id) => {
+    db.collection("card").doc(id).delete().catch((error) => {
+        alert("Error removing card: ", error);
+    });
+}
+
+//Delete cards from container and header
+const deleteCard = (data) => {
+    let container_Element = document.body.querySelector(`div[data-id="${data.id}"]`)
+    container_Element.remove();
+    let header_Element = document.body.querySelector(`li[data-id="${data.id}"]`)
+    header_Element.remove();
+}
+
+//set card position clientside dom
+const set_CardPos = (data) => {
+    let selected_Element = document.querySelector(`div[data-id="${data.id}"]`);
+    selected_Element.style.left = data.data()["xcoord"] + "px";
+    selected_Element.style.top = data.data()["ycoord"] + "px";
+}
+
+//set card text clientside dom
+const set_CardText = (data) => {
+    let selected_Element = document.querySelector(`div[data-id="${data.id}"]`);
+    selected_Element.innerHTML = data.data()["text"];
+}
+
+//get card position before brainstorm starts
+const get_BeforeBrainStormCardPos = (board_ID) => {
+    db.collection("card").where('board', '==', `${board_ID}`).get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            set_CardPos(doc);
+        });
+    });
+}
+
+const convert_PercentageToPx = () => {
+    console.log("just")
+}
+
+const convert_PxToPercentage = () => {
+    console.log("just")
 }

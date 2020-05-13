@@ -12,7 +12,7 @@ body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     position: relative;
-    overflow-x: hidden;
+    overflow:hidden;
 }
 
 a {
@@ -244,6 +244,7 @@ ul {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+    min-width: 180px;
 }
 
 .boards__container {
@@ -385,11 +386,15 @@ ul {
 .header {
     background-color: #0067A3;
     color: var(--white-color);
-    min-height: 5vh;
+    height: auto;
     display: flex;
     align-items: center;
     position: relative;
     z-index:5;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
 }
 
 .header__left {
@@ -413,22 +418,16 @@ ul {
     display: none;
 }
 
-.header__popup--boards {
+.header__popup--left {
     top: 53px;
     left: 3px;
 }
 
-.header__popup--user {
+.header__popup--right {
     top: 53px;
     right: 3px;
     text-align:center;
 }
-
-.header__popup--options {
-    top: 53px;
-    left: 3px;
-}
-
 .header__popupButton {
     background: #F90005;
     border-radius: 3px;
@@ -512,7 +511,7 @@ ul {
     color: var(--dark-color);
 }
 
-.header__user {
+.header__popup-title {
     color: var(--dark-color);
     font-size: 1rem;
 }
@@ -570,12 +569,15 @@ ul {
 /* Card Section */
 
 .container {
-    overflow-y:auto;
-    height:95vh;
+    height: 100vh;
     background-color: #0079BF;
     position: relative;
-    overflow-x: hidden;
     z-index: 1;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    overflow: hidden;
 }
 
 .container--sorted {
@@ -586,6 +588,12 @@ ul {
 }
 
 .card {
+    margin-right: .5rem;
+    margin-top: .5rem;
+    position: absolute;
+}
+
+.card--styling {
     width: 250px;
     height: 43px;
     background: var(--white-color);
@@ -600,9 +608,10 @@ ul {
     0 16px 32px rgba(0,0,0,0.07), 
     0 32px 64px rgba(0,0,0,0.07);
     cursor:pointer;
-    margin-right: .5rem;
-    margin-top: .5rem;
-    position: absolute;
+}
+
+.card--popup:not(:last-child) {
+    margin-bottom: .3rem;
 }
 
 .card__creator {
@@ -627,4 +636,46 @@ ul {
 .card:not(:focus):hover .card__creator{
     transition-delay: .5s;
     display: block;
+}
+
+/* Responsive Queries */
+
+@media (max-width:1200px) {
+    .authentication__illustration {
+        max-width: 300px;
+    }
+
+    .boards {
+        padding: 5rem 15rem;
+    }
+}
+
+@media (max-width:600px) {
+    .authentication__illustration--1 {
+        display:none;
+    }
+
+    .authentication__illustration--2 {
+        right:50%;
+        transform: translate(50%, 0);
+    }
+
+    .boards {
+        padding: 5rem 2rem;
+    }
+}
+
+@media (max-width:440px) {
+    .header__middle {
+        display: none;
+    }
+
+    .authentication__form {
+        width: 300px;
+        top: 320px;
+    }
+
+    .authentication__illustration {
+        max-width: 180px;
+    }
 }
