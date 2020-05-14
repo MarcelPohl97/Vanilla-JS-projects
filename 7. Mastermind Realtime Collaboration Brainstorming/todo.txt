@@ -1,20 +1,20 @@
 App Vision: 
 
--> add calculations for different width and heights as a function to make code more clean
--> make input have full width at mobile view
+-> fix removing board view on user info when clicking the achievements
+-> test code for brainstorm try to use ternary operator
 
--> deploy app and test in mobile
--> clean up js code and comment out
+-> try to fix percentages that also take in mind the width and height of the object
 
 High Bugfixes for usability:
+-> deploy app and test in mobile
 -> fix bug when element gets bigger and you have to calculate the bounce back animation/ when element is saved at 900px and someone reopens in mobile its bugged
-(find a away to replace the elements)
+(find a away to replace the elements
 -> fix crossbrowser compatibility
+-> make input have full width at mobile view
 
 Medium Bugfixes for better usability:
--> fix for board view when switching between boards and relogging
 -> fix for privacy settings not whole elemement clickable only free space
--> fix removing board view on user info when clicking the achievements
+
 
 Low Bugfixes better for usability:
 -> add a "Do you really want to delete this card question"
@@ -26,4 +26,5 @@ but maybe fixable when animations might come in place and cards start randomly a
 -> add user stats
 
 Implementation:
+
 -> try to implement destructuring for data

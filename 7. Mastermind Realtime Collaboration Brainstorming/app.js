@@ -42,8 +42,8 @@ class Card {
         this.cardid = cardid
         this.element = document.createElement('div');
         this.element.setAttribute('data-id' , this.cardid);
-        this.element.style.top = (container_FullHeight * (this.y / 100)) + "px";
-        this.element.style.left = (container_FullWidth * (this.x / 100)) + "px";
+        this.element.style.top = convert_PercentageToPx(container_FullHeight, this.y) + "px";
+        this.element.style.left = convert_PercentageToPx(container_FullWidth, this.x) + "px";
         this.element.innerHTML = this.text;
         this.element.classList = 'card card--styling';
         this.element.contentEditable = 'false';
@@ -171,10 +171,11 @@ function dragIt(event) {
     update_CardPosition(initX+event.pageX-firstX, initY+event.pageY-firstY, event.target.getAttribute('data-id'));
 };
 
+//Update the card when card is getting dragged around send updated coords to firebase
 const update_CardPosition = (x, y, cardid) => {
     db.collection("card").doc(cardid).update({
-        xcoord: (x / container_FullWidth) * 100, 
-        ycoord: (y / container_FullHeight) * 100
+        xcoord: convert_PxToPercentage(x, container_FullWidth), 
+        ycoord: convert_PxToPercentage(y, container_FullHeight)
     });
 }
 
@@ -317,13 +318,12 @@ header.addEventListener('click', event => {
 })
 
 //Eventlistener to switch between form
-const register_Form = document.getElementById('authentication__register');
-const login_Form = document.getElementById('authentication__login');
+//const register_Form = document.getElementById('authentication__register');
+//const login_Form = document.getElementById('authentication__login');
 
 //Switch from login to register and back
 const form_Switch = () => {
-    register_Form.classList.toggle('authentication__auth--switch');
-    login_Form.classList.toggle('authentication__auth--switch');
+    document.body.querySelectorAll(`.authentication__auth`).forEach(element => element.classList.toggle('authentication__auth--switch'))
 }
 
 //Authentication Eventlistener for formswitch and Login/Register
@@ -557,23 +557,19 @@ const delete_CardQuery = (id) => {
 
 //Delete cards from container and header
 const deleteCard = (data) => {
-    let container_Element = document.body.querySelector(`div[data-id="${data.id}"]`)
-    container_Element.remove();
-    let header_Element = document.body.querySelector(`li[data-id="${data.id}"]`)
-    header_Element.remove();
+    document.body.querySelectorAll(`.card--styling[data-id="${data.id}"]`).forEach(element => element.remove())
 }
 
 //set card position clientside dom
 const set_CardPos = (data) => {
     let selected_Element = document.querySelector(`div[data-id="${data.id}"]`);
-    selected_Element.style.left = (container_FullWidth * (data.data()["xcoord"] / 100)) + "px"; 
-    selected_Element.style.top = (container_FullHeight * (data.data()["ycoord"] / 100)) + "px";
+    selected_Element.style.left = convert_PercentageToPx(container_FullWidth, data.data()["xcoord"]) + "px"; 
+    selected_Element.style.top = convert_PercentageToPx(container_FullHeight, data.data()["ycoord"]) + "px";
 }
 
 //set card text clientside dom
 const set_CardText = (data) => {
-    let selected_Element = document.querySelector(`div[data-id="${data.id}"]`);
-    selected_Element.innerHTML = data.data()["text"];
+    document.body.querySelectorAll(`.card--styling[data-id="${data.id}"]`).forEach(element => element.innerHTML = data.data()["text"]);
 }
 
 //get card position before brainstorm starts
@@ -585,11 +581,15 @@ const get_BeforeBrainStormCardPos = (board_ID) => {
     });
 }
 
-const convert_PercentageToPx = () => {
-    console.log("just")
+//Convert Percentage to Pixel when getting percentage data from firebase
+const convert_PercentageToPx = (screenWidth, pxCoords) => {
+    let calculation = (screenWidth * (pxCoords / 100));
+    return calculation
 }
 
-const convert_PxToPercentage = () => {
-    console.log("just")
+//Convert Pixel to Percentage when sending data to firebase
+const convert_PxToPercentage = (pxCoords, screenWidth) => {
+    let calculation = (pxCoords / screenWidth) * 100;
+    return calculation
 }
 

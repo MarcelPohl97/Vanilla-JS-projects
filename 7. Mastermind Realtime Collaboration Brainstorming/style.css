@@ -294,7 +294,7 @@ ul {
 
 .create__container {
     position: absolute;
-    top: 10%;
+    top: 7rem;
     left: 50%;
     transform: translate(-50%, -50%);
     background: #0067A3;
@@ -676,6 +676,6 @@ ul {
     }
 
     .authentication__illustration {
-        max-width: 180px;
+        max-width: 120px;
     }
 }
