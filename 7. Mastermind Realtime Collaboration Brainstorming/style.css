@@ -455,11 +455,11 @@ ul {
     width: 100%;
 }
 
-.header__cards:not(:last-child){
+.header__cards--styling:not(:last-child){
     margin-bottom: .3rem;
 }
 
-.header__cards {
+.header__cards--styling {
     width: 100%;
     background:rgba(198, 225, 241, 0.705);
     color: var(--dark-color);
@@ -473,16 +473,16 @@ ul {
     cursor:pointer;
 }
 
-.header__cards:hover {
+.header__cards--styling:hover {
     background: #C6E1F1;
 }
 
-.header__cards:hover::before {
+.header__cards--styling:hover::before {
     background:#0079BF;
 }
 
 
-.header__cards::before {
+.header__cards--styling::before {
     content: '';
     width: 15%;
     height: 100%;
@@ -571,7 +571,6 @@ ul {
 .container {
     height: 100vh;
     background-color: #0079BF;
-    position: relative;
     z-index: 1;
     width: 100%;
     position: absolute;
@@ -676,6 +675,6 @@ ul {
     }
 
     .authentication__illustration {
-        max-width: 120px;
+        display:none;
     }
 }

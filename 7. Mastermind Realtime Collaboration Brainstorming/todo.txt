@@ -1,30 +1,14 @@
-App Vision: 
-
--> fix removing board view on user info when clicking the achievements
+ Bugfixes:
 -> test code for brainstorm try to use ternary operator
-
+-> fix after dragging on desktop popup not working anymore
 -> try to fix percentages that also take in mind the width and height of the object
+-> fix for privacy settings not whole element clickable only free space
 
-High Bugfixes for usability:
--> deploy app and test in mobile
--> fix bug when element gets bigger and you have to calculate the bounce back animation/ when element is saved at 900px and someone reopens in mobile its bugged
-(find a away to replace the elements
--> fix crossbrowser compatibility
 -> make input have full width at mobile view
 
-Medium Bugfixes for better usability:
--> fix for privacy settings not whole elemement clickable only free space
-
-
-Low Bugfixes better for usability:
+Additional Features possibly could be added in the future:
 -> add a "Do you really want to delete this card question"
 -> room search functionality searches rooms that match up in alphabetical order for example: -> type in r every room that starts with r is first and so on
 -> room with password protection functionality
 -> different animations or movements when brainstorming
--> maybe fix when card gets back to his original position it doesnt start there anymore unless you rejoin the room it keeps brainstorming in the coords it stopped
-but maybe fixable when animations might come in place and cards start randomly anytime
 -> add user stats
-
-Implementation:
-
--> try to implement destructuring for data
